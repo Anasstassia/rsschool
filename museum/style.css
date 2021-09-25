@@ -66,6 +66,11 @@ section {
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
 li {
   list-style: none;
 }
@@ -303,4 +308,416 @@ nav li a {
 
 .align-c {
   align-items: center;
+}
+
+.player-container {
+  position: relative;
+  margin-top: 75px;
+  margin-bottom: 40px;
+  height: 735px;
+}
+
+.player-container video {
+  height: 650px;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  height: 85px;
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  z-index: 1;
+  background: black;
+  display: flex;
+  align-items: center;
+}
+
+.progress {
+  background: linear-gradient(
+    to right,
+    #710707 0%,
+    #710707 40%,
+    #c4c4c4 40%,
+    #c4c4c4 100%
+  );
+  transition: background 450ms ease-in;
+  height: 8px;
+  width: 929px;
+  outline: none;
+
+  -webkit-appearance: none;
+}
+
+.progress::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  cursor: ew-resize;
+  background: #fff;
+}
+
+.volume-progress {
+  background: linear-gradient(
+    to right,
+    #710707 0%,
+    #710707 40%,
+    #c4c4c4 40%,
+    #c4c4c4 100%
+  );
+  transition: background 450ms ease-in;
+  height: 8px;
+  width: 155px;
+  outline: none;
+
+  -webkit-appearance: none;
+}
+
+.volume-progress::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  cursor: ew-resize;
+  background: #fff;
+}
+.video-cards {
+  width: 100%;
+  height: 254px;
+  margin-bottom: 127px;
+}
+
+.gallery {
+  height: 2051px;
+}
+
+.big-play {
+  background-image: url("./assets/img/Controls/big_play.svg");
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.video-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small-play {
+  background-image: url("./assets/img/Controls/small_play.svg");
+  width: 23px;
+  height: 30px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.volume {
+  background-image: url("./assets/img/Controls/volume.svg");
+  width: 38px;
+  height: 31px;
+}
+
+.fullscreen {
+  background-image: url("./assets/img/Controls/fullscreen_on.svg");
+  width: 36px;
+  height: 36px;
+}
+
+.video-slider {
+  display: flex;
+  justify-content: space-between;
+}
+
+iframe {
+  border: 0px;
+}
+
+.video-controls {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 75px;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.left-scroll {
+  background-image: url("./assets/svg/video-controls/Left.svg");
+  width: 10px;
+  height: 12px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.right-scroll {
+  background-image: url("./assets/svg/video-controls/Right.svg");
+  width: 10px;
+  height: 12px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.flex-button a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pic-and-ticket {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 75px;
+}
+.pic-tic {
+  width: 720px;
+  height: 550px;
+}
+.tickets-buttons {
+  display: flex;
+}
+.ticket-form {
+  height: 550px;
+  margin-right: 240px;
+}
+
+.ticket-text-main {
+  margin-bottom: 53px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 33px;
+}
+.radio-container {
+  display: block;
+  position: relative;
+  padding-left: 38px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 4px;
+  left: -1px;
+  height: 13px;
+  width: 13px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+/* When the radio button is checked, add a blue background */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+  top: 5px;
+  left: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: black;
+}
+.tickets-and-total {
+  display: flex;
+  flex-direction: column;
+}
+.ticket-amount {
+  padding-bottom: 27px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  padding-left: 75px;
+}
+.total {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 1.65px;
+  margin: 50px 0 60px 25px;
+}
+.ticket-amount__basic {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 25px;
+  padding-bottom: 12px;
+  margin: 0 0 0 25px;
+}
+.ticket-amount__number {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 25px;
+  align-items: center;
+  height: 45px;
+  padding: 0 10px;
+  border: 3px solid black;
+}
+
+.ticket-amount__senior {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 25px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin: 0 0 0 25px;
+}
+.ticket-amount__input {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  border: none;
+  text-align: center;
+}
+.buy-now {
+  width: 175px;
+  height: 50px;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  background: black;
+  color: white;
+  border: none;
+}
+.parallax {
+  width: 100%;
+  height: 400px;
+  background-image: url("./assets/img/parallax.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+.contacts-container {
+  justify-content: space-between;
+}
+.contacts-list {
+}
+.map-pic {
+  width: 960px;
+  height: 620px;
+}
+
+.name-museum {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 32, 81px;
+  padding-bottom: 50px;
+}
+
+.address-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+  padding-bottom: 25px;
+}
+
+.mb-70 {
+  margin-bottom: 70px;
+}
+
+.footer {
+}
+.logo-foot {
+  align-self: flex-start;
+  padding-top: 75px;
+}
+.footer-1 {
+  position: relative;
+  justify-content: space-between;
+}
+.footer-1::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #666666;
+}
+.footer-2 {
+  justify-content: space-between;
+  padding-top: 74px;
+  padding-bottom: 52px;
+}
+.footer-nav {
+  display: block;
+  padding-top: 58px;
+  padding-right: 234px;
+}
+.footer-nav ul {
+  columns: 2;
+}
+.footer nav li a {
+  padding: 0 70px;
+  line-height: 52px;
+}
+.socials {
+  align-items: flex-end;
+  min-width: 340px;
+  padding-bottom: 17px;
+}
+.social-icon {
+  height: 48px;
+  width: 48px;
+  padding-left: 26px;
+  transition: 0.4s;
+}
+
+.footer-2-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 22px;
+  color: white;
 }
