@@ -32,8 +32,8 @@
                 <div class="text-white heading-text-container ">
                  <h2 class="heading-text">welcome<br> to the louvre</h2>
                  <p>From the castle to the museum</p>
-                 <button class="flex-button"><a href="./tours/tour1.html" target="_blank">Discover the Louvre</a>
-                </button>
+                 <button class="flex-button" onclick="document.location='./tours/tour1.html'">Discover
+                    the Louvre</button>
                 </div>
                 <div class="slider-container">
                     <img class="slider-img" src="./assets/img/Sl-1.jpg" alt="slider">
@@ -161,18 +161,18 @@
                             <p class="ticket-amount">Amount</p>
                             <p class="ticket-amount__basic">Basic 18+</p>
                             <div class="ticket-amount__number">
-                              <button class="ticket-amount__btn" type="button"
-                                onclick="this.nextElementSibling.stepDown()">-</button>
+                              <button class="ticket-btn" type="button"
+                                onclick="this.nextElementSibling.stepDown()">–</button>
                               <input class="ticket-amount__input" type="number" min="0" max="20" value="1" readonly>
-                              <button class="ticket-amount__btn" type="button"
+                              <button class="ticket-btn" type="button"
                                 onclick="this.previousElementSibling.stepUp()">+</button>
                             </div>
                             <p class="ticket-amount__senior">Senior 65+</p>
                             <div class="ticket-amount__number">
-                              <button class="ticket-amount__btn" type="button"
-                                onclick="this.nextElementSibling.stepDown()">-</button>
+                              <button class="ticket-btn" type="button"
+                                onclick="this.nextElementSibling.stepDown()">–</button>
                               <input class="ticket-amount__input" type="number" min="0" max="20" value="1" readonly>
-                              <button class="ticket-amount__btn" type="button"
+                              <button class="ticket-btn" type="button"
                                 onclick="this.previousElementSibling.stepUp()">+</button>
                             </div>
                             <p class="total">Total €220</p>
@@ -190,8 +190,12 @@
                         <div class="contacts-list">
                             <p class="name-museum">Palais Royal <br> Musee du Louvre</p>
                             <p class="address-text">address: 75001 Paris, France</p>
-                            <p class="address-text">phone: +33(0) 1 40 20 50 50</p>
-                            <p class="address-text">mail: info@louvre.fr</p>
+                            <p class="address-text">phone: 
+                                <a class="address-text" href="tel:+330140205050">+33(0) 1 40 20 50 50</a>
+                            </p>
+                            <p class="address-text"> mail: 
+                                <a class="address-text" href="mailto:info@louvre.fr">info@louvre.fr</a>
+                            </p>
                         </div>
                         <div class=""> 
                             <img class="map-pic" src="./assets/img/map.png" alt=""/>
@@ -218,39 +222,51 @@
                     </nav>
                 </div>
                 <div class="socials flex-container">   
-                    <ul class="flex-container">
-                        <li>
+                    <ul class="flex-container pb-5">
+                        <li> 
                             <a href="https://www.youtube.com/user/louvre">
-                                <img class="social-icon" src="./assets/svg/youtube.svg" alt="youtube">
+                                <div class="circle">   
+                                    <img class="social-icon" src="./assets/svg/youtube.svg" alt="youtube">
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.instagram.com/museelouvre/">
-                                <img class="social-icon" src="./assets/svg/instagram.svg" alt="instagram">
+                                <div class="circle"> 
+                                    <img class="social-icon" src="./assets/svg/instagram.svg" alt="instagram">
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.facebook.com/museedulouvre">
-                                <img class="social-icon" src="./assets/svg/facebook.svg" alt="facebook">
+                                <div class="circle"> 
+                                    <img class="social-icon" src="./assets/svg/facebook.svg" alt="facebook">
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="http://twitter.com/museelouvre">
-                                <img class="social-icon" src="./assets/svg/twitter.svg" alt="twitter">
+                                <div class="circle"> 
+                                    <img class="social-icon" src="./assets/svg/twitter.svg" alt="twitter">
+                                </div>
                             </a>
                         </li>
                         <li>
                             <a href="https://www.pinterest.fr/museedulouvre/">
-                                <img class="social-icon" src="./assets/svg/pinterest.svg" alt="pinterest">
+                                <div class="circle"> 
+                                    <img class="social-icon" src="./assets/svg/pinterest.svg" alt="pinterest">
+                                </div>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="footer-2 flex-container dark-section">
-                <p class="footer-2-text">© 2021</p>
-                <a class="footer-2-text" href="https://rs.school/" target="_blank">The Rolling Scopes School</a>
-                <a class="footer-2-text" href="https://github.com/Anasstassia" target="_blank">Anasstassia</a>
+                <ul class="flex-container ul-footer">
+                    <li><p class="footer-2-text">© 2021</p></li>
+                    <li><a class="footer-2-text" href="https://rs.school/" target="_blank">The Rolling Scopes School</a></li>
+                    <li><a class="footer-2-text" href="https://github.com/Anasstassia" target="_blank">Anasstassia</a></li>
+             </ul>
             </div>
         </div>
     </footer>

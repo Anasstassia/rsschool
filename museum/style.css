@@ -567,6 +567,14 @@ iframe {
   line-height: 33px;
   padding-left: 75px;
 }
+.ticket-btn {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 37px;
+  text-align: center;
+}
 .total {
   font-family: Roboto;
   font-style: normal;
@@ -581,7 +589,7 @@ iframe {
   font-weight: 300;
   font-size: 22px;
   line-height: 25px;
-  padding-bottom: 12px;
+  padding-bottom: 15px;
   margin: 0 0 0 25px;
 }
 .ticket-amount__number {
@@ -590,7 +598,7 @@ iframe {
   margin-left: 25px;
   align-items: center;
   height: 45px;
-  padding: 0 10px;
+  padding: 0 5px;
   border: 3px solid black;
 }
 
@@ -610,7 +618,7 @@ iframe {
   font-size: 22px;
   line-height: 26px;
   border: none;
-  text-align: center;
+  text-align: end;
 }
 .buy-now {
   width: 175px;
@@ -649,7 +657,7 @@ iframe {
   font-weight: 500;
   font-size: 28px;
   line-height: 32, 81px;
-  padding-bottom: 50px;
+  padding-bottom: 52px;
 }
 
 .address-text {
@@ -658,7 +666,8 @@ iframe {
   font-weight: 300;
   font-size: 22px;
   line-height: 26px;
-  padding-bottom: 25px;
+  padding-bottom: 27px;
+  color: #000;
 }
 
 .mb-70 {
@@ -685,14 +694,14 @@ iframe {
   background-color: #666666;
 }
 .footer-2 {
-  justify-content: space-between;
-  padding-top: 74px;
+  display: flow-root;
+  padding-top: 58px;
   padding-bottom: 52px;
 }
 .footer-nav {
   display: block;
-  padding-top: 58px;
-  padding-right: 234px;
+  padding-top: 57px;
+  padding-right: 231px;
 }
 .footer-nav ul {
   columns: 2;
@@ -703,16 +712,19 @@ iframe {
 }
 .socials {
   align-items: flex-end;
+  justify-content: end;
   min-width: 340px;
-  padding-bottom: 17px;
+  padding-bottom: 3px;
 }
-.social-icon {
-  height: 48px;
+.circle {
   width: 48px;
-  padding-left: 26px;
-  transition: 0.4s;
+  height: 48px;
+  border: 1px solid white;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .footer-2-text {
   font-family: Roboto;
   font-style: normal;
@@ -720,4 +732,17 @@ iframe {
   font-size: 22px;
   line-height: 22px;
   color: white;
+  letter-spacing: 2px;
+}
+.space {
+  justify-content: space-between;
+}
+.ul-footer {
+  justify-content: space-between;
+}
+.socials ul {
+  padding-bottom: 16px;
+}
+.socials li {
+  padding-left: 22px;
 }
