@@ -47,7 +47,7 @@ section {
   background-size: cover;
   width: 50px;
   height: 34px;
-  margin-right: 21px;
+  margin-right: 25px;
 }
 
 .logo-pic {
@@ -210,10 +210,10 @@ li {
 .underline-card_::after {
   content: "";
   position: absolute;
-  bottom: -14px;
+  bottom: -12px;
   left: 0;
   width: 69%;
-  height: 3px;
+  height: 2px;
   background-color: #710707;
   transition: all 0.5s ease-in;
 }
@@ -764,7 +764,7 @@ footer::after {
 .footer-2 {
   display: flow-root;
   padding-top: 58px;
-  padding-bottom: 52px;
+  padding-bottom: 35px;
 }
 .footer-nav {
   display: block;
@@ -914,13 +914,13 @@ footer::after {
 .slider-container-explore .slider-button {
   pointer-events: none;
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   margin: 0;
   background-color: transparent;
   border: 5px solid white;
-  left: calc(50% - 23px);
+  left: calc(62% - 22px);
   top: calc(50% - 18px);
   display: flex;
   justify-content: center;
@@ -942,7 +942,7 @@ footer::after {
 }
 .arrows {
   align-items: center;
-  margin-right: 40px;
+  margin-right: 47px;
 }
 .left-arrow {
   background-image: url("./assets/svg/left.svg");
@@ -979,4 +979,7 @@ footer::after {
   width: 180px;
   align-items: center;
   justify-content: space-between;
+}
+.counter-pic span {
+  letter-spacing: 2px;
 }
