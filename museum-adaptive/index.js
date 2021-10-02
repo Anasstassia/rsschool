@@ -82,3 +82,26 @@ console.log(`Score: 120 / 150
     кликами по кнопкам + и - в секции Tiskets можно менять количество билетов Basic и Senior от 0 до 20 +2
     кнопке "Book" в форме покупки билетов добавлен ripple-эффект Демо 0/2
     при перезагрузке (обновлении) страницы картины в блоке Galery отображаются в рандомном порядке 0/10`);
+
+document.querySelector(".burger-menu").addEventListener("click", () => {
+  const nav = document.querySelector(".nav-header");
+  const content = document.querySelector("#Welcome .heading-text-container");
+  const burger = document.querySelector(".burger-menu");
+
+  if (+nav.style.opacity === 0) {
+    burger.classList.remove("burger-open");
+    burger.classList.add("burger-close");
+
+    setTimeout(() => {
+      nav.style.opacity = 1;
+    }, 300);
+    content.style.opacity = 0;
+  } else {
+    burger.classList.remove("burger-close");
+    burger.classList.add("burger-open");
+    nav.style.opacity = 0;
+    setTimeout(() => {
+      content.style.opacity = 1;
+    }, 300);
+  }
+});

@@ -14,7 +14,7 @@
         <h1 class="visually-hidden">Louvre</h1>
         <div class="flex-container chicha container">
             <div class="logo-pic flex-container text-upper"><span ></span>Louvre</div>
-            <nav>
+            <nav class="nav-header">
                 <ul class="flex-container">
                     <li><a class="hover-gold" href="#Visiting">Visiting</a></li>
                     <li class="li-header"><a class="hover-gold" href="#Explore">Explore</a></li>
@@ -24,11 +24,12 @@
                     <li class="li-header"><a class="hover-gold" href="#Contacts">Contacts</a></li>
                 </ul>
             </nav>
+            <span class="burger-menu burger-open"></span>
         </div> 
     </header>    
     <main>
         <section id="Welcome" class="dark-section">
-            <div class="flex-container container relative">
+            <div class="flex-container container relative pb-media column-m">
                 <div class="counter-pic flex-container">
                     <div class="counter flex-container"><span>01 | 05</span></div>
                     <div class="squares flex-container">
@@ -46,7 +47,7 @@
                 <div class="text-white heading-text-container ">
                  <h2 class="heading-text">welcome<br> to the louvre</h2>
                  <p>From the castle to the museum</p>
-                 <button class="flex-button button-gold" onclick="document.location='./tours/tour1.html'">Discover
+                 <button class="hidden-m flex-button button-gold" onclick="document.location='./tours/tour1.html'">Discover
                     the Louvre</button>
                 </div>
                 <div class="slider-container">
@@ -58,53 +59,53 @@
         <section id="Visiting" class="">
             <div class="flex-container container column">
                 <h2 class="mt-75 mb-103 heading-text text-upper text-gold underline-title">Virtual tour</h2>
-                    <div class="flex-container cards">
+                    <div class="flex-container cards media-cards">
                         <a class="card" href="./tours/tour2.html" target="_blank">
                             <img class="img-card" src="./assets/img/Royal_place.jpg" alt="Royal Place">
-                            <h3 class="card-text underline-card">Royal Palace</h3>
+                            <h3 class="card-text underline-card media-text-cards">Royal Palace</h3>
                             <p class="card-paragraph">360° Virtual Tour</p>
                             <p class="small-paragraph">Google Street Panorama View</p>
                         </a>
                         <a class="card" href="./tours/tour3.html" target="_blank">
                             <img class="img-card" src="./assets/img/Denon_wing.jpg" alt="Denon Wing">
-                            <h3 class="card-text underline-card">Denon Wing</h3>
+                            <h3 class="card-text underline-card media-text-cards">Denon Wing</h3>
                             <p class="card-paragraph">360° Virtual Tour</p>
                             <p class="small-paragraph">Google Street Panorama View</p>
                         </a>
                         <a class="card" href="./tours/tour4.html" target="_blank">
                             <img class="img-card" src="./assets/img/Colonnade_perrault.jpg" alt="Colonnade Perrault">
-                            <h3 class="card-text underline-card">Colonnade Perrault</h3>
+                            <h3 class="card-text underline-card media-text-cards letter-spacing3 ">Colonnade Perrault</h3>
                             <p class="card-paragraph">360° Virtual Tour</p>
                             <p class="small-paragraph">Google Street Panorama View</p>
                         </a>
                         <a class="card" href="./tours/tour5.html" target="_blank">
                             <img class="img-card" src="./assets/img/Greek_hall.jpg" alt="Greek Hall">
-                            <h3 class="card-text underline-card_">Greek Hall</h3>
+                            <h3 class="card-text underline-card_ media-text-cards">Greek Hall</h3>
                             <p class="card-paragraph">360° Virtual Tour</p>
                             <p class="small-paragraph">Google Street Panorama View</p>
                         </a>
                         <a class="card" href="./tours/tour6.html" target="_blank">
                             <img class="img-card" src="./assets/img/Mona_lisa.jpg" alt="Mona Lisa">
-                            <h3 class="card-text underline-card_">Mona Lisa</h3>
+                            <h3 class="card-text underline-card_ media-text-cards letter-spacing3">Mona Lisa</h3>
                             <p class="card-paragraph">360° Virtual Tour</p>
                             <p class="small-paragraph">Google Street Panorama View</p>
                         </a>
                         <a class="card" href="./tours/tour7.html" target="_blank">
                             <img class="img-card" src="./assets/img/Night_place.jpg" alt="Night Palace">
-                            <h3 class="card-text underline-card_">Night Palace</h3>
+                            <h3 class="card-text underline-card_ media-text-cards letter-spacing3">Night Palace</h3>
                             <p class="card-paragraph">360° Virtual Tour</p>
                             <p class="small-paragraph">Google Street Panorama View</p>
                         </a>
                     </div>
             </div>
         </section>
-        <section id="Explore" class="section dark-section">
-            <div class="container flex-container">
+        <section id="Explore" class="section dark-section section-padding">
+            <div class="container flex-container flex-column padding ">
                 <div class="text-explore">
                     <h2 class="mb-106 text-white heading-text text-upper underline-title">Picture explore</h2>
-                    <p class="p-text text-white pb-25">Las Meninas is a 1656 painting by Diego Velázquez, the leading<br> artist of the Spanish Golden Age.</p>
+                    <p class="p-text text-white pb-25">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
                     <p class="p-text text-white pb-27">It was cleaned in 1984 to remove a <span class="text-gold">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
-                    <p class="p-text text-white">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
+                    <p class="p-text text-white hidden">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
                 </div>
                 <!-- <img class="explore-pic" src="./assets/img/explore-slider/before.jpeg" alt="before"> -->
                 <div class='slider-container-explore'>
@@ -119,8 +120,8 @@
         <section id="Video" class="video-section">
             <div class="container flex-container column">
                 <div class="flex-container align-c">
-                    <h2 class="mt-75 pt-114 heading-text text-upper text-gold">Video Journey</h2>
-                     <p class="mt-75 p-text text-black block">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+                    <h2 class="mt-75  pt-114 heading-text text-upper text-gold">Video Journey</h2>
+                     <p class="mt-75 p-text text-black block hidden">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
                 </div>   
                 <div class="player-container">
                     <div class="video-container">
@@ -156,14 +157,32 @@
             <div class="container flex-container gallery">
                 <h2 class="mb-103 text-white heading-text text-upper">Art Gallery</h2>
                 <div class="picture-outer-container">
-                    <div class="picture-inner-container">
-                        
+                        <div class="column-gallery column-1">
+                            <img src="assets/img/gallery/galery2.jpeg" alt="">
+                            <img src="assets/img/gallery/galery9.jpeg" alt="">
+                            <img src="assets/img/gallery/galery4.jpeg" alt="">
+                            <img src="assets/img/gallery/galery6.jpeg" alt="">
+                          </div>
+                          <div class="column-gallery">
+                            <img src="assets/img/gallery/galery1.jpeg" alt="">
+                            <img src="assets/img/gallery/galery8.jpeg" alt="">
+                            <img src="assets/img/gallery/galery3.jpeg" alt="">
+                            <img src="assets/img/gallery/galery5.jpeg" alt="">
+                          </div>
+                          <div class="column-gallery column-3">
+                            <img src="assets/img/gallery/galery7.jpeg" alt="">
+                            <img src="assets/img/gallery/galery10.jpeg" alt="">
+                            <img src="assets/img/gallery/galery15.jpeg" alt="">
+                            <img src="assets/img/gallery/galery12.jpeg" alt="">
+                          </div>
+                          <div class="color-filter"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="Tickets" class="section">
+        <section id="Tickets" class="section pd">
             <div class="container flex-container column">
                 <h2 class=" mb-103 heading-text text-upper text-gold underline-title">Buy Tickets</h2>
             
