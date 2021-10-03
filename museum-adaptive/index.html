@@ -24,7 +24,7 @@
                     <li class="li-header"><a class="hover-gold" href="#Contacts">Contacts</a></li>
                 </ul>
             </nav>
-            <span class="burger-menu burger-open"></span>
+            <span class="burger-menu burger-open burger-menu-position"></span>
         </div> 
     </header>    
     <main>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="text-white heading-text-container ">
-                 <h2 class="heading-text">welcome<br> to the louvre</h2>
+                 <h2 class="text-center heading-text">welcome<br> to the louvre</h2>
                  <p>From the castle to the museum</p>
                  <button class="hidden-m flex-button button-gold" onclick="document.location='./tours/tour1.html'">Discover
                     the Louvre</button>
@@ -58,7 +58,7 @@
 
         <section id="Visiting" class="">
             <div class="flex-container container column">
-                <h2 class="mt-75 mb-103 heading-text text-upper text-gold underline-title">Virtual tour</h2>
+                <h2 class="mt-75 mb-103 heading-text text-upper text-gold underline-title h2-heading-768">Virtual tour</h2>
                     <div class="flex-container cards media-cards">
                         <a class="card" href="./tours/tour2.html" target="_blank">
                             <img class="img-card" src="./assets/img/Royal_place.jpg" alt="Royal Place">
@@ -102,9 +102,9 @@
         <section id="Explore" class="section dark-section section-padding">
             <div class="container flex-container flex-column padding ">
                 <div class="text-explore">
-                    <h2 class="mb-106 text-white heading-text text-upper underline-title">Picture explore</h2>
-                    <p class="p-text text-white pb-25">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
-                    <p class="p-text text-white pb-27">It was cleaned in 1984 to remove a <span class="text-gold">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
+                    <h2 class="heading-text-768 mb-106 text-white heading-text text-upper underline-title">Picture explore</h2>
+                    <p class="p-text text-white pb-25  display-none">Las Meninas is a 1656 painting by Diego Velázquez, the leading artist of the Spanish Golden Age.</p>
+                    <p class="p-text text-white pb-27  display-none">It was cleaned in 1984 to remove a <span class="text-gold">"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
                     <p class="p-text text-white hidden">The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
                 </div>
                 <!-- <img class="explore-pic" src="./assets/img/explore-slider/before.jpeg" alt="before"> -->
@@ -120,7 +120,7 @@
         <section id="Video" class="video-section">
             <div class="container flex-container column">
                 <div class="flex-container align-c">
-                    <h2 class="mt-75  pt-114 heading-text text-upper text-gold">Video Journey</h2>
+                    <h2 class="mt-75  pt-114 heading-text heading-text-768 text-upper text-gold">Video Journey</h2>
                      <p class="mt-75 p-text text-black block hidden">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
                 </div>   
                 <div class="player-container">
@@ -139,7 +139,7 @@
                 <div class="video-slider">
                     <iframe width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                
                     <iframe width="452" height="254" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <iframe width="452" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="452" class="none-video" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-controls flex-container">
                     <button class="left-scroll"></button>
@@ -155,25 +155,25 @@
 
         <section id="Gallery" class="section dark-section">
             <div class="container flex-container gallery">
-                <h2 class="mb-103 text-white heading-text text-upper">Art Gallery</h2>
+                <h2 class="mb-103 text-white heading-text text-upper ">Art Gallery</h2>
                 <div class="picture-outer-container">
                         <div class="column-gallery column-1">
-                            <img src="assets/img/gallery/galery2.jpeg" alt="">
-                            <img src="assets/img/gallery/galery9.jpeg" alt="">
-                            <img src="assets/img/gallery/galery4.jpeg" alt="">
-                            <img src="assets/img/gallery/galery6.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery2.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery9.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery4.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery6.jpeg" alt="">
                           </div>
                           <div class="column-gallery">
-                            <img src="assets/img/gallery/galery1.jpeg" alt="">
-                            <img src="assets/img/gallery/galery8.jpeg" alt="">
-                            <img src="assets/img/gallery/galery3.jpeg" alt="">
-                            <img src="assets/img/gallery/galery5.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery1.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery8.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery3.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery5.jpeg" alt="">
                           </div>
-                          <div class="column-gallery column-3">
-                            <img src="assets/img/gallery/galery7.jpeg" alt="">
-                            <img src="assets/img/gallery/galery10.jpeg" alt="">
-                            <img src="assets/img/gallery/galery15.jpeg" alt="">
-                            <img src="assets/img/gallery/galery12.jpeg" alt="">
+                          <div class="column-gallery column-3 coll3-none">
+                            <img class="gallery-img" src="assets/img/gallery/galery7.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery10.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery15.jpeg" alt="">
+                            <img class="gallery-img" src="assets/img/gallery/galery12.jpeg" alt="">
                           </div>
                           <div class="color-filter"></div>
                         </div>
@@ -233,7 +233,7 @@
         <section id="Contacts" class="mb-70">
             <div class="container flex-container column">
                 <h2 class="mb-103 heading-text text-upper text-gold underline-title">Contacts</h2>
-                    <div class="contacts-container flex-container">
+                    <div class="contacts-container flex-container contacts-column">
                         <div class="contacts-list">
                             <p class="name-museum">Palais Royal <br> Musee du Louvre</p>
                             <p class="address-text">address: 75001 Paris, France</p>
@@ -244,7 +244,7 @@
                                 <a class="address-text" href="mailto:info@louvre.fr">info@louvre.fr</a>
                             </p>
                         </div>
-                        <div class=""> 
+                        <div class="map-container"> 
                             <img class="map-pic" src="./assets/img/map.png" alt=""/>
                         </div>
                     </div>
@@ -256,15 +256,16 @@
         <div class="container flex-container footer column">
             <div class="footer-1 flex-container">
                 <div class="logo-pic flex-container text-upper logo-foot"><span></span>Louvre</div>
+                <div class="column-footer flex-container">
                 <div class="footer-nav ">
                     <nav>
                         <ul>
-                            <li><a class="hover-gold" href="#Visiting">Visiting</a></li>
-                            <li><a class="hover-gold" href="#Explore">Explore</a></li>
-                            <li><a class="hover-gold" href="#Video">Video</a></li>
-                            <li><a class="hover-gold" href="#Gallery">Gallery</a></li>
-                            <li><a class="hover-gold" href="#Tickets">Tickets</a></li>
-                            <li><a class="hover-gold" href="#Contacts">Contacts</a></li>
+                            <li class="pb-25"><a class="hover-gold" href="#Visiting">Visiting</a></li>
+                            <li class="pb-25"><a class="hover-gold" href="#Explore">Explore</a></li>
+                            <li class="pb-25"><a class="hover-gold" href="#Video">Video</a></li>
+                            <li class="pb-25"><a class="hover-gold" href="#Gallery">Gallery</a></li>
+                            <li class="pb-25"><a class="hover-gold" href="#Tickets">Tickets</a></li>
+                            <li class="pb-25"><a class="hover-gold" href="#Contacts">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -307,6 +308,7 @@
                         </li>
                     </ul>
                 </div>
+            </div>
             </div>
             <div class="footer-2 flex-container dark-section">
                 <ul class="flex-container ul-footer">
