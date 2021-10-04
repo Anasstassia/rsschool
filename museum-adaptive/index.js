@@ -83,24 +83,49 @@ console.log(`Score: 120 / 150
     кнопке "Book" в форме покупки билетов добавлен ripple-эффект Демо 0/2
     при перезагрузке (обновлении) страницы картины в блоке Galery отображаются в рандомном порядке 0/10`);
 
-document.querySelector(".burger-menu").addEventListener("click", () => {
-  const nav = document.querySelector(".nav-header");
-  const content = document.querySelector("#Welcome .heading-text-container");
-  const burger = document.querySelector(".burger-menu");
+let navIsVisible = false;
+const nav = document.querySelector(".nav-header");
+const content = document.querySelector("#Welcome .heading-text-container");
+const burger = document.querySelector(".burger-menu");
+const slider = document.querySelector("#Welcome .slider-container");
 
+document.querySelector(".burger-menu").addEventListener("click", () => {
   if (+nav.style.opacity === 0) {
+    if (window.innerWidth <= 768) {
+      slider.style.opacity = 0;
+    }
     burger.classList.remove("burger-open");
     burger.classList.add("burger-close");
 
     setTimeout(() => {
+      navIsVisible = true;
       nav.style.opacity = 1;
     }, 300);
     content.style.opacity = 0;
   } else {
+    if (window.innerWidth <= 768) {
+      slider.style.opacity = 1;
+    }
     burger.classList.remove("burger-close");
     burger.classList.add("burger-open");
     nav.style.opacity = 0;
     setTimeout(() => {
+      navIsVisible = false;
+      content.style.opacity = 1;
+    }, 300);
+  }
+});
+
+document.querySelector("body").addEventListener("click", (e) => {
+  if (navIsVisible) {
+    if (window.innerWidth <= 768) {
+      slider.style.opacity = 1;
+    }
+    burger.classList.remove("burger-close");
+    burger.classList.add("burger-open");
+    nav.style.opacity = 0;
+    setTimeout(() => {
+      navIsVisible = false;
       content.style.opacity = 1;
     }, 300);
   }

@@ -51,8 +51,11 @@
                     the Louvre</button>
                 </div>
                 <div class="slider-container">
-                    <img class="slider-img" src="./assets/img/Sl-1.jpg" alt="slider">
-                </div>
+                    <picture>
+                        <source srcset="./assets/img/Sl-768.png" media="(max-width: 768px)">
+                            <img class="slider-img" src="./assets/img/Sl-1.jpg" alt="slider">
+                    </picture>
+                 </div>
             </div>
         </section>
 
@@ -186,8 +189,11 @@
             <div class="container flex-container column">
                 <h2 class=" mb-103 heading-text text-upper text-gold underline-title">Buy Tickets</h2>
             
-                <div class="pic-and-ticket ">
-                    <img class="pic-tic" src="./assets/img/Tickets-pic.jpg" alt=""/>
+                <div class="pic-and-ticket tickets-column">
+                    <picture>
+                        <source srcset="./assets/img/Ticket-pic420.jpg" media="(max-width: 420px)">
+                        <img class="pic-tic" src="./assets/img/Tickets-pic.jpg" alt=""/>
+                    </picture>
                     <div class="tickets-buttons">
                         <div class="ticket-form">
                             <p class="ticket-text-main">Ticket Type</p>
@@ -254,7 +260,7 @@
     </main>
     <footer class="dark-section"> 
         <div class="container flex-container footer column">
-            <div class="footer-1 flex-container">
+            <div class="footer-1 flex-container column-all">
                 <div class="logo-pic flex-container text-upper logo-foot"><span></span>Louvre</div>
                 <div class="column-footer flex-container">
                 <div class="footer-nav ">
@@ -313,7 +319,7 @@
             <div class="footer-2 flex-container dark-section">
                 <ul class="flex-container ul-footer">
                     <li><p class="footer-2-text">© 2021</p></li>
-                    <li><a class="footer-2-text hover-gold" href="https://rs.school/" target="_blank">The Rolling Scopes School</a></li>
+                    <li class="list-none"><a class="footer-2-text hover-gold" href="https://rs.school/" target="_blank">The Rolling Scopes School</a></li>
                     <li><a class="footer-2-text hover-gold" href="https://github.com/Anasstassia" target="_blank">Anasstassia</a></li>
              </ul>
             </div>

@@ -464,6 +464,14 @@ nav li a {
 .column-3 {
   margin-top: 50px;
 }
+.color-filter {
+  width: 100%;
+  height: 360px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+}
 
 .big-play {
   background-image: url("./assets/img/Controls/big_play.svg");
@@ -1232,6 +1240,17 @@ footer::after {
   .gallery {
     height: 1400px;
   }
+  .gallery-img {
+    /* width: calc(50% - 12px); */
+    width: 304px;
+  }
+  .gallery h2 {
+    margin: 0;
+    padding-bottom: 51px;
+  }
+  .picture-outer-container {
+    gap: 36px;
+  }
   .section {
     padding-bottom: 33px;
   }
@@ -1280,7 +1299,7 @@ footer::after {
 
   /* CONTACTS */
   #Contacts {
-    margin-bottom: 59px;
+    margin-bottom: 53px;
   }
   .map-pic {
     width: 694px;
@@ -1290,6 +1309,9 @@ footer::after {
     font-size: 24px;
     line-height: 28px;
     padding-bottom: 36px;
+  }
+  .name-museum {
+    padding-bottom: 33px;
   }
   .address-text {
     padding-bottom: 16px;
@@ -1439,7 +1461,7 @@ footer::after {
   .slider-container {
     margin: 0 auto;
     position: static;
-    width: 728px !important;
+    width: 728px;
   }
   .pb-media {
     padding-bottom: 96px;
@@ -1457,6 +1479,10 @@ footer::after {
   }
   .underline-title::after {
     bottom: -23px;
+  }
+  .underline-title::after {
+    left: 20px;
+    width: 94.5%;
   }
   .media-text-cards {
     font-size: 22px;
@@ -1570,7 +1596,7 @@ footer::after {
     display: none;
   }
   .picture-outer-container {
-    justify-content: right;
+    justify-content: center;
     height: 1080px;
     gap: 24px;
   }
@@ -1719,5 +1745,325 @@ footer::after {
   /* HEADER */
   .container {
     max-width: 420px;
+  }
+  .chicha {
+    height: 90px;
+  }
+  .logo-pic {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .logo-pic span {
+    width: 29px;
+    height: 16px;
+    margin-right: 17px;
+  }
+
+  /* WELCOME */
+  .heading-text {
+    font-size: 28px;
+    line-height: 40px;
+  }
+  .heading-text-container {
+    margin-top: 5px;
+  }
+  .heading-text-container p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .slider-container {
+    width: 380px;
+    padding-top: 4px;
+  }
+  .square-bullet {
+    width: 7px;
+    height: 7px;
+  }
+  .counter-pic {
+    height: 79px;
+    right: 0;
+    width: 561px;
+  }
+  .right-arrow {
+    background-size: 21.5px;
+    background-repeat: no-repeat;
+    margin-left: -1px;
+  }
+  .left-arrow {
+    background-size: 21.5px;
+    background-repeat: no-repeat;
+  }
+  .pb-media {
+    padding-bottom: 75px;
+  }
+  .counter-pic span {
+    font-size: 16px;
+  }
+  .counter {
+    margin-left: 222px;
+  }
+  .counter-pic span {
+    letter-spacing: 0px;
+  }
+  /* .left-arrow,
+  .right-arrow {
+    width: 20px;
+  } */
+  .squares {
+    width: 75px;
+  }
+  .arrows {
+    margin-right: 75px;
+  }
+
+  /* VIRTUAL TOUR */
+  .underline-title::after {
+    left: 20px;
+    width: 91%;
+  }
+  .media-cards {
+    padding: 0 70px;
+    gap: 39px 53px;
+  }
+  .card-text {
+    font-size: 18px;
+    /* line-height: 20px; */
+    letter-spacing: 5px;
+    margin-top: 15px;
+    margin-bottom: 21px;
+  }
+  .card-paragraph {
+    font-size: 16px;
+  }
+  .small-paragraph {
+    margin-top: 7px;
+  }
+  .cards {
+    margin-bottom: 16px;
+  }
+
+  /* EXPLORE */
+  .slider-container-explore {
+    width: 380px;
+    height: 368px;
+  }
+  .slider-container-explore .img {
+    background-size: 380px 100%;
+  }
+  .slider-container-explore .slider-button {
+    width: 15px;
+    height: 15px;
+    border: 3px solid white;
+  }
+  /* .slider-container-explore .slider::-moz-range-thumb {
+    width: 2px;
+    height: 368px;
+  } */
+
+  /* VIDEO */
+  .progress {
+    top: -5px;
+  }
+  .player-container {
+    height: 227px;
+    margin-bottom: 36px;
+  }
+  .player-container video {
+    height: 172px;
+  }
+  .big-play {
+    background-size: 50px 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    width: 50px;
+  }
+  .controls {
+    width: 380px;
+    height: 50px;
+    bottom: 4px;
+    justify-content: space-around;
+  }
+
+  .small-play {
+    background-size: 14px 18px;
+    width: 14px;
+    height: 18px;
+  }
+  .volume {
+    background-size: 18px 14px;
+    width: 18px;
+    height: 14px;
+  }
+  .fullscreen {
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+  }
+  .volume-progress {
+    width: 200px;
+  }
+
+  .video-slider > iframe {
+    width: 180px;
+    height: 101px;
+  }
+  .video-controls {
+    width: 184px;
+    margin-top: 40px;
+    margin-bottom: 18px;
+  }
+  .circle-control {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* GALLERY */
+  .gallery {
+    height: 717px;
+  }
+  .gallery-img {
+    width: 178px;
+  }
+  .picture-outer-container {
+    gap: 21px;
+  }
+  /* TICKETS */
+  .tickets-column {
+    flex-direction: column;
+  }
+  .pic-tic {
+    width: 380px;
+    height: 160px;
+    /* padding-left: 19px; */
+  }
+  .tickets-buttons {
+    justify-content: center;
+    padding-top: 36px;
+  }
+  .tickets-and-total {
+    padding: 0;
+  }
+  .ticket-amount {
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    font-weight: 600;
+    padding: 0;
+  }
+  .ticket-amount__number {
+    margin: 0;
+  }
+  .ticket-amount__input {
+    text-align: right;
+  }
+  .ticket-amount__basic {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    padding-bottom: 13px;
+    margin: 20px 0 0 0;
+  }
+  .ticket-amount__senior {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    margin: -6px 0 0 0;
+    padding-bottom: 14px;
+  }
+  .total {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0;
+    margin: 40px 0 40px 0;
+    text-align: center;
+  }
+  .buy-now {
+    font-size: 16px;
+    line-height: 0px;
+    margin: 0;
+  }
+
+  /* CONTACTS*/
+  .name-museum {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .address-text {
+    font-size: 16px;
+    padding-bottom: 13px;
+  }
+  .map-pic {
+    width: 380px;
+    height: 248px;
+  }
+  .map-container {
+    padding-top: 25px;
+  }
+  #Contacts {
+    margin-bottom: 36px;
+  }
+
+  /* FOOTER */
+  .footer-nav ul {
+    columns: 3;
+  }
+  .column-all {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-nav {
+    padding-top: 40px;
+    margin-left: 20px;
+  }
+  .footer nav li a {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .footer-nav ul li:nth-child(1),
+  .footer-nav ul li:nth-child(2),
+  .footer-nav ul li:nth-child(3) {
+    margin-right: 0;
+  }
+
+  .footer-nav ul li:nth-child(4),
+  .footer-nav ul li:nth-child(5),
+  .footer-nav ul li:nth-child(6) {
+    margin-left: 0;
+  }
+  .footer-nav ul li:nth-child(3),
+  .footer-nav ul li:nth-child(4) {
+    margin-left: 50px;
+  }
+  .footer-nav ul li:nth-child(5),
+  .footer-nav ul li:nth-child(6) {
+    margin-left: 83px;
+  }
+  .footer-nav ul li:nth-child(2),
+  .footer-nav ul li:nth-child(4),
+  .footer-nav ul li:nth-child(6) {
+    margin-top: 5px;
+  }
+  .socials {
+    padding-top: 14px;
+    margin-left: 78px;
+  }
+  .socials ul {
+    justify-content: normal;
+  }
+  .socials li {
+    padding: 0 1.2px;
+  }
+  .footer-2-text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .list-none {
+    display: none;
+  }
+  footer::after {
+    top: 296px;
+  }
+  .ul-footer {
+    padding: 0 25px;
   }
 }
