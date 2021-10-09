@@ -1812,8 +1812,8 @@ footer::after {
   .ul-footer {
     justify-content: space-evenly;
   }
-}
- */
+} */
+
 @media (max-width: 420px) {
   /* HEADER */
   .container {
