@@ -20,40 +20,6 @@ document.querySelector(".slider").addEventListener("input", (e) => {
   ).style.left = `calc(${sliderPos}% - 24px)`;
 });
 
-[
-  ["header", 1, 1],
-  ["main", 1, 1],
-  ["footer", 1, 1],
-  ["section", 7, Infinity],
-  ["h1", 1, 1],
-  ["h2", 7, Infinity],
-  ["h3", 6, Infinity],
-  ["nav", 2, Infinity],
-  ["ul", 3, Infinity],
-  ["ul > li > a", 16, Infinity],
-  ["button", 13, Infinity],
-  ['input[type="radio"]', 3, Infinity],
-  ['input[type="number"]', 2, Infinity],
-  ['input[type="range"]', 2, Infinity],
-]
-  .map((x) => [...x, [...document.querySelectorAll(x[0])].length])
-  .map((x) =>
-    x[3] >= x[1] && x[3] <= x[2]
-      ? `✔ ${x[0]} (${x[3]})`
-      : `✘ ${x[0]} (expected - ${x[1]}, actual - ${x[3]})`
-  )
-  .forEach((x) => console.log(x)),
-  (alts = [...document.querySelectorAll("img")]
-    .map((el) => el.getAttribute("alt"))
-    .reduce((a, v) => [a[0] + 1, v !== undefined ? a[1] : a[1] + 1], [0, 0])),
-  console.log(
-    alts[1] > 0
-      ? `✘ ${alts[1]} of ${alts[0]} images haven't "alt" attribute`
-      : `✔ All images have "alt" attribute`
-  );
-
-console.log(``);
-
 // adaptive
 
 let navIsVisible = false;
@@ -116,3 +82,97 @@ document.querySelector("body").addEventListener("click", (e) => {
     }, 300);
   }
 });
+
+mapboxgl.accessToken =
+  "pk.eyJ1IjoibmFzdGlrNzUiLCJhIjoiY2t1anBrb3dhMG04NTJvcnYwbHk2eXRvMSJ9.PV0Hrr4rnJt14EjR57JXUg";
+const map = new mapboxgl.Map({
+  container: "map",
+  style: "mapbox://styles/mapbox/light-v10",
+  center: [2.3364, 48.86091],
+  zoom: 15.75,
+});
+
+// Create a default Marker and add it to the map.
+
+const marker0 = new mapboxgl.Marker({ color: "black" })
+  .setLngLat([2.3364, 48.86091])
+  .addTo(map);
+
+const marker1 = new mapboxgl.Marker({ color: "grey" })
+  .setLngLat([2.3333, 48.8602])
+  .addTo(map);
+
+const marker2 = new mapboxgl.Marker({ color: "grey" })
+  .setLngLat([2.3397, 48.8607])
+  .addTo(map);
+
+const marker3 = new mapboxgl.Marker({ color: "grey" })
+  .setLngLat([2.333, 48.8619])
+  .addTo(map);
+
+const marker4 = new mapboxgl.Marker({ color: "grey" })
+  .setLngLat([2.3365, 48.8625])
+  .addTo(map);
+
+map.addControl(new mapboxgl.NavigationControl());
+
+// СЛАЙДЕР Welcomes
+const imgs = [
+  "./assets/img/Welcome-slider/1.jpg",
+  "./assets/img/Welcome-slider/2.jpeg",
+  "./assets/img/Welcome-slider/3.jpeg",
+  "./assets/img/Welcome-slider/4.jpeg",
+  "./assets/img/Welcome-slider/5.jpeg",
+];
+let current = 0;
+const setCurrent = (newValue) => {
+  current = newValue;
+  document.querySelector("#current").innerHTML = `0${current + 1}`;
+};
+
+document.querySelector("img").src = imgs[current];
+document.querySelector(".right-arrow").addEventListener("click", () => {
+  if (imgs[current + 1]) {
+    document.querySelector("img").src = imgs[current + 1];
+    setCurrent(current + 1);
+  } else {
+    setCurrent(0);
+    document.querySelector("img").src = imgs[current];
+  }
+
+  handleChangeBullet();
+});
+
+document.querySelector(".left-arrow").addEventListener("click", () => {
+  if (imgs[current - 1]) {
+    document.querySelector("img").src = imgs[current - 1];
+    setCurrent(current - 1);
+  } else {
+    setCurrent(imgs.length - 1);
+    document.querySelector("img").src = imgs[current];
+  }
+
+  handleChangeBullet();
+});
+
+document.querySelectorAll(".square-bullet").forEach((bullet, i) => {
+  bullet.addEventListener("click", () => {
+    const currentBullet = document.querySelector(".square-bullet_1");
+
+    currentBullet.classList.remove("square-bullet_1");
+
+    bullet.classList.add("square-bullet_1");
+
+    setCurrent(i);
+    document.querySelector("img").src = imgs[current];
+  });
+});
+
+const handleChangeBullet = () => {
+  document
+    .querySelector(".square-bullet_1")
+    .classList.remove("square-bullet_1");
+  document
+    .querySelectorAll(".square-bullet")
+    [current].classList.add("square-bullet_1");
+};
