@@ -198,15 +198,15 @@
                         <div class="ticket-form">
                             <p class="ticket-text-main">Ticket Type</p>
                             <label class="radio-container">Permanent exhibition
-                                <input type="radio" checked="checked" name="radio">
+                                <input type="radio" checked="checked" name="radio" id="perma">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="radio-container">Temporary exhibition
-                                <input type="radio" name="radio">
+                                <input type="radio" name="radio" id="tempo">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="radio-container">Combined Admission
-                                <input type="radio" name="radio">
+                                <input type="radio" name="radio" id="combi">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -214,21 +214,21 @@
                             <p class="ticket-amount">Amount</p>
                             <p class="ticket-amount__basic">Basic 18+</p>
                             <div class="ticket-amount__number">
-                              <button class="ticket-btn" type="button"
-                                onclick="this.nextElementSibling.stepDown()">–</button>
-                              <input class="ticket-amount__input" type="number" min="0" max="20" value="1" readonly>
-                              <button class="ticket-btn" type="button"
-                                onclick="this.previousElementSibling.stepUp()">+</button>
+                              <button class="ticket-btn" type="button" id="basicDown"
+                            >–</button>
+                              <input id="basic" class="ticket-amount__input" type="number" min="0" max="20" value="0" readonly>
+                              <button class="ticket-btn" type="button" id="basicUp"
+                                >+</button>
                             </div>
                             <p class="ticket-amount__senior">Senior 65+</p>
                             <div class="ticket-amount__number">
-                              <button class="ticket-btn" type="button"
-                                onclick="this.nextElementSibling.stepDown()">–</button>
-                              <input class="ticket-amount__input" type="number" min="0" max="20" value="1" readonly>
-                              <button class="ticket-btn" type="button"
-                                onclick="this.previousElementSibling.stepUp()">+</button>
+                              <button class="ticket-btn" type="button" id="seniorDown"
+                                >–</button>
+                              <input id="senior" class="ticket-amount__input" type="number" min="0" max="20" value="0" readonly>
+                              <button class="ticket-btn" type="button" id="seniorUp"
+                                >+</button>
                             </div>
-                            <p class="total">Total €220</p>
+                            <p class="total">Total <span id="total">0</span></p>
                             <button class="buy-now button-gold">Buy Now</button>
                           </div>
                     </div>

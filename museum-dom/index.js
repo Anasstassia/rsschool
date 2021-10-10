@@ -192,12 +192,30 @@ const videos = [
   // "https://youtu.be/aWmJ5DgyWPI",
   // "https://youtu.be/2OR0OCr6uRE",
 ];
-let currentVideo = 0;
+let [first, second, last] = [0, 1, 2];
 const setCurrentVideos = (newValueVideo) => {
-  currentVideo = newValueVideo;
-  document.querySelector("#current1").innerHTML = `${currentVideo + 1}`;
-  document.querySelector("#current2").innerHTML = `${currentVideo + 2}`;
-  document.querySelector("#current3").innerHTML = `${currentVideo + 3}`;
+  // currentVideo = newValueVideo;
+  switch (newValueVideo) {
+    case newValueVideo > 0 || newValueVideo < 0:
+      [first, second, last] = [first, second, last].map(
+        (value) => value + newValueVideo
+      );
+      document.querySelector("#current1").innerHTML = `${
+        first + newValueVideo
+      }`;
+      document.querySelector("#current2").innerHTML = `${
+        second + newValueVideo
+      }`;
+      document.querySelector("#current3").innerHTML = `${last + newValueVideo}`;
+      break;
+
+    case 0:
+      [first, second, last] = [first, second, last].map((value, i) => i + 1);
+      document.querySelector("#current1").innerHTML = `${0}`;
+      document.querySelector("#current2").innerHTML = `${1}`;
+      document.querySelector("#current3").innerHTML = `${2}`;
+      break;
+  }
 };
 // document.querySelector("swiper-slide1").src = videos[currentVideo1];
 // document.querySelector("swiper-slide2").src = videos[currentVideo2];
@@ -205,16 +223,16 @@ const setCurrentVideos = (newValueVideo) => {
 // document.querySelector("#current").innerHTML = `0${current + 1}`;
 
 document.querySelector(".right-scroll").addEventListener("click", () => {
-  if (videos[currentVideo + 1]) {
-    document.querySelector("#current1").innerHTML = videos[currentVideo + 1];
-    document.querySelector("#current2").innerHTML = videos[currentVideo + 2];
-    document.querySelector("#current3").innerHTML = videos[currentVideo + 3];
+  if (videos[last + 1]) {
+    document.querySelector("#current1").innerHTML = videos[first + 1];
+    document.querySelector("#current2").innerHTML = videos[second + 1];
+    document.querySelector("#current3").innerHTML = videos[last + 1];
     setCurrentVideos(currentVideo + 1);
   } else {
     setCurrentVideos(0);
-    document.querySelector("#current1").innerHTML = videos[currentVideo];
-    document.querySelector("#current2").innerHTML = videos[currentVideo + 1];
-    document.querySelector("#current3").innerHTML = videos[currentVideo + 2];
+    document.querySelector("#current1").innerHTML = videos[fist];
+    document.querySelector("#current2").innerHTML = videos[second];
+    document.querySelector("#current3").innerHTML = videos[last];
   }
   handleChangeVideoBullet();
 });
@@ -290,4 +308,115 @@ if (animItems.length > 0) {
     };
   }
   animOnScroll();
+}
+
+/*--------------PRICE COUNTER---------------------------------------------*/
+
+/* Model */
+const prices = [20, 25, 40];
+let currentPrice = getInitialPrice();
+const types = ["basic", "senior"];
+const actions = [-1, 1];
+const tickets = getInitialTickets();
+
+/* View elements */
+const perma = document.querySelector("#perma");
+const tempo = document.querySelector("#tempo");
+const combi = document.querySelector("#combi");
+
+const basicDown = document.querySelector("#basicDown");
+const basicUp = document.querySelector("#basicUp");
+const seniorDown = document.querySelector("#seniorDown");
+const seniorUp = document.querySelector("#seniorUp");
+const basic = document.querySelector("#basic");
+const senior = document.querySelector("#senior");
+const total = document.querySelector("#total");
+const inputs = [basic, senior];
+/* Init view */
+
+initView();
+
+/* Init controllers */
+priceController();
+ticketsController();
+
+/* Controllers */
+function priceController() {
+  [perma, tempo, combi].forEach((el, i) => {
+    el.addEventListener("change", ({ target: { checked } }) => {
+      if (checked) {
+        setCurrentPrice(prices[i]);
+        setTotalPrice();
+      }
+    });
+  });
+}
+
+function ticketsController() {
+  [
+    [basicDown, basicUp],
+    [seniorDown, seniorUp],
+  ].forEach((arr, arrayType) => {
+    arr.forEach((el, elType) => {
+      el.addEventListener("click", (event) => {
+        const value = actions[elType] + tickets[arrayType];
+        setTickets(value, arrayType);
+        setTotalPrice();
+      });
+    });
+  });
+}
+
+/* Helpers */
+function setTickets(value, ticketsType) {
+  const newValue = value >= 0 ? (value > 20 ? 20 : value) : 0;
+  if (value <= 20 && value >= 0) {
+    tickets[ticketsType] = value;
+  }
+  saveToLocalStorage("tickets", tickets);
+  inputs[ticketsType].value = String(newValue);
+}
+
+function setCurrentPrice(price) {
+  currentPrice = price;
+  saveToLocalStorage("price", currentPrice);
+}
+
+function setTotalPrice() {
+  total.innerHTML = `€${calcTotalPrice()}`;
+}
+
+function calcTotalPrice() {
+  return tickets[0] * currentPrice + (tickets[1] * currentPrice) / 2;
+}
+
+function initView() {
+  [perma, tempo, combi].forEach((el, i) => {
+    if (prices.indexOf(currentPrice) === i) {
+      el.checked = true;
+    }
+  });
+  inputs.forEach((el, i) => {
+    el.value = tickets[i];
+  });
+  setTotalPrice();
+}
+
+/* Local Storage */
+function getInitialTickets() {
+  if (localStorage.getItem("tickets")) {
+    return JSON.parse(localStorage.getItem("tickets"));
+  }
+  return [0, 0];
+}
+
+function getInitialPrice() {
+  if (localStorage.getItem("price")) {
+    return JSON.parse(localStorage.getItem("price"));
+  }
+  return prices[0];
+}
+
+function saveToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
