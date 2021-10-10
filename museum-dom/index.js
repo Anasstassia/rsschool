@@ -1,3 +1,4 @@
+/*--------------------VIDEO CONTROLS---------------------------------------------------- */
 document.querySelector(".progress").addEventListener("input", function (e) {
   const value = e.target.value;
   e.target.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`;
@@ -20,7 +21,7 @@ document.querySelector(".slider").addEventListener("input", (e) => {
   ).style.left = `calc(${sliderPos}% - 24px)`;
 });
 
-// adaptive
+/* ------------------ADAPTIVE BURGER MENU -----------------------------------------------------*/
 
 let navIsVisible = false;
 const nav = document.querySelector(".nav-header");
@@ -116,7 +117,8 @@ const marker4 = new mapboxgl.Marker({ color: "grey" })
 
 map.addControl(new mapboxgl.NavigationControl());
 
-// СЛАЙДЕР Welcomes
+//*------------------------------------ СЛАЙДЕР WELCOME------------------------------------------- *//
+
 const imgs = [
   "./assets/img/Welcome-slider/1.jpg",
   "./assets/img/Welcome-slider/2.jpeg",
@@ -176,3 +178,116 @@ const handleChangeBullet = () => {
     .querySelectorAll(".square-bullet")
     [current].classList.add("square-bullet_1");
 };
+
+//* --------------------SLIDER VIDEO --------------------------------------------------*//
+const videos = [
+  '<iframe width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+  '<iframe width="452" height="254" src="https://www.youtube.com/embed/Vi5D6FKhRmo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+  '<iframe width="452" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+  '<iframe width="452" height="254" src="https://www.youtube.com/embed/zp1BXPX8jcU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+  '<iframe width="452" height="254" src="https://www.youtube.com/embed/2OR0OCr6uRE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+  // "https://youtu.be/zp1BXPX8jcU",
+  // "https://youtu.be/Vi5D6FKhRmo",
+  // "https://youtu.be/NOhDysLnTvY",
+  // "https://youtu.be/aWmJ5DgyWPI",
+  // "https://youtu.be/2OR0OCr6uRE",
+];
+let currentVideo = 0;
+const setCurrentVideos = (newValueVideo) => {
+  currentVideo = newValueVideo;
+  document.querySelector("#current1").innerHTML = `${currentVideo + 1}`;
+  document.querySelector("#current2").innerHTML = `${currentVideo + 2}`;
+  document.querySelector("#current3").innerHTML = `${currentVideo + 3}`;
+};
+// document.querySelector("swiper-slide1").src = videos[currentVideo1];
+// document.querySelector("swiper-slide2").src = videos[currentVideo2];
+// document.querySelector("swiper-slide3").src = videos[currentVideo3];
+// document.querySelector("#current").innerHTML = `0${current + 1}`;
+
+document.querySelector(".right-scroll").addEventListener("click", () => {
+  if (videos[currentVideo + 1]) {
+    document.querySelector("#current1").innerHTML = videos[currentVideo + 1];
+    document.querySelector("#current2").innerHTML = videos[currentVideo + 2];
+    document.querySelector("#current3").innerHTML = videos[currentVideo + 3];
+    setCurrentVideos(currentVideo + 1);
+  } else {
+    setCurrentVideos(0);
+    document.querySelector("#current1").innerHTML = videos[currentVideo];
+    document.querySelector("#current2").innerHTML = videos[currentVideo + 1];
+    document.querySelector("#current3").innerHTML = videos[currentVideo + 2];
+  }
+  handleChangeVideoBullet();
+});
+
+document.querySelector(".left-scroll").addEventListener("click", () => {
+  if (videos[currentVideo - 3]) {
+    document.querySelector("#current1").innerHTML = videos[currentVideo - 1];
+    document.querySelector("#current2").innerHTML = videos[currentVideo - 2];
+    document.querySelector("#current3").innerHTML = videos[currentVideo - 3];
+  } else {
+    setCurrentVideos(videos.length - 1);
+    document.querySelector("#current1").innerHTML = videos[currentVideo];
+    document.querySelector("#current2").innerHTML = videos[currentVideo + 1];
+    document.querySelector("#current3").innerHTML = videos[currentVideo + 2];
+  }
+
+  handleChangeVideoBullet();
+});
+
+document.querySelectorAll(".circle-control").forEach((bullet, i) => {
+  bullet.addEventListener("click", () => {
+    const currentBulletVideo = document.querySelector(".dark");
+    currentBulletVideo.classList.remove("dark");
+    bullet.classList.add("dark");
+    setCurrentVideos(i);
+    document.querySelector("#current1").innerHTML = videos[currentVideo];
+    document.querySelector("#current2").innerHTML = videos[currentVideo + 1];
+    document.querySelector("#current3").innerHTML = videos[currentVideo + 2];
+  });
+});
+
+const handleChangeVideoBullet = () => {
+  document.querySelector(".dark").classList.remove("dark");
+  document
+    .querySelectorAll(".circle-control")
+    [currentVideo].classList.add("dark");
+};
+
+/*-------------- GALLERY DEBOUNCE ---------------------------*/
+const animItems = document.querySelectorAll("._anim-items");
+if (animItems.length > 0) {
+  window.addEventListener("scroll", animOnScroll);
+  function animOnScroll(params) {
+    for (let index = 0; index < animItems.length; index++) {
+      const animItem = animItems[index];
+      const animItemHeight = animItem.offsetHeight;
+      const animItemOffset = offset(animItem).top;
+      const animStart = 4;
+
+      let animItemPoint = window.innerHeight - animItemHeight / animStart;
+
+      if (animItemHeight > window.innerHeight) {
+        animItemPoint = animItemHeight - window.innerHeight / animStart;
+      }
+
+      if (
+        scrollY > animItemOffset - animItemPoint &&
+        scrollY < animItemOffset
+      ) {
+        animItem.classList.add("_active");
+      }
+      if (scrollY < 3700) {
+        animItem.classList.remove("_active");
+      }
+    }
+  }
+
+  function offset(el) {
+    const rect = el.getBoundingClientRect(),
+      scrollTop = window.scrollY || document.documentElement.scrollTop;
+    return {
+      top: rect.top + scrollTop,
+    };
+  }
+  animOnScroll();
+}
