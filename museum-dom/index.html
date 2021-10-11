@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Museum</title>
     <link rel="stylesheet" href="./normalize.css"/>
+    <link rel="stylesheet" href="./style.min.css"/>
     <link rel="stylesheet" href="./style.css"/>
     <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
 </head>
 <body>
+    <div id="page-preloader" class="preloader-2">
+        <div class="loader"> 
+            <span id="load_perc">0%</span>
+        </div>
+    </div>
     <header class="dark-section">
         <h1 class="visually-hidden">Louvre</h1>
         <div class="flex-container chicha container">
