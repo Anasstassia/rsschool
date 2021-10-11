@@ -448,3 +448,5 @@ function getInitialPrice() {
 function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
+
+console.log("привет :) из доп. функционала добавлен прелоадер загрузки сайта");
