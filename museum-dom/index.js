@@ -449,4 +449,8 @@ function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-console.log("привет :) из доп. функционала добавлен прелоадер загрузки сайта");
+setTimeout(() => {
+  alert(
+    "Привет:) Из доп. функционала - прелоадер  загрузки\nСлайдер welcome требует немного времени, чтобы полностью загрузиться, иначе он немного тормозит"
+  );
+}, 3500);
