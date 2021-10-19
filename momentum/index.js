@@ -15,11 +15,9 @@ function showDate() {
   const dateSelector = document.querySelector(".date");
   const date = new Date();
   const options = {
+    weekday: "long",
     month: "long",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timeZone: "UTC",
   };
   const currentDate = date.toLocaleDateString("ru-RU", options);
   dateSelector.textContent = currentDate;
