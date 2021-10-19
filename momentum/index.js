@@ -1,5 +1,8 @@
 /* Отображение времени на странице */
 
+const imgsUrl =
+  "https://raw.githubusercontent.com/Anasstassia/stage1-tasks/assets/images/";
+
 function showTime() {
   const time = document.querySelector(".time");
   const date = new Date();
@@ -27,25 +30,26 @@ function showDate() {
 /* Приветствие в соответствии со временем */
 function showGreeting() {
   const greeting = document.querySelector(".greeting");
-  const date = new Date();
-  const hours = date.getHours();
-  function getTimeOfDay(hours) {
-    if (hours === 24 || hours < 6) {
-      return "night";
-    }
-    if (hours < 12) {
-      return "morning";
-    }
-    if (hours < 18) {
-      return "day";
-    }
-    if (hours < 24) {
-      return "evening";
-    }
-  }
-  const timeOfDay = getTimeOfDay(hours);
+  const timeOfDay = getTimeOfDay();
   const greetingText = `Good ${timeOfDay}, `;
   greeting.textContent = greetingText;
+}
+
+function getTimeOfDay() {
+  const date = new Date();
+  const hours = date.getHours();
+  if (hours === 24 || hours < 6) {
+    return "night";
+  }
+  if (hours < 12) {
+    return "morning";
+  }
+  if (hours < 18) {
+    return "day";
+  }
+  if (hours < 24) {
+    return "evening";
+  }
 }
 
 /* Запись имени пользователя в ЛС */
@@ -67,3 +71,45 @@ function getLocalStorage() {
   }
 }
 window.addEventListener("load", getLocalStorage);
+
+/* фоновое изображение - слайдер */
+
+let randomNum;
+randomNum = getRandomNum();
+
+function getRandomNum() {
+  min = 1;
+  max = 20;
+  const rnd = Math.floor(Math.random() * (max - min + 1)) + min;
+  return rnd;
+}
+
+function setBg() {
+  const timeOfDay = getTimeOfDay();
+  const bgNum = randomNum < 10 ? `0${randomNum}` : randomNum;
+  document.body.style.backgroundImage = `url(${imgsUrl}${timeOfDay}/${bgNum}.jpg)`;
+  console.log(randomNum);
+}
+setBg();
+
+function getSlideNext() {
+  if (+randomNum === 20) {
+    randomNum = 0;
+  }
+  randomNum++;
+  setBg();
+}
+function getSlidePrev() {
+  if (+randomNum === 1) {
+    randomNum = 21;
+  }
+  randomNum--;
+  setBg();
+}
+
+//вызываем смену слайдов при клике
+const slideNext = document.querySelector(".slide-next");
+const slidePrev = document.querySelector(".slide-prev");
+
+slideNext.addEventListener("click", getSlideNext);
+slidePrev.addEventListener("click", getSlidePrev);
