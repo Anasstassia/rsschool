@@ -121,3 +121,31 @@ const slidePrev = document.querySelector(".slide-prev");
 
 slideNext.addEventListener("click", getSlideNext);
 slidePrev.addEventListener("click", getSlidePrev);
+
+/*------------------------------ Виджет погоды------------------------------------- */
+
+const weatherIcon = document.querySelector(".weather-icon");
+const temperature = document.querySelector(".temperature");
+const weatherDescription = document.querySelector(".weather-description");
+const cityElement = document.querySelector(".city");
+
+async function getWeather(city) {
+  cityElement.value = city;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=ba499dceea3b725ead8e60cb81d7ecb1&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+  localStorage.setItem("city", city);
+  weatherIcon.className = "weather-icon owf";
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  temperature.textContent = `${Math.round(data.main.temp)}°C`;
+  weatherDescription.textContent = data.weather[0].description;
+}
+
+getWeather(localStorage.getItem("city") || "Minsk");
+
+// Ввод пользователем города для погоды
+function setCity(event) {
+  getWeather(event.target.value);
+}
+
+cityElement.addEventListener("change", setCity);
