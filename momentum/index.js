@@ -1,7 +1,7 @@
-/* Отображение времени на странице */
-
 const imgsUrl =
   "https://raw.githubusercontent.com/Anasstassia/stage1-tasks/assets/images/";
+
+/*------------------------------ Отображение времени------------------------------------- */
 
 function showTime() {
   const time = document.querySelector(".time");
@@ -14,7 +14,8 @@ function showTime() {
 }
 showTime();
 
-/*Отображение даты на странице */
+/*------------------------------ Отображение даты------------------------------------- */
+
 function showDate() {
   const dateSelector = document.querySelector(".date");
   const date = new Date();
@@ -27,7 +28,8 @@ function showDate() {
   dateSelector.textContent = currentDate;
 }
 
-/* Приветствие в соответствии со временем */
+/*------------------------------ Приветствие в соответствии со временем   ------------------------------------- */
+
 function showGreeting() {
   const greeting = document.querySelector(".greeting");
   const timeOfDay = getTimeOfDay();
@@ -45,19 +47,18 @@ function getTimeOfDay() {
     return "morning";
   }
   if (hours < 18) {
-    return "day";
+    return "afternoon";
   }
   if (hours < 24) {
     return "evening";
   }
 }
 
-/* Запись имени пользователя в ЛС */
+/*------------------------------ Запись имени пользователя в ЛС------------------------------------- */
 
 //перед перезагрузкой или закрытием страницы (событие beforeunload) данные нужно сохранить
 
 const name = document.querySelector(".name");
-
 function setLocalStorage() {
   localStorage.setItem("name", name.value);
 }
@@ -72,7 +73,7 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
-/* фоновое изображение - слайдер */
+/*------------------------------ Слайдер на бекграунде------------------------------------- */
 
 let randomNum;
 randomNum = getRandomNum();
@@ -87,8 +88,13 @@ function getRandomNum() {
 function setBg() {
   const timeOfDay = getTimeOfDay();
   const bgNum = randomNum < 10 ? `0${randomNum}` : randomNum;
-  document.body.style.backgroundImage = `url(${imgsUrl}${timeOfDay}/${bgNum}.jpg)`;
-  console.log(randomNum);
+
+  const img = new Image();
+  const url = `${imgsUrl}${timeOfDay}/${bgNum}.jpg`;
+  img.src = url;
+  img.onload = () => {
+    document.body.style.backgroundImage = `url(${url})`;
+  };
 }
 setBg();
 
@@ -99,6 +105,7 @@ function getSlideNext() {
   randomNum++;
   setBg();
 }
+
 function getSlidePrev() {
   if (+randomNum === 1) {
     randomNum = 21;
@@ -108,6 +115,7 @@ function getSlidePrev() {
 }
 
 //вызываем смену слайдов при клике
+
 const slideNext = document.querySelector(".slide-next");
 const slidePrev = document.querySelector(".slide-prev");
 
