@@ -76,11 +76,11 @@ window.addEventListener("load", getLocalStorage);
 /*------------------------------ Слайдер на бекграунде------------------------------------- */
 
 let randomNum;
-randomNum = getRandomNum();
+randomNum = getRandomNum(1, 20);
 
-function getRandomNum() {
-  min = 1;
-  max = 20;
+function getRandomNum(min, max) {
+  //   min = 1;
+  //   max = 20;
   const rnd = Math.floor(Math.random() * (max - min + 1)) + min;
   return rnd;
 }
@@ -126,19 +126,30 @@ slidePrev.addEventListener("click", getSlidePrev);
 
 const weatherIcon = document.querySelector(".weather-icon");
 const temperature = document.querySelector(".temperature");
+const wind = document.querySelector(".wind");
+const humidity = document.querySelector(".humidity");
 const weatherDescription = document.querySelector(".weather-description");
 const cityElement = document.querySelector(".city");
+const errorWeather = document.querySelector(".weather-error");
 
 async function getWeather(city) {
   cityElement.value = city;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=ba499dceea3b725ead8e60cb81d7ecb1&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
+
+  //ловим ошибку при неверном городе
+  if (data.cod !== 200) {
+    errorWeather.textContent = "Введите верный город";
+  }
+
   localStorage.setItem("city", city);
   weatherIcon.className = "weather-icon owf";
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   temperature.textContent = `${Math.round(data.main.temp)}°C`;
   weatherDescription.textContent = data.weather[0].description;
+  wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+  humidity.textContent = `Humidity: ${Math.round(data.main.humidity)} %`;
 }
 
 getWeather(localStorage.getItem("city") || "Minsk");
@@ -147,5 +158,25 @@ getWeather(localStorage.getItem("city") || "Minsk");
 function setCity(event) {
   getWeather(event.target.value);
 }
-
 cityElement.addEventListener("change", setCity);
+
+/*------------------------------ Цитаты------------------------------------- */
+
+const quote = document.querySelector(".quote");
+const author = document.querySelector(".author");
+const changeQuote = document.querySelector(".change-quote");
+getQuotes();
+
+async function getQuotes() {
+  const n = getRandomNum(1, 100);
+  const quotes_ =
+    "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+  const res = await fetch(quotes_);
+  const data = await res.json();
+
+  quote.textContent = data.quotes[n].quote;
+  author.textContent = data.quotes[n].author;
+}
+
+//по кнопке меняем цитату
+changeQuote.addEventListener("click", getQuotes);
