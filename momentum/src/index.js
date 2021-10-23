@@ -1,3 +1,5 @@
+import playList from "./playList.js";
+
 const imgsUrl =
   "https://raw.githubusercontent.com/Anasstassia/stage1-tasks/assets/images/";
 
@@ -180,3 +182,30 @@ async function getQuotes() {
 
 //по кнопке меняем цитату
 changeQuote.addEventListener("click", getQuotes);
+
+/*------------------------------ Аудиоплеер ------------------------------------- */
+const playBtn = document.querySelector(".play");
+const audio = new Audio();
+let isPlay = false;
+
+function playAudio() {
+  audio.src = "https://7oom.ru/audio/naturesounds/07%20Birds%20(7oom.ru).mp3";
+  audio.currentTime = 0;
+  if (!isPlay) {
+    audio.play();
+    isPlay = true;
+  } else {
+    audio.pause();
+    isPlay = false;
+  }
+}
+
+function toggleBtn() {
+  if (!isPlay) {
+  } else {
+  }
+  playBtn.classList.toggle("pause");
+}
+playBtn.addEventListener("click", toggleBtn);
+
+playBtn.addEventListener("click", playAudio);
