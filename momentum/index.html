@@ -11,6 +11,25 @@
 <body>
   <header class="header">
     <div class="player">
+      <div class="audio-player">
+        <div class="timeline">
+          <div class="progress"></div>
+        </div>
+        <div class="controls">
+          <div class="time-music">
+            <div class="current"></div>
+            <div class="divided">/</div>
+            <div class="length"></div>
+          </div>
+          <div class="name-music"></div>
+          <div class="volume-container">
+            <div class="volume-button"></div>
+            <div class="volume-slider">
+              <div class="volume-percentage"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="player-controls">
         <button class="play-prev player-icon"></button>
         <button class="play player-icon"></button>
@@ -48,6 +67,11 @@
       <div class="quote"></div>
       <div class="author"></div>
     </div>
+    <div class="settings-menu none">
+      <span>Выберите язык приложения:</span>
+    </div>
+    <button class="settings">
+    </button>
   </footer>
   <!-- <script src="js/script.js"></script> -->
   <script src="./dist/main.js"></script>
