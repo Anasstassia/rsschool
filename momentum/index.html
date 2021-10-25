@@ -58,7 +58,7 @@
     <date class="date"></date>
     <div class="greeting-container">
       <span class="greeting"></span>
-      <input type="text" class="name" />
+      <input type="text" class="name" placeholder=""/>
     </div>
   </main>
   <footer class="footer">
@@ -68,7 +68,15 @@
       <div class="author"></div>
     </div>
     <div class="settings-menu none">
-      <span>Выберите язык приложения:</span>
+      <div class="language-selector">
+        <div class=""><span class="text-menu">Choose language:</span></div>
+        <div class="padding">
+        <select id="select">
+          <option>English</option>
+          <option>Russian</option>
+        </select>
+      </div>
+      </div>
     </div>
     <button class="settings">
     </button>
