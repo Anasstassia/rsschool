@@ -1,9 +1,17 @@
-import playList from "./playList.js";
+import playList from "./playList";
+import { greetingTranslation } from "./lang";
+import json from "./data.json";
 
 const imgsUrl =
   "https://raw.githubusercontent.com/Anasstassia/stage1-tasks/assets/images/";
 
+const placeHold = {
+  en: "[Enter your name]",
+  ru: "[Введите ваше имя]",
+};
 /*------------------------------ Отображение времени------------------------------------- */
+const inputPlace = document.querySelector(".name");
+let language;
 
 function showTime() {
   const time = document.querySelector(".time");
@@ -12,8 +20,9 @@ function showTime() {
   time.textContent = currentTime;
   showDate();
   setTimeout(showTime, 1000);
-  showGreeting();
+  showGreeting(language);
 }
+
 showTime();
 
 /*------------------------------ Отображение даты------------------------------------- */
@@ -32,14 +41,14 @@ function showDate() {
 
 /*------------------------------ Приветствие в соответствии со временем   ------------------------------------- */
 
-function showGreeting() {
+function showGreeting(language = "en") {
   const greeting = document.querySelector(".greeting");
   const timeOfDay = getTimeOfDay();
-  const greetingText = `Good ${timeOfDay}, `;
-  greeting.textContent = greetingText;
+  greeting.textContent = greetingTranslation[language][timeOfDay];
+  inputPlace.placeholder = placeHold[language];
 }
 
-function getTimeOfDay() {
+function getPartOfDay() {
   const date = new Date();
   const hours = date.getHours();
   if (hours === 24 || hours < 6) {
@@ -53,6 +62,23 @@ function getTimeOfDay() {
   }
   if (hours < 24) {
     return "evening";
+  }
+}
+
+function getTimeOfDay() {
+  const date = new Date();
+  const hours = date.getHours();
+  if (hours === 24 || hours < 6) {
+    return 0;
+  }
+  if (hours < 12) {
+    return 1;
+  }
+  if (hours < 18) {
+    return 2;
+  }
+  if (hours < 24) {
+    return 3;
   }
 }
 
@@ -88,7 +114,7 @@ function getRandomNum(min, max) {
 }
 
 function setBg() {
-  const timeOfDay = getTimeOfDay();
+  const timeOfDay = getPartOfDay();
   const bgNum = randomNum < 10 ? `0${randomNum}` : randomNum;
 
   const img = new Image();
@@ -134,9 +160,9 @@ const weatherDescription = document.querySelector(".weather-description");
 const cityElement = document.querySelector(".city");
 const errorWeather = document.querySelector(".weather-error");
 
-async function getWeather(city) {
+async function getWeather(city, language = "en") {
   cityElement.value = city;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=ba499dceea3b725ead8e60cb81d7ecb1&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${language}&appid=ba499dceea3b725ead8e60cb81d7ecb1&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
 
@@ -173,21 +199,27 @@ cityElement.addEventListener("change", setCity);
 const quote = document.querySelector(".quote");
 const author = document.querySelector(".author");
 const changeQuote = document.querySelector(".change-quote");
-getQuotes();
+getQuotes(language);
 
-async function getQuotes() {
+async function getQuotes(language = "en") {
+  let data;
   const n = getRandomNum(1, 100);
-  const quotes_ =
-    "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
-  const res = await fetch(quotes_);
-  const data = await res.json();
-
-  quote.textContent = data.quotes[n].quote;
-  author.textContent = data.quotes[n].author;
+  console.log(language);
+  if (language === "en") {
+    const quotes_ =
+      "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+    const res = await fetch(quotes_);
+    data = await res.json();
+    console.log(data);
+  } else {
+    data = json;
+  }
+  quote.textContent = data.quotes[n]?.quote || data.quotes[0].quote;
+  author.textContent = data.quotes[n]?.author || data.quotes[0].author;
 }
 
 //по кнопке меняем цитату
-changeQuote.addEventListener("click", getQuotes);
+changeQuote.addEventListener("click", () => getQuotes(language));
 
 /*------------------------------ Аудиоплеер ------------------------------------- */
 const nameMusic = document.querySelector(".name-music");
@@ -201,6 +233,10 @@ let playNum = 0;
 function playAudio() {
   audio.src = playList[playNum].src;
   audio.currentTime = 0;
+  audio.onended = function () {
+    this.src = playList[playNum + 1].src;
+    playNext();
+  };
   if (!isPlay) {
     pauseBtn();
     audio.play();
@@ -345,4 +381,21 @@ const settingsBtn = document.querySelector(".settings");
 const menu = document.querySelector(".settings-menu");
 settingsBtn.addEventListener("click", () => {
   menu.classList.toggle("none");
+});
+
+/*----------------------------------translation------------------------------------------------ */
+
+const select = document.getElementById("select");
+
+select.addEventListener("change", function (e) {
+  if (select.value === "Russian") {
+    language = "ru";
+    showGreeting(language);
+    getWeather(cityElement.value, language);
+  } else {
+    language = "en";
+    showGreeting(language);
+    getWeather(cityElement.value, language);
+  }
+  getQuotes(language);
 });
