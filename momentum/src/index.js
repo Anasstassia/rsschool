@@ -1,6 +1,13 @@
 import playList from "./playList";
 import { greetingTranslation } from "./lang";
 import json from "./data.json";
+const options = {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+};
+
+let currentDate;
 
 const imgsUrl =
   "https://raw.githubusercontent.com/Anasstassia/stage1-tasks/assets/images/";
@@ -18,7 +25,7 @@ function showTime() {
   const date = new Date();
   const currentTime = date.toLocaleTimeString();
   time.textContent = currentTime;
-  showDate();
+  showDate(currentDate);
   setTimeout(showTime, 1000);
   showGreeting(language);
 }
@@ -27,7 +34,8 @@ showTime();
 
 /*------------------------------ Отображение даты------------------------------------- */
 
-function showDate() {
+function showDate(dateLang = "en-EN") {
+  console.log(dateLang);
   const dateSelector = document.querySelector(".date");
   const date = new Date();
   const options = {
@@ -35,7 +43,7 @@ function showDate() {
     month: "long",
     day: "numeric",
   };
-  const currentDate = date.toLocaleDateString("en-US", options);
+  const currentDate = date.toLocaleDateString(`${dateLang}`, options);
   dateSelector.textContent = currentDate;
 }
 
@@ -183,6 +191,10 @@ async function getWeather(city, language = "en") {
     weatherDescription.textContent = data.weather[0].description;
     wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
     humidity.textContent = `Humidity: ${Math.round(data.main.humidity)} %`;
+    if (language === "ru") {
+      wind.textContent = `Скорость ветра: ${Math.round(data.wind.speed)} м/с`;
+      humidity.textContent = `Влажность: ${Math.round(data.main.humidity)} %`;
+    }
   }
 }
 
@@ -204,13 +216,11 @@ getQuotes(language);
 async function getQuotes(language = "en") {
   let data;
   const n = getRandomNum(1, 100);
-  console.log(language);
   if (language === "en") {
     const quotes_ =
       "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
     const res = await fetch(quotes_);
     data = await res.json();
-    console.log(data);
   } else {
     data = json;
   }
@@ -388,13 +398,38 @@ settingsBtn.addEventListener("click", () => {
 const select = document.getElementById("select");
 
 select.addEventListener("change", function (e) {
+  localStorage.setItem("status", select.value);
+
   if (select.value === "Russian") {
     language = "ru";
     showGreeting(language);
     getWeather(cityElement.value, language);
+    const date = new Date();
+    currentDate = "ru-RU";
+    // showDate(currentDate);
+    showTime();
   } else {
     language = "en";
     showGreeting(language);
+    getWeather(cityElement.value, language);
+    currentDate = "en-EN";
+  }
+  getQuotes(language);
+});
+
+window.addEventListener("load", (el) => {
+  select.value = localStorage.getItem("status");
+  if (localStorage.getItem("status") === "Russian") {
+    language = "ru";
+    showGreeting(language);
+    getWeather(cityElement.value, language);
+    const date = new Date();
+    currentDate = "ru-RU";
+    showTime();
+  } else {
+    language = "en";
+    showGreeting(language);
+    currentDate = "en-EN";
     getWeather(cityElement.value, language);
   }
   getQuotes(language);
