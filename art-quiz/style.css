@@ -1,12 +1,12 @@
 @font-face {
-  font-family: "Gilroy";
-  src: url("./assets/fonts/GilroyBold.ttf");
+  font-family: 'Gilroy';
+  src: url('./assets/fonts/GilroyBold.ttf');
   font-style: normal;
   font-weight: bold;
 }
 @font-face {
-  font-family: "Gilroy";
-  src: url("./assets/fonts/GilroyMedium.ttf");
+  font-family: 'Gilroy';
+  src: url('./assets/fonts/GilroyMedium.ttf');
   font-style: normal;
   font-weight: normal;
 }
@@ -20,7 +20,7 @@
 body {
   min-width: 360px;
   /* min-height: 100vh; */
-  font-family: "Gilroy", sans-serif;
+  font-family: 'Gilroy', sans-serif;
   font-size: 34px;
   color: #ffffff;
   background-color: #0c0606;
@@ -28,28 +28,47 @@ body {
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
 }
+.hidden {
+  display: none;
+}
+#valueTimer {
+  width: 70px;
+}
+
 .settings-icon {
   position: absolute;
   top: 22px;
   right: 22px;
   width: 34px;
   height: 34px;
-  background-image: url("./assets/svg/settings.svg");
+  background-image: url('./assets/svg/settings.svg');
   background-color: transparent;
   border: none;
   cursor: pointer;
   background-repeat: no-repeat;
   z-index: 1;
 }
+.buttons button {
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 56px;
+  border-width: 1px;
+  border-color: #ffffff;
+  cursor: pointer;
+  font-size: 24px;
+  letter-spacing: -0.4px;
+  padding: 14px 81px 14px 81px;
+}
 
-@media (min-width: 360px) {
+@media (min-width: 320px) {
   /* welcome page */
   .welcome-page-block {
     position: relative;
   }
 
   .welcome-page-block .container {
-    background-image: url("./assets/main-page/j-retrato-de-cardenal-rafael 1.png");
+    background-image: url('./assets/main-page/j-retrato-de-cardenal-rafael 1.png');
     display: flex;
     margin: 0 auto;
     flex-direction: column;
@@ -73,7 +92,7 @@ body {
     width: 166px;
     height: 62px;
     margin: 0 auto;
-    background-image: url("./assets/svg/logo.svg");
+    background-image: url('./assets/svg/logo.svg');
     background-color: transparent;
     border: none;
     background-repeat: no-repeat;
@@ -98,7 +117,7 @@ body {
   .link-school {
     width: 61px;
     height: 23px;
-    background-image: url("./assets/svg/rs_school.svg");
+    background-image: url('./assets/svg/rs_school.svg');
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -108,7 +127,189 @@ body {
     text-decoration: none;
     color: white;
   }
-  button {
+
+  /* settings */
+  .settings-block {
+    position: relative;
+  }
+  .settings-block h3 {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    font-weight: normal;
+  }
+  .left-arrow {
+    position: absolute;
+    left: 12px;
+    width: 34px;
+    height: 34px;
+    background-image: url('./assets/svg/left_arrow.svg');
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+  }
+
+  .header-settings {
+    display: flex;
+    flex-direction: row;
+    padding-top: 23px;
+  }
+  .header-settings h3 {
+    margin: 0 auto;
+  }
+  .volume-box {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .volume-box h2,
+  .timer-box h2 {
+    font-size: 30px;
+    margin: 0 auto;
+  }
+  .volume-container {
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 34px;
+    display: flex;
+  }
+  .volume-button {
+    width: 42px;
+    height: 35px;
+    background-image: url('./assets/svg/volume.svg');
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+  }
+  .volume-mute {
+    background-image: url('./assets/svg/mute.svg');
+  }
+  .volume-slider {
+    width: 230px;
+    height: 9px;
+    background: whitesmoke;
+    transition: 0.25s;
+    border-radius: 5px;
+  }
+  .volume-percentage {
+    cursor: pointer;
+    background: #d4987f;
+    height: 100%;
+    width: 65%;
+    border-radius: 5px;
+  }
+  .switch {
+    position: relative;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    top: 128%;
+    left: 50%;
+    width: 150px;
+    height: 50px;
+    font-size: 23px;
+    text-align: center;
+    margin: -30px 0 0 -75px;
+    background: #00bc9c;
+    transition: all 0.2s ease;
+    border-radius: 25px;
+  }
+  .switch span {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    top: 50%;
+    left: 50%;
+    margin: -2px 0px 0px -4px;
+    background: #fff;
+    display: block;
+    transform: rotate(-45deg);
+    transition: all 0.2s ease;
+  }
+  .toggle-radio {
+    margin-top: 17%;
+    margin-bottom: 8%;
+  }
+  .switch span:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 4px;
+    height: 12px;
+    margin-top: -8px;
+    background: #fff;
+    transition: all 0.2s ease;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+  .switch label {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.2);
+    width: 60px;
+    line-height: 50px;
+    transition: all 0.2s ease;
+  }
+  label[for='yes'] {
+    position: absolute;
+    left: 0px;
+    height: 20px;
+  }
+  label[for='no'] {
+    position: absolute;
+    right: 0px;
+  }
+  #no:checked ~ .switch {
+    background: #eb4f37;
+  }
+  #no:checked ~ .switch span {
+    background: #fff;
+    margin-left: -8px;
+  }
+  #no:checked ~ .switch span:after {
+    background: #fff;
+    height: 20px;
+    margin-top: -8px;
+    margin-left: 8px;
+  }
+  #yes:checked ~ .switch label[for='yes'] {
+    color: #fff;
+  }
+  #no:checked ~ .switch label[for='no'] {
+    color: #fff;
+  }
+  .time-checkbox {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .time-checkbox button {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    font-size: 28px;
+  }
+
+  .left-btn:hover {
+    background-color: #ffbca2;
+    color: #000;
+    transition: 0.5s;
+  }
+  .right-btn:hover {
+    background-color: #ffbca2;
+    color: #000;
+    transition: 0.5s;
+  }
+
+  .time-checkbox span {
+    padding: 0 12px 0 12px;
+  }
+  .save-button {
+    width: 156px;
+    height: 56px;
     font: inherit;
     color: inherit;
     background-color: transparent;
@@ -118,6 +319,17 @@ body {
     cursor: pointer;
     font-size: 24px;
     letter-spacing: -0.4px;
-    padding: 14px 81px 14px 81px;
+    margin: 0 auto;
+    margin-top: 54px;
+  }
+  .save-button:hover {
+    background-color: #ffbca2;
+    color: #000;
+    transition: 0.5s;
+  }
+
+  .settings-block .footer {
+    position: relative;
+    padding-top: 18px;
   }
 }
