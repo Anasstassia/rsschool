@@ -1,19 +1,15 @@
-// const soundsList = [
-//     {
-//       title: "",
-//       src: "./assets/sounds/.mp3",
-//     },
-//     {
-//       title: "",
-//       src: "./assets/sounds/.mp3",
-//     },
-//     {
-//       title: "",
-//       src: "./assets/sounds/.mp3",
-//     },
-//     {
-//       title: "",
-//       src: "./assets/sounds/.mp3",
-//     },
-//   ];
-//   export default soundsList;
+const soundsList = [
+  {
+    title: 'win',
+    src: './assets/sounds/.mp3',
+  },
+  {
+    title: 'lose',
+    src: './assets/sounds/.mp3',
+  },
+  {
+    title: 'lose',
+    src: './assets/sounds/.mp3',
+  },
+];
+export default soundsList;
