@@ -322,7 +322,9 @@ body {
     margin: 0 auto;
     margin-top: 54px;
   }
-  .save-button:hover {
+  .save-button:hover,
+  .artist-quiz:hover,
+  .pictures-quiz:hover {
     background-color: #ffbca2;
     color: #000;
     transition: 0.5s;
