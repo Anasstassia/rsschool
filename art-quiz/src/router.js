@@ -2,6 +2,7 @@ export default class Router {
   pages = {
     welcome: document.querySelector('.welcome-page-block'),
     settings: document.querySelector('.settings-block'),
+    artists: document.querySelector('.artist-quiz-block'),
   };
 
   currentRoute = null;

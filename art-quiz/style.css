@@ -132,7 +132,7 @@ body {
   .settings-block {
     position: relative;
   }
-  .settings-block h3 {
+  h3 {
     font-size: 24px;
     letter-spacing: -0.5px;
     font-weight: normal;
@@ -333,5 +333,41 @@ body {
   .settings-block .footer {
     position: relative;
     padding-top: 18px;
+  }
+
+  .artist-quiz-block-inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .color-logo {
+    width: 166px;
+    height: 62px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 27px;
+    background-image: url('./assets/svg/color-logo.svg');
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+  }
+  .category {
+    width: 50%;
+  }
+  .header-round {
+    padding: 0 15px 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    line-height: 18px;
+  }
+  .artist-quiz-block-outer {
+    margin-top: 40px;
+    overflow: hidden;
+  }
+
+  .artist-quiz-block-inner {
+    overflow: auto;
+    max-height: 400px;
   }
 }
