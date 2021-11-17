@@ -3,6 +3,7 @@ export default class Router {
     welcome: document.querySelector('.welcome-page-block'),
     settings: document.querySelector('.settings-block'),
     artists: document.querySelector('.artist-quiz-block'),
+    pictures: document.querySelector('.pictures-quiz-block'),
   };
 
   currentRoute = null;
