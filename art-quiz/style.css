@@ -28,9 +28,7 @@ body {
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
 }
-.hidden {
-  display: none;
-}
+
 #valueTimer {
   width: 70px;
 }
@@ -132,7 +130,7 @@ body {
   .settings-block {
     position: relative;
   }
-  .settings-block h3 {
+  h3 {
     font-size: 24px;
     letter-spacing: -0.5px;
     font-weight: normal;
@@ -324,7 +322,11 @@ body {
   }
   .save-button:hover,
   .artist-quiz:hover,
-  .pictures-quiz:hover {
+  .pictures-quiz:hover,
+  .v1:hover,
+  .v2:hover,
+  .v3:hover,
+  .v4:hover {
     background-color: #ffbca2;
     color: #000;
     transition: 0.5s;
@@ -333,5 +335,175 @@ body {
   .settings-block .footer {
     position: relative;
     padding-top: 18px;
+  }
+
+  .artist-quiz-block-inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .color-logo {
+    width: 166px;
+    height: 62px;
+    /* margin: 0 auto; */
+    margin-top: 25px;
+    margin-bottom: 27px;
+    background-image: url('./assets/svg/color-logo.svg');
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+  }
+  .category {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  .header-round {
+    padding: 0 15px 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    line-height: 18px;
+  }
+  .artist-quiz-block-outer {
+    margin-top: 40px;
+    overflow: hidden;
+  }
+
+  .artist-quiz-block-inner {
+    overflow: auto;
+    /* max-height: 400px; */
+  }
+  .header-logo {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .go-home {
+    width: 31px;
+    height: 48px;
+    background-image: url('./assets/svg/home.svg');
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+  }
+  .header-category {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px 0 14px;
+    align-items: center;
+  }
+  .artist-question-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .timer {
+    display: flex;
+    width: 90%;
+    height: 30px;
+    margin: 17px auto;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .timeline {
+    background: white;
+    width: 75%;
+    height: 4px;
+  }
+  .progress {
+    background: #ffbca2;
+    width: 0%;
+    height: 4px;
+    transition: 0.25s;
+  }
+  .seconds {
+    width: 20px;
+    font-size: 21px;
+    font-style: 700;
+  }
+  .close {
+    width: 15px;
+    height: 15px;
+    background-image: url('./assets/svg/cross.svg');
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+  }
+  .picture-question-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .question {
+    margin-bottom: 50px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+  }
+  .variants-pictures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 340px;
+    margin-bottom: 145px;
+  }
+  .variants-pictures div {
+    background-position: 50%;
+    background-color: salmon;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 13px;
+    height: 200px;
+    transition: box-shadow 0.5s ease;
+    width: 48%;
+  }
+  .variants-authors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px auto 37px auto;
+    width: 90%;
+  }
+  .variants-authors div {
+    width: calc(50% - 4px);
+    height: 50px;
+    font: inherit;
+    border: 1px solid white;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: -0.9px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  .picture {
+    background-position: 50%;
+    background-color: salmon;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    height: 294px;
+    width: 328px;
+    transition: box-shadow 0.5s ease;
+    margin: 0 auto;
+  }
+  .hidden {
+    display: none;
+  }
+  .gray {
+    filter: grayscale(100%);
+  }
+  .check-answer {
   }
 }
