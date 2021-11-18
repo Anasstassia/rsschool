@@ -2,8 +2,10 @@ export default class Router {
   pages = {
     welcome: document.querySelector('.welcome-page-block'),
     settings: document.querySelector('.settings-block'),
-    artists: document.querySelector('.artist-quiz-block'),
-    pictures: document.querySelector('.pictures-quiz-block'),
+    author: document.querySelector('.artist-quiz-block'),
+    picture: document.querySelector('.pictures-quiz-block'),
+    pictureQuiz: document.querySelector('.picture-question-block'),
+    authorQuiz: document.querySelector('.artist-question-block'),
   };
 
   currentRoute = null;
@@ -20,3 +22,4 @@ export default class Router {
     }
   }
 }
+export const router = new Router('welcome');

@@ -1,9 +1,7 @@
 // import soundsList from "./sounds";
-import json from './data.json';
-import { getItem } from './helpers';
-import Router from './router';
-
-const router = new Router('welcome');
+import { getItem, chunkArray, getQuestions } from './helpers';
+import { router } from './router';
+import Quiz from './quiz';
 /* -----------------------------------Settings------------------------------------------------- */
 const volumeButton = document.querySelector('.volume-button');
 const fromSett = document.querySelector('.left-arrow');
@@ -12,6 +10,7 @@ const picturesBtn = document.querySelector('.pictures-quiz');
 const home = document.querySelector('.go-home');
 const homeTwo = document.querySelector('.go-home_2');
 const closeOne = document.querySelector('.close');
+const closeTwo = document.querySelector('.closeTwo');
 const settingsBtn = document.querySelector('.settings-icon');
 const audio = new Audio();
 const saveButton = document.querySelector('#saveSettings');
@@ -64,16 +63,19 @@ homeTwo.addEventListener('click', () => {
 
 // переход на художников
 artistsBtn.addEventListener('click', () => {
-  router.link('artists');
+  router.link('author');
 });
 
 // переход на картины
 picturesBtn.addEventListener('click', () => {
-  router.link('pictures');
+  router.link('picture');
 });
 
 closeOne.addEventListener('click', () => {
-  router.link('artists');
+  router.link('author');
+});
+closeTwo.addEventListener('click', () => {
+  router.link('picture');
 });
 
 // счетчик кликов для таймера
@@ -115,25 +117,13 @@ window.addEventListener('load', () => {
   timerValue = getItem('timer');
   valueTimer.innerHTML = timerValue;
 });
-const seconds = getItem('timer');
-let current = 0;
 
-// таймер
-function startTimer() {
-  const intervalID = setInterval(() => {
-    if (current === seconds) {
-      clearInterval(intervalID);
-    }
-    const progressBar = document.querySelector('.progress');
-    progressBar.style.width = `${(current / seconds) * 100}%`;
-    document.querySelector('.seconds .time').textContent = `${
-      seconds - current
-    }`;
-    current += 1;
-  }, 1000);
-}
-startTimer(); // вызвать при переходе
 // создаем блок для художников
+
+const [questionByAuthor, questionByPictures] = getQuestions();
+
+const authorRounds = chunkArray(questionByAuthor, 10);
+const pictureRounds = chunkArray(questionByPictures, 10);
 
 const dataArtistsBlock = [
   { title: 'Round 1', img: './assets/png/forRounds/r1.png', score: 0 },
@@ -159,6 +149,9 @@ dataArtistsBlock.forEach((el, i) => {
   newRound.querySelector('#roundId').innerHTML = el.title;
   newRound.querySelector('#imgId').src = el.img;
   newRound.querySelector('#pId').innerHTML = `${el.score}/10`;
+  newRound.addEventListener('click', () => {
+    const quiz = new Quiz(authorRounds[i], 'author', i);
+  });
   container.appendChild(newRound);
 });
 
@@ -190,21 +183,11 @@ dataPicturesBlock.forEach((el, i) => {
   newRound.querySelector('#roundId').innerHTML = el.title;
   newRound.querySelector('#imgId').src = el.img;
   newRound.querySelector('#pId').innerHTML = `${el.score}/10`;
+
+  newRound.addEventListener('click', () => {
+    const quiz = new Quiz(pictureRounds[i], 'picture', i);
+  });
   picturesContainer.appendChild(newRound);
 });
 
 picturesTemplate.remove();
-
-// формируем материал для категорий
-
-const questionByAthor = [];
-const questionByPictures = [];
-json.forEach((item, index) => {
-  if (index < 120) {
-    questionByAthor.push(item);
-  } else {
-    questionByPictures.push(item);
-  }
-});
-
-console.log(questionByPictures);
