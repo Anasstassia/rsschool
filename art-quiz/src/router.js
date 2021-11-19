@@ -18,6 +18,11 @@ export default class Router {
     if (this.pages[route]) {
       Object.values(this.pages).forEach((page) => page.classList.add('hidden'));
       this.pages[route].classList.remove('hidden');
+      this.pages[route].classList.add('animated');
+
+      setTimeout(() => {
+        this.pages[route].classList.remove('animated');
+      }, 3000);
       this.currentRoute = route;
     }
   }

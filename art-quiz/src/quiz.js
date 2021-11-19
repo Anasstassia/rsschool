@@ -1,5 +1,5 @@
 import { router } from './router';
-import { startTimer } from './helpers';
+import { startTimer, checkerAnswer } from './helpers';
 
 export default class Quiz {
   constructor(data, type, roundId) {
@@ -31,34 +31,47 @@ export default class Quiz {
       variants.push(variant);
       currentData = currentData.filter((e) => e.name !== variant.name);
     }
-
-    return variants;
+    return Quiz.shuffle(variants);
   }
 
   startRound = () => {
+    // берем четыри картины
     const var1 = document.querySelector('.variants-pictures .var1');
     const var2 = document.querySelector('.variants-pictures .var2');
     const var3 = document.querySelector('.variants-pictures .var3');
     const var4 = document.querySelector('.variants-pictures .var4');
-    const variants = Quiz.shuffle(this.getVariants());
+    const variants = this.getVariants();
     this.callbacks = [];
+
     [var1, var2, var3, var4].forEach((el, i) => {
       if (variants[i].truthy) {
         document.querySelector('.question-block .author').innerHTML =
           variants[i].author;
       }
       el.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${variants[i].imageNum}.jpg)`;
+
       this.callbacks.push(this.handleNextRound(variants, i));
+
       el.addEventListener('click', this.callbacks[i]);
     });
   };
 
   handleNextRound = (variants, index) => () => {
+    checkerAnswer(variants[index]);
+    document.querySelector('.artist-question-block').classList.add('opacity');
+    const popUp = document.querySelector('.check-answer');
+
+    document.querySelector('.next').addEventListener('click', () => {
+      popUp.classList.add('hidden');
+      document
+        .querySelector('.artist-question-block')
+        .classList.remove('opacity');
+    });
     if (variants[index].truthy) {
       this.score += 1;
     }
     this.round += 1;
-    const newVariants = Quiz.shuffle(this.getVariants());
+    const newVariants = this.getVariants();
     const var1 = document.querySelector('.variants-pictures .var1');
     const var2 = document.querySelector('.variants-pictures .var2');
     const var3 = document.querySelector('.variants-pictures .var3');
@@ -97,9 +110,17 @@ export default class Quiz {
     [var1, var2, var3, var4].forEach((el, i) => {
       el.removeEventListener('click', this.callbacks[i]);
     });
-    router.link(this.type);
+    const homeBack = document.querySelector('.end-round');
+    homeBack.classList.remove('hidden');
+    document.querySelector('.score-result').innerHTML = `${this.score}/10`;
+    document.querySelector('.category-back').addEventListener('click', () => {
+      router.link(this.type);
+      homeBack.classList.add('hidden');
+    });
+    // router.link(this.type);
     document
       .getElementById(this.roundId)
       .querySelector('#pId').innerHTML = `${this.score}/10`;
+    document.getElementById(this.roundId).classList.remove('gray');
   };
 }
