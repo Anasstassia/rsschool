@@ -1,3 +1,13 @@
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
 @font-face {
   font-family: 'Gilroy';
   src: url('./assets/fonts/GilroyBold.ttf');
@@ -128,7 +138,9 @@ body {
 
   /* settings */
   .settings-block {
+    /* transition: transform 1s linear; */
     position: relative;
+    transition: 3s;
   }
   h3 {
     font-size: 24px;
@@ -508,12 +520,18 @@ body {
     height: 65vh;
     width: 330px;
     background-color: white;
+    border-radius: 16px;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 330px);
+    right: calc(50% - 330px);
   }
   .category img {
     cursor: pointer;
   }
   .picture-answer {
     position: relative;
+    background-position: 50%;
     border-radius: 16px;
     width: 250px;
     height: 250px;
@@ -531,7 +549,7 @@ body {
     border: none;
     background-repeat: no-repeat;
   }
-  .false-checker {
+  .falsy .checker {
     background-image: url('./assets/svg/wrong.svg');
   }
   .information {
@@ -565,7 +583,60 @@ body {
     border: none;
     margin-bottom: 20px;
   }
+  .end-round {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: 75vh;
+    width: 330px;
+    background-color: white;
+    border-radius: 16px;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 330px);
+    right: calc(50% - 330px);
+  }
+  .cup {
+    width: 166px;
+    height: 155px;
+    margin: 37px auto 30px auto;
+    background-image: url('./assets/svg/cup.svg');
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+  }
+  .end-round p {
+    color: black;
+    margin-bottom: 30px;
+  }
+  .end-round h4 {
+    color: black;
+    font-size: 54px;
+  }
+  .category-back {
+    width: 290px;
+    height: 62px;
+    margin: 0 auto;
+    border-radius: 56px;
+    cursor: pointer;
+    background-color: #ffbca2;
+    font-size: 22px;
+    letter-spacing: -1px;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  .animated {
+    animation: slideIn 0.3s linear;
+  }
+
+  .opacity {
+    opacity: 0.2;
+  }
+
   .hidden {
     display: none;
+    /* height: 500px;
+    width: 340px; */
   }
 }

@@ -1,4 +1,3 @@
-// import soundsList from "./sounds";
 import { getItem, chunkArray, getQuestions } from './helpers';
 import { router } from './router';
 import Quiz from './quiz';
@@ -140,8 +139,8 @@ const dataArtistsBlock = [
   { title: 'Round 12', img: './assets/png/forRounds/r6.png', score: 0 },
 ];
 
-const artistsTemplate = document.querySelector('#artistsTemplate');
-const container = document.querySelector('.artist-quiz-block-inner');
+const artistsTemplate = document.querySelector('#artistsTemplate'); // шаблон ячейки раунда
+const container = document.querySelector('.artist-quiz-block-inner'); // контейнер для раундов
 dataArtistsBlock.forEach((el, i) => {
   const newRound = artistsTemplate.cloneNode(true);
   newRound.setAttribute('id', i);
@@ -155,7 +154,7 @@ dataArtistsBlock.forEach((el, i) => {
   container.appendChild(newRound);
 });
 
-artistsTemplate.remove();
+artistsTemplate.remove(); // убираем шаблонный раунд
 
 // создаем блок для картин
 
@@ -189,5 +188,4 @@ dataPicturesBlock.forEach((el, i) => {
   });
   picturesContainer.appendChild(newRound);
 });
-
 picturesTemplate.remove();
