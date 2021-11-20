@@ -112,8 +112,12 @@ export default class Quiz {
     homeBack.classList.remove('hidden');
 
     const storageValue = getItem('score');
-    storageValue[this.roundId] = this.score;
-    setItem('score', storageValue);
+    if (storageValue) {
+      storageValue[this.roundId] = this.score;
+      setItem('score', storageValue);
+    } else {
+      setItem('score', { [this.roundId]: this.score });
+    }
 
     document.querySelector('.score-result').innerHTML = `${this.score}/10`;
     document.querySelector('.category-back').addEventListener('click', () => {
