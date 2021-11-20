@@ -2,21 +2,35 @@ import { router } from './router';
 import { getItem, startTimer, checkerAnswer, setItem } from './helpers';
 
 export default class Quiz {
-  var1 = document.querySelector('.variants-pictures .var1');
-
-  var2 = document.querySelector('.variants-pictures .var2');
-
-  var3 = document.querySelector('.variants-pictures .var3');
-
-  var4 = document.querySelector('.variants-pictures .var4');
-
   constructor(data, type, roundId) {
     this.data = data;
-    this.temp = [...data];
+    this.temp = data;
     this.type = type;
     this.score = 0;
     this.round = 0;
     this.roundId = roundId;
+    switch (type) {
+      case 'picture':
+        this.var1 = document.querySelector('.variants-authors .v1');
+
+        this.var2 = document.querySelector('.variants-authors .v2');
+
+        this.var3 = document.querySelector('.variants-authors .v3');
+
+        this.var4 = document.querySelector('.variants-authors .v4');
+        break;
+      case 'author':
+        this.var1 = document.querySelector('.variants-pictures .var1');
+
+        this.var2 = document.querySelector('.variants-pictures .var2');
+
+        this.var3 = document.querySelector('.variants-pictures .var3');
+
+        this.var4 = document.querySelector('.variants-pictures .var4');
+        break;
+      default:
+        break;
+    }
     this.start();
   }
 
@@ -28,7 +42,6 @@ export default class Quiz {
 
   getVariants() {
     const answer = this.temp[Quiz.getRandomInt(0, this.temp.length)];
-    console.log(this.temp);
     answer.truthy = true;
     this.currentTrueAnswer = answer;
 
@@ -56,6 +69,7 @@ export default class Quiz {
         .querySelector('.artist-question-block')
         .classList.remove('opacity');
       this.handleEndOfRound();
+      // startTimer();
     });
   };
 
@@ -104,11 +118,8 @@ export default class Quiz {
 
   end = () => {
     this.round = 0;
-    // [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
-    //   el.removeEventListener('click', this.callbacks[i]);
-    // });
-    // this.variants = []
     const homeBack = document.querySelector('.end-round');
+    document.querySelector('.artist-question-block').classList.add('opacity');
     homeBack.classList.remove('hidden');
 
     const storageValue = getItem('score');
@@ -122,6 +133,9 @@ export default class Quiz {
     document.querySelector('.score-result').innerHTML = `${this.score}/10`;
     document.querySelector('.category-back').addEventListener('click', () => {
       router.link(this.type);
+      document
+        .querySelector('.artist-question-block')
+        .classList.remove('opacity');
       homeBack.classList.add('hidden');
     });
     // router.link(this.type);

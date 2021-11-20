@@ -47,7 +47,6 @@ export function startTimer() {
     current += 1;
   }, 1000);
 }
-// startTimer(); // вызвать при переходе
 
 export function checkerAnswer(trueAnswer, currentAnswer) {
   const popUp = document.querySelector('.check-answer');
@@ -67,14 +66,19 @@ export function checkerAnswer(trueAnswer, currentAnswer) {
     audio.src = soundsList[0].src; // win
     audio.play();
     popUp.classList.remove('hidden');
+    popUp.classList.add('animatedTwo');
+    setTimeout(() => {
+      popUp.classList.remove('animatedTwo');
+    }, 3000);
     popUp.classList.remove('falsy');
   } else {
     audio.src = soundsList[1].src; // lose
     audio.play();
     popUp.classList.remove('hidden');
+    popUp.classList.add('animatedTwo');
+    setTimeout(() => {
+      popUp.classList.remove('animatedTwo');
+    }, 3000);
     popUp.classList.add('falsy');
   }
-  // nextBtn.addEventListener('click', () => {
-  //   popUp.classList.add('hidden');
-  // });
 }

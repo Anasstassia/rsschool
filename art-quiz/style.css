@@ -8,6 +8,16 @@
   }
 }
 
+@keyframes slideOn {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 @font-face {
   font-family: 'Gilroy';
   src: url('./assets/fonts/GilroyBold.ttf');
@@ -29,7 +39,6 @@
 
 body {
   min-width: 360px;
-  /* min-height: 100vh; */
   font-family: 'Gilroy', sans-serif;
   font-size: 34px;
   color: #ffffff;
@@ -55,6 +64,10 @@ body {
   cursor: pointer;
   background-repeat: no-repeat;
   z-index: 1;
+  transition: transform 1s ease;
+}
+.settings-icon:hover {
+  -webkit-transform: rotate(190deg);
 }
 .buttons button {
   font: inherit;
@@ -323,8 +336,7 @@ body {
     color: inherit;
     background-color: transparent;
     border-radius: 56px;
-    border-width: 1px;
-    border-color: #ffffff;
+    border: 1px solid #ffffff;
     cursor: pointer;
     font-size: 24px;
     letter-spacing: -0.4px;
@@ -516,7 +528,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    height: 65vh;
+    height: 63vh;
     width: 330px;
     background-color: white;
     border-radius: 16px;
@@ -586,7 +598,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    height: 75vh;
+    height: 68vh;
     width: 330px;
     background-color: white;
     border-radius: 16px;
@@ -627,6 +639,10 @@ body {
 
   .animated {
     animation: slideIn 0.3s linear;
+  }
+
+  .animatedTwo {
+    animation: slideOn 0.3s linear;
   }
 
   .opacity {
