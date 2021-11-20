@@ -154,7 +154,7 @@ dataArtistsBlock.forEach((el, i) => {
   container.appendChild(newRound);
 
   const scores = getItem('score');
-  if ((scores && scores[i]) || scores[i] === 0) {
+  if (scores && (scores[i] || scores[i] === 0)) {
     document
       .getElementById(i)
       .querySelector('#pId').innerHTML = `${scores[i]}/10`;
