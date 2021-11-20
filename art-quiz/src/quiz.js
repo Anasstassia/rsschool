@@ -1,7 +1,15 @@
 import { router } from './router';
-import { startTimer, checkerAnswer } from './helpers';
+import { getItem, startTimer, checkerAnswer, setItem } from './helpers';
 
 export default class Quiz {
+  var1 = document.querySelector('.variants-pictures .var1');
+
+  var2 = document.querySelector('.variants-pictures .var2');
+
+  var3 = document.querySelector('.variants-pictures .var3');
+
+  var4 = document.querySelector('.variants-pictures .var4');
+
   constructor(data, type, roundId) {
     this.data = data;
     this.temp = [...data];
@@ -19,11 +27,12 @@ export default class Quiz {
   }
 
   getVariants() {
-    const answer = {
-      ...this.temp[Quiz.getRandomInt(0, this.temp.length)],
-      truthy: true,
-    };
-    this.temp.splice(this.temp.indexOf(answer), 1);
+    const answer = this.temp[Quiz.getRandomInt(0, this.temp.length)];
+    console.log(this.temp);
+    answer.truthy = true;
+    this.currentTrueAnswer = answer;
+
+    this.temp = this.temp.filter((e) => e.name !== answer.name);
     let currentData = this.data.filter((e) => e.name !== answer.name);
     const variants = [answer];
     for (let i = 0; i < 3; i += 1) {
@@ -35,30 +44,10 @@ export default class Quiz {
   }
 
   startRound = () => {
-    // берем четыри картины
-    const var1 = document.querySelector('.variants-pictures .var1');
-    const var2 = document.querySelector('.variants-pictures .var2');
-    const var3 = document.querySelector('.variants-pictures .var3');
-    const var4 = document.querySelector('.variants-pictures .var4');
-    const variants = this.getVariants();
-    this.callbacks = [];
-
-    [var1, var2, var3, var4].forEach((el, i) => {
-      if (variants[i].truthy) {
-        document.querySelector('.question-block .author').innerHTML =
-          variants[i].author;
-      }
-      el.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${variants[i].imageNum}.jpg)`;
-
-      this.callbacks.push(this.handleNextRound(variants, i));
-
-      el.addEventListener('click', this.callbacks[i]);
+    this.prepareToNewRound();
+    [this.var1, this.var2, this.var3, this.var4].forEach((el) => {
+      el.addEventListener('click', this.handleModal);
     });
-  };
-
-  handleNextRound = (variants, index) => () => {
-    checkerAnswer(variants[index]);
-    document.querySelector('.artist-question-block').classList.add('opacity');
     const popUp = document.querySelector('.check-answer');
 
     document.querySelector('.next').addEventListener('click', () => {
@@ -66,24 +55,36 @@ export default class Quiz {
       document
         .querySelector('.artist-question-block')
         .classList.remove('opacity');
+      this.handleEndOfRound();
     });
-    if (variants[index].truthy) {
+  };
+
+  handleModal = (e) => {
+    [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
+      if (e.target === el) {
+        checkerAnswer(this.currentTrueAnswer, this.variants[i]);
+        this.currentAnswer = this.variants[i];
+      }
+    });
+    document.querySelector('.artist-question-block').classList.add('opacity');
+  };
+
+  prepareToNewRound = () => {
+    this.variants = this.getVariants();
+    document.querySelector('.question-block .author').innerHTML =
+      this.currentTrueAnswer.author;
+    [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
+      el.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${this.variants[i].imageNum}.jpg)`;
+    });
+  };
+
+  handleEndOfRound = () => {
+    if (this.currentAnswer.truthy) {
       this.score += 1;
     }
     this.round += 1;
-    const newVariants = this.getVariants();
-    const var1 = document.querySelector('.variants-pictures .var1');
-    const var2 = document.querySelector('.variants-pictures .var2');
-    const var3 = document.querySelector('.variants-pictures .var3');
-    const var4 = document.querySelector('.variants-pictures .var4');
-    [var1, var2, var3, var4].forEach((el, i) => {
-      if (newVariants[i].truthy) {
-        document.querySelector('.question-block .author').innerHTML =
-          newVariants[i].author;
-      }
-      el.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${newVariants[i].imageNum}.jpg)`;
-    });
-    if (this.round === 10) {
+    this.prepareToNewRound();
+    if (this.round === 9) {
       this.end();
     }
   };
@@ -103,15 +104,17 @@ export default class Quiz {
 
   end = () => {
     this.round = 0;
-    const var1 = document.querySelector('.variants-pictures .var1');
-    const var2 = document.querySelector('.variants-pictures .var2');
-    const var3 = document.querySelector('.variants-pictures .var3');
-    const var4 = document.querySelector('.variants-pictures .var4');
-    [var1, var2, var3, var4].forEach((el, i) => {
-      el.removeEventListener('click', this.callbacks[i]);
-    });
+    // [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
+    //   el.removeEventListener('click', this.callbacks[i]);
+    // });
+    // this.variants = []
     const homeBack = document.querySelector('.end-round');
     homeBack.classList.remove('hidden');
+
+    const storageValue = getItem('score');
+    storageValue[this.roundId] = this.score;
+    setItem('score', storageValue);
+
     document.querySelector('.score-result').innerHTML = `${this.score}/10`;
     document.querySelector('.category-back').addEventListener('click', () => {
       router.link(this.type);

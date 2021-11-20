@@ -152,6 +152,14 @@ dataArtistsBlock.forEach((el, i) => {
     const quiz = new Quiz(authorRounds[i], 'author', i);
   });
   container.appendChild(newRound);
+
+  const scores = getItem('score');
+  if (scores[i] || scores[i] === 0) {
+    document
+      .getElementById(i)
+      .querySelector('#pId').innerHTML = `${scores[i]}/10`;
+    document.getElementById(i).classList.remove('gray');
+  }
 });
 
 artistsTemplate.remove(); // убираем шаблонный раунд
