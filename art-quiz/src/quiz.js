@@ -1,5 +1,6 @@
 import { router } from './router';
 import { getItem, startTimer, checkerAnswer, setItem } from './helpers';
+import soundsList from './sounds';
 
 export default class Quiz {
   constructor(data, type, roundId) {
@@ -9,6 +10,7 @@ export default class Quiz {
     this.score = 0;
     this.round = 0;
     this.roundId = roundId;
+    this.handleModalCallbacks = [];
     switch (type) {
       case 'picture':
         this.var1 = document.querySelector('.variants-authors .v1');
@@ -41,7 +43,7 @@ export default class Quiz {
   }
 
   getVariants() {
-    const answer = this.temp[Quiz.getRandomInt(0, this.temp.length)];
+    const answer = { ...this.temp[Quiz.getRandomInt(0, this.temp.length - 1)] };
     answer.truthy = true;
     this.currentTrueAnswer = answer;
 
@@ -53,33 +55,37 @@ export default class Quiz {
       variants.push(variant);
       currentData = currentData.filter((e) => e.name !== variant.name);
     }
+
     return Quiz.shuffle(variants);
   }
 
   startRound = () => {
     this.prepareToNewRound();
-    [this.var1, this.var2, this.var3, this.var4].forEach((el) => {
-      el.addEventListener('click', this.handleModal);
+    [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
+      this.handleModalCallbacks.push(this.handleModal(i));
+      el.addEventListener('click', this.handleModalCallbacks[i]);
     });
-    const popUp = document.querySelector('.check-answer');
 
-    document.querySelector('.next').addEventListener('click', () => {
-      popUp.classList.add('hidden');
-      document
-        .querySelector('.artist-question-block')
-        .classList.remove('opacity');
-      this.handleEndOfRound();
-      // startTimer();
-    });
+    document
+      .querySelector('.next')
+      .addEventListener('click', this.handleClickNext);
   };
 
-  handleModal = (e) => {
-    [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
-      if (e.target === el) {
-        checkerAnswer(this.currentTrueAnswer, this.variants[i]);
-        this.currentAnswer = this.variants[i];
-      }
-    });
+  handleClickNext = () => {
+    const popUp = document.querySelector('.check-answer');
+
+    popUp.classList.add('hidden');
+    document
+      .querySelector('.artist-question-block')
+      .classList.remove('opacity');
+    this.handleEndOfRound();
+    // startTimer();
+  };
+
+  handleModal = (i) => () => {
+    checkerAnswer(this.currentTrueAnswer, this.variants[i]);
+    this.currentAnswer = this.variants[i];
+
     document.querySelector('.artist-question-block').classList.add('opacity');
   };
 
@@ -88,7 +94,8 @@ export default class Quiz {
     document.querySelector('.question-block .author').innerHTML =
       this.currentTrueAnswer.author;
     [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
-      el.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${this.variants[i].imageNum}.jpg)`;
+      const element = el;
+      element.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${this.variants[i].imageNum}.jpg)`;
     });
   };
 
@@ -118,6 +125,11 @@ export default class Quiz {
 
   end = () => {
     this.round = 0;
+
+    const audio = new Audio();
+    audio.src = soundsList[2].src; // lose
+    audio.play();
+
     const homeBack = document.querySelector('.end-round');
     document.querySelector('.artist-question-block').classList.add('opacity');
     homeBack.classList.remove('hidden');
@@ -138,10 +150,17 @@ export default class Quiz {
         .classList.remove('opacity');
       homeBack.classList.add('hidden');
     });
-    // router.link(this.type);
     document
       .getElementById(this.roundId)
       .querySelector('#pId').innerHTML = `${this.score}/10`;
     document.getElementById(this.roundId).classList.remove('gray');
+
+    [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
+      el.removeEventListener('click', this.handleModalCallbacks[i]);
+    });
+
+    document
+      .querySelector('.next')
+      .removeEventListener('click', this.handleClickNext);
   };
 }
