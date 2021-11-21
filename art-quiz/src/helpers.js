@@ -32,7 +32,6 @@ export function chunkArray(array, chunkSize) {
 // таймер
 export function startTimer() {
   const seconds = getItem('timer');
-
   let current = 0;
 
   const intervalID = setInterval(() => {
@@ -45,6 +44,7 @@ export function startTimer() {
       seconds - current
     }`;
     current += 1;
+    console.log(current);
   }, 1000);
 }
 

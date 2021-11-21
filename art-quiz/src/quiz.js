@@ -61,6 +61,9 @@ export default class Quiz {
 
   startRound = () => {
     this.prepareToNewRound();
+    // if (current === getItem('timer')) {
+
+    // }
     [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
       this.handleModalCallbacks.push(this.handleModal(i));
       el.addEventListener('click', this.handleModalCallbacks[i]);
@@ -79,7 +82,9 @@ export default class Quiz {
       .querySelector('.artist-question-block')
       .classList.remove('opacity');
     this.handleEndOfRound();
-    // startTimer();
+    const current = 0;
+    startTimer();
+    console.log(current);
   };
 
   handleModal = (i) => () => {
@@ -91,11 +96,33 @@ export default class Quiz {
 
   prepareToNewRound = () => {
     this.variants = this.getVariants();
-    document.querySelector('.question-block .author').innerHTML =
-      this.currentTrueAnswer.author;
+    switch (this.type) {
+      case 'author':
+        document.querySelector('.question-block .author').innerHTML =
+          this.currentTrueAnswer.author;
+        break;
+      case 'picture':
+        document.querySelector(
+          '.question-block .picture'
+        ).style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${this.currentTrueAnswer.imageNum}.jpg)`;
+        break;
+      default:
+        break;
+    }
     [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
       const element = el;
-      element.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${this.variants[i].imageNum}.jpg)`;
+
+      // от типа игры заполняем шаблон для раунда
+      switch (this.type) {
+        case 'author':
+          element.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${this.variants[i].imageNum}.jpg)`;
+          break;
+        case 'picture':
+          element.innerHTML = `${this.variants[i].author}`;
+          break;
+        default:
+          break;
+      }
     });
   };
 
@@ -127,7 +154,7 @@ export default class Quiz {
     this.round = 0;
 
     const audio = new Audio();
-    audio.src = soundsList[2].src; // lose
+    audio.src = soundsList[2].src;
     audio.play();
 
     const homeBack = document.querySelector('.end-round');

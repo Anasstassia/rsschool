@@ -42,12 +42,10 @@ volumeButton.addEventListener('click', () => {
   localStorage.setItem('isMuted', audio.muted);
 });
 
-// переход в настройки
 settingsBtn.addEventListener('click', () => {
   router.link('settings');
 });
 
-// преход на велком
 fromSett.addEventListener('click', () => {
   router.link('welcome');
 });
@@ -60,12 +58,10 @@ homeTwo.addEventListener('click', () => {
   router.link('welcome');
 });
 
-// переход на художников
 artistsBtn.addEventListener('click', () => {
   router.link('author');
 });
 
-// переход на картины
 picturesBtn.addEventListener('click', () => {
   router.link('picture');
 });
@@ -109,6 +105,8 @@ window.addEventListener('load', () => {
 
   if (!getItem('isTimer')) {
     document.querySelector('#no').checked = true;
+    document.querySelector('.timeline').classList.toggle('visibility');
+    document.querySelector('.seconds').classList.toggle('visibility');
   }
 
   audio.muted = getItem('isMuted');
