@@ -678,6 +678,42 @@ body {
   }
 }
 
+@media (min-width: 550px) {
+  .variants-pictures div {
+    height: 100%;
+  }
+  .header-round {
+    padding: 0 62px 18px 62px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 765px) {
+  .category {
+    width: 33%;
+  }
+
+  .category img {
+    width: 65%;
+  }
+
+  h3 {
+    font-size: 44px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .go-home {
+    width: 45px;
+    height: 67px;
+    background-size: cover;
+  }
+  .header-round {
+    padding: 10px 85px 24px 85px;
+    font-size: 25px;
+  }
+}
+
 .hidden {
   display: none;
 }
