@@ -150,6 +150,7 @@ dataArtistsBlock.forEach((el, i) => {
   newRound.querySelector('#pId').innerHTML = `${el.score}/10`;
   newRound.addEventListener('click', () => {
     const quiz = new Quiz(authorRounds[i], 'author', i);
+    console.log(quiz);
   });
   container.appendChild(newRound);
 
@@ -193,6 +194,7 @@ dataPicturesBlock.forEach((el, i) => {
 
   newRound.addEventListener('click', () => {
     const quiz = new Quiz(pictureRounds[i], 'picture', i);
+    console.log(quiz);
   });
   picturesContainer.appendChild(newRound);
 });

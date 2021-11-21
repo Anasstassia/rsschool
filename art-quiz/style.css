@@ -88,7 +88,7 @@ body {
   }
 
   .welcome-page-block .container {
-    background-image: url('./assets/main-page/j-retrato-de-cardenal-rafael 1.png');
+    background-image: url('./assets/main-page/j-retrato-de-cardenal-rafael\ 1.png');
     display: flex;
     margin: 0 auto;
     flex-direction: column;
@@ -191,7 +191,7 @@ body {
     margin: 0 auto;
   }
   .volume-container {
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: 30px;
     margin-bottom: 34px;
@@ -651,9 +651,33 @@ body {
   .visibility {
     visibility: hidden;
   }
-  .hidden {
-    display: none;
-    /* height: 500px;
-    width: 340px; */
+}
+
+@media (min-width: 380px) {
+  .welcome-page-block .container {
+    width: 100%;
+    background-position: 50%;
+    height: 100vh;
+    background-image: url('./assets/main-page/j-retrato-de-cardenal-rafaelBigger.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
+
+  .settings-block .footer {
+    position: relative;
+    padding-top: 235px;
+  }
+
+  .toggle-radio {
+    margin-top: 44px;
+    margin-bottom: 75px;
+  }
+
+  header-round {
+    padding: 0 15px 8px 15px;
+  }
+}
+
+.hidden {
+  display: none;
 }
