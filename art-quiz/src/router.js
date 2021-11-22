@@ -3,7 +3,7 @@ export default class Router {
     welcome: document.querySelector('.welcome-page-block'),
     settings: document.querySelector('.settings-block'),
     author: document.querySelector('.artist-quiz-block'),
-    picture: document.querySelector('.pictures-quiz-block'),
+    picture: document.querySelector('.picture-quiz-block'),
     pictureQuiz: document.querySelector('.picture-question-block'),
     authorQuiz: document.querySelector('.artist-question-block'),
     roundResult: document.querySelector('.round-result-block'),
