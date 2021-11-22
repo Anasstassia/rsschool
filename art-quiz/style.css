@@ -507,7 +507,7 @@ body {
     border: 1px solid white;
     border-radius: 34px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: -0.9px;
     margin-bottom: 14px;
     display: flex;
@@ -549,6 +549,7 @@ body {
   .picture-answer {
     position: relative;
     background-position: 50%;
+    background-size: cover;
     border-radius: 16px;
     width: 250px;
     height: 250px;
@@ -689,6 +690,7 @@ body {
   .preview {
     width: 155px;
     height: 165px;
+    background-size: cover;
     margin: 0 auto 20px auto;
   }
   .star {
@@ -725,10 +727,6 @@ body {
     margin-top: 44px;
     margin-bottom: 75px;
   }
-
-  /* .header-round {
-    padding: 0 15px 8px 15px;
-  } */
 }
 
 @media (min-width: 550px) {

@@ -6,7 +6,6 @@ export const getItem = (key) => JSON.parse(localStorage.getItem(key));
 
 export const setItem = (key, value) =>
   localStorage.setItem(key, JSON.stringify(value));
-// формируем материал для категорий
 
 export function getQuestions() {
   const questionByAuthor = [];
@@ -31,7 +30,7 @@ export function chunkArray(array, chunkSize) {
 
 // eslint-disable-next-line import/no-mutable-exports
 export const timer = { current: 0 };
-// таймер
+
 export function startTimer() {
   const seconds = getItem('timer');
 
@@ -54,7 +53,6 @@ export function startTimer() {
 
 export function checkerAnswer(trueAnswer, currentAnswer) {
   const popUp = document.querySelector('.check-answer');
-  // const nextBtn = document.querySelector('.next');
   const audio = new Audio();
   audio.muted = getItem('isMuted');
 

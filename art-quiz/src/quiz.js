@@ -63,9 +63,6 @@ export default class Quiz {
 
   startRound = () => {
     this.prepareToNewRound();
-    // if (current === getItem('timer')) {
-
-    // }
 
     [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
       this.handleModalCallbacks.push(this.handleModal(i));
@@ -85,7 +82,6 @@ export default class Quiz {
       .querySelector('.artist-question-block')
       .classList.remove('opacity');
     this.handleEndOfRound();
-    // startTimer();
   };
 
   handleModal = (i) => () => {
