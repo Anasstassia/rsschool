@@ -13,7 +13,7 @@ const closeTwo = document.querySelector('.closeTwo');
 const settingsBtn = document.querySelector('.settings-icon');
 const audio = new Audio();
 const saveButton = document.querySelector('#saveSettings');
-
+const arrow = document.querySelector('.arrow');
 const valueTimer = document.getElementById('valueTimer');
 let timerValue = 10;
 const timerRightBtn = document.querySelector('.right-btn');
@@ -71,6 +71,9 @@ closeOne.addEventListener('click', () => {
 });
 closeTwo.addEventListener('click', () => {
   router.link('picture');
+});
+arrow.addEventListener('click', () => {
+  router.link('author');
 });
 
 // счетчик кликов для таймера
@@ -139,6 +142,8 @@ const dataArtistsBlock = [
 
 const artistsTemplate = document.querySelector('#artistsTemplate'); // шаблон ячейки раунда
 const container = document.querySelector('.artist-quiz-block-inner'); // контейнер для раундов
+const previewTemplate = document.querySelector('#previewTemplate');
+
 dataArtistsBlock.forEach((el, i) => {
   const newRound = artistsTemplate.cloneNode(true);
   newRound.setAttribute('id', i);
@@ -197,3 +202,22 @@ dataPicturesBlock.forEach((el, i) => {
   picturesContainer.appendChild(newRound);
 });
 picturesTemplate.remove();
+
+document.querySelectorAll('.star').forEach((el, i) =>
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+    router.link('roundResult');
+    document.querySelector('.round-result-block .template-inner').innerHTML =
+      previewTemplate.innerHTML;
+
+    authorRounds[i].forEach((round) => {
+      const newPreview = previewTemplate.cloneNode(true);
+      newPreview.classList.add('gray');
+      newPreview.style.backgroundImage = `url(https://raw.githubusercontent.com/Anasstassia/image-data/master/img/${round.imageNum}.jpg)`;
+      document.querySelector('.template-inner').appendChild(newPreview);
+    });
+
+    // previewBlock.remove();
+    previewTemplate.remove();
+  })
+);

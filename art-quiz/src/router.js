@@ -6,6 +6,7 @@ export default class Router {
     picture: document.querySelector('.pictures-quiz-block'),
     pictureQuiz: document.querySelector('.picture-question-block'),
     authorQuiz: document.querySelector('.artist-question-block'),
+    roundResult: document.querySelector('.round-result-block'),
   };
 
   currentRoute = null;

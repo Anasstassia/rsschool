@@ -1,5 +1,5 @@
 import { router } from './router';
-import { getItem, startTimer, checkerAnswer, setItem } from './helpers';
+import { getItem, startTimer, checkerAnswer, setItem, timer } from './helpers';
 import soundsList from './sounds';
 
 export default class Quiz {
@@ -38,7 +38,9 @@ export default class Quiz {
 
   start() {
     router.link(`${this.type}Quiz`);
-    startTimer();
+    if (getItem('isTimer')) {
+      startTimer();
+    }
     this.startRound();
   }
 
@@ -64,6 +66,7 @@ export default class Quiz {
     // if (current === getItem('timer')) {
 
     // }
+
     [this.var1, this.var2, this.var3, this.var4].forEach((el, i) => {
       this.handleModalCallbacks.push(this.handleModal(i));
       el.addEventListener('click', this.handleModalCallbacks[i]);
@@ -82,12 +85,14 @@ export default class Quiz {
       .querySelector('.artist-question-block')
       .classList.remove('opacity');
     this.handleEndOfRound();
-    const current = 0;
-    startTimer();
-    console.log(current);
+    // startTimer();
   };
 
   handleModal = (i) => () => {
+    window.clearInterval(this.intervalId);
+    timer.current = 0;
+    timer.stop = true;
+
     checkerAnswer(this.currentTrueAnswer, this.variants[i]);
     this.currentAnswer = this.variants[i];
 
@@ -95,6 +100,12 @@ export default class Quiz {
   };
 
   prepareToNewRound = () => {
+    this.intervalId = setInterval(() => {
+      if (timer.current > getItem('timer')) {
+        checkerAnswer(this.currentTrueAnswer, {});
+        timer.stop = true;
+      }
+    }, 1000);
     this.variants = this.getVariants();
     switch (this.type) {
       case 'author':
@@ -127,9 +138,10 @@ export default class Quiz {
   };
 
   handleEndOfRound = () => {
-    if (this.currentAnswer.truthy) {
+    if (this.currentAnswer?.truthy) {
       this.score += 1;
     }
+    timer.stop = false;
     this.round += 1;
     this.prepareToNewRound();
     if (this.round === 9) {

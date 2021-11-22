@@ -29,22 +29,26 @@ export function chunkArray(array, chunkSize) {
   return result;
 }
 
+// eslint-disable-next-line import/no-mutable-exports
+export const timer = { current: 0 };
 // таймер
 export function startTimer() {
   const seconds = getItem('timer');
-  let current = 0;
 
   const intervalID = setInterval(() => {
-    if (current === seconds) {
+    if (timer.stop) {
+      timer.current = 0;
+      return;
+    }
+    if (timer.current > seconds) {
       clearInterval(intervalID);
     }
     const progressBar = document.querySelector('.progress');
-    progressBar.style.width = `${(current / seconds) * 100}%`;
+    progressBar.style.width = `${(timer.current / seconds) * 100}%`;
     document.querySelector('.seconds .time').textContent = `${
-      seconds - current
+      seconds - timer.current
     }`;
-    current += 1;
-    console.log(current);
+    timer.current += 1;
   }, 1000);
 }
 
