@@ -40,6 +40,8 @@ export default class Quiz {
     router.link(`${this.type}Quiz`);
     if (getItem('isTimer')) {
       startTimer();
+      timer.stop = false;
+      timer.current = 0;
     }
     this.startRound();
   }
@@ -61,6 +63,10 @@ export default class Quiz {
     return Quiz.shuffle(variants);
   }
 
+  handleClose = () => {
+    this.end();
+  };
+
   startRound = () => {
     this.prepareToNewRound();
 
@@ -72,6 +78,9 @@ export default class Quiz {
     document
       .querySelector('.next')
       .addEventListener('click', this.handleClickNext);
+    document
+      .querySelector('.close')
+      .addEventListener('click', this.handleClose);
   };
 
   handleClickNext = () => {
@@ -159,16 +168,19 @@ export default class Quiz {
   };
 
   end = () => {
-    this.round = 0;
-
-    const audio = new Audio();
-    audio.src = soundsList[2].src;
-    audio.play();
-
     const homeBack = document.querySelector('.end-round');
-    document.querySelector('.artist-question-block').classList.add('opacity');
-    homeBack.classList.remove('hidden');
 
+    if (this.round === 9) {
+      const audio = new Audio();
+      audio.src = soundsList[2].src;
+      audio.play();
+
+      document.querySelector('.artist-question-block').classList.add('opacity');
+      homeBack.classList.remove('hidden');
+    }
+    window.clearInterval(this.intervalId);
+    timer.current = 0;
+    this.round = 0;
     const storageValue = getItem('score');
     if (storageValue) {
       storageValue[this.roundId] = this.score;
@@ -197,5 +209,8 @@ export default class Quiz {
     document
       .querySelector('.next')
       .removeEventListener('click', this.handleClickNext);
+    document
+      .querySelector('.close')
+      .removeEventListener('click', this.handleExit);
   };
 }
