@@ -8,6 +8,7 @@ const baseConfig = {
     mode: 'development',
     module: {
         rules: [
+            { test: /\.tsx?$/, loader: 'ts-loader' },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
@@ -15,7 +16,7 @@ const baseConfig = {
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts'],
     },
     output: {
         filename: 'index.js',

@@ -2,7 +2,7 @@ import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
 class App {
-    constructor() {
+    constructor(private controller: AppController, private view: AppView) {
         this.controller = new AppController();
         this.view = new AppView();
     }
