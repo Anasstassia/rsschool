@@ -16,7 +16,8 @@
         "no-debugger": "off",
         "no-console": 0,
         "class-methods-use-this": "off",
-        "prettier/prettier": 2
+        "prettier/prettier": 2,
+        "@typescript-eslint/no-explicit-any": "error"
     },
     "ignorePatterns": ["webpack.config.js"]
 }

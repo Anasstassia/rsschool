@@ -3,6 +3,6 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": true,
-        "lib": ["es2015","DOM"]
+        "lib": ["es2015", "DOM", "ESNext"]
     }
 }

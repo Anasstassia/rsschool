@@ -28,14 +28,14 @@ footer .copyright,
     color: #333;
     text-align: center;
 }
-footer .copyright a,
-.github {
+footer .copyright a {
     color: #444;
 }
 footer .copyright a:hover,
-.github:hover {
+footer .github a:hover {
     color: #555;
 }
+
 footer .copyright:before {
     content: '©';
 }
@@ -47,4 +47,9 @@ footer .copyright:before {
     border: none;
     cursor: pointer;
     background-repeat: no-repeat;
+}
+
+a {
+    color: #444;
+    text-decoration: none;
 }
