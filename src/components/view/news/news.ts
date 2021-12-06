@@ -1,17 +1,5 @@
+import { TItem } from '../../../types';
 import './news.css';
-
-type TItem = {
-    urlToImage: string;
-    author: string;
-    publishedAt: string;
-    title: string;
-    description: string;
-    url: string;
-    source: {
-        name: string;
-    };
-};
-
 class News {
     draw(data: TItem[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;

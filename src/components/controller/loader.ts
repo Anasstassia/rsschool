@@ -2,8 +2,8 @@ class Loader {
     constructor(private baseLink: string, private options: { apiKey: string }) {}
 
     getResp(
-        { endpoint, options }: { endpoint: string; options?: { apiKey: string } },
-        callback = () => {
+        { endpoint, options }: { endpoint: string; options?: { apiKey?: string; sources?: string } },
+        callback: (data: { sources?: { name: string; id: string }[] }) => void = () => {
             console.error('No callback for GET response');
         }
     ) {
@@ -19,7 +19,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: { apiKey: string }, endpoint: string) {
+    makeUrl(options: { apiKey?: string; sources?: string }, endpoint: string) {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -30,7 +30,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: (...args: unknown[]) => void, options: { apiKey: string }) {
+    load(
+        method: string,
+        endpoint: string,
+        callback: (...args: unknown[]) => void,
+        options: { apiKey?: string; sources?: string }
+    ) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
