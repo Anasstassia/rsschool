@@ -19,7 +19,6 @@ class App {
             element.scrollIntoView(true);
             // document.getElementById('onNews').scrollIntoView(true);
         });
-
         this.controller.getSources((data: { sources?: { name: string; id: string }[] }) => this.view.drawSources(data));
     }
 }

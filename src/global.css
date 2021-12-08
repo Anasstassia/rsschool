@@ -15,6 +15,10 @@ header h1 {
     font-size: 40px;
     font-weight: 800;
 }
+summary {
+    margin: 0 0 31px 35px;
+    cursor: pointer;
+}
 main {
     min-height: calc(100vh - 220px);
 }

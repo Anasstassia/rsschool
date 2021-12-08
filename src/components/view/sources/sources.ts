@@ -15,7 +15,21 @@ class Sources {
         });
 
         document.querySelector('.sources').append(fragment);
+        const defaultItem: HTMLElement = document.querySelector('[data-source-id="bbc-news"].source__item');
+        defaultItem.classList.add('active');
+        defaultItem?.click();
+        this.selectActiveSource();
     }
+
+    selectActiveSource = () => {
+        document.querySelectorAll('.sources .source__item').forEach((e) =>
+            e.addEventListener('click', () => {
+                const currentActive = document.querySelector('.sources .active');
+                currentActive.classList.remove('active');
+                e.classList.add('active');
+            })
+        );
+    };
 }
 
 export default Sources;
