@@ -13,7 +13,6 @@ class AppController extends AppLoader {
     getNews(e: MouseEvent, callback: (data?: { sources?: { name: string; id: string }[] }) => void) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
-        console.log(target);
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id');
