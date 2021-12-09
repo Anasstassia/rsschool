@@ -1,1 +1,119 @@
+$color-bg: #192f2d;
+$button-bg: rgba(31, 112, 127, 0.3);
 
+@font-face {
+    font-family: 'Neucha';
+    src: url('./../../assets/fonts/Neucha-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $color-bg;
+    font-family: 'Neucha', sans-serif;
+    color: white;
+}
+
+.wrapper-main-page {
+    display: flex;
+    margin: 50px auto 0 auto;
+    flex-direction: column;
+    min-height: calc(100vh - 138px);
+}
+
+header {
+    display: flex;
+    height: 40px;
+    width: 555px;
+    margin-bottom: 50px;
+    justify-content: space-between;
+}
+
+.volume {
+    display: block;
+    width: 36px;
+    height: 36px;
+    background-image: url('./../../assets/svg/audio.svg');
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+.snowfall {
+    display: block;
+    width: 36px;
+    height: 36px;
+    background-image: url('./../../assets/svg/snowflake.svg');
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+.search {
+    width: 254px;
+    height: 36px;
+    border-radius: 20px;
+    border: 1px solid #278d9f;
+    color: #fff;
+    background-color: $button-bg;
+    outline: none;
+    font-size: 16px;
+    padding-left: 10px;
+
+    background-image: url('./../../assets/svg/search.svg');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: 217px center;
+    &::-webkit-input-placeholder {
+        color: white;
+    }
+}
+
+.mute {
+    background-image: url('./../../assets/svg/mute.svg');
+}
+
+.title {
+    font-family: Neucha;
+    font-size: 42px;
+    // color: white;
+    text-transform: capitalize;
+}
+
+.aside {
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-sort {
+    font-size: 20px;
+}
+
+.rs-school {
+    display: block;
+    background-image: url('./../../assets/svg/rss.svg');
+    width: 220px;
+    height: 82px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
