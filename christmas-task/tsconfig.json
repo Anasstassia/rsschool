@@ -3,6 +3,7 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": true,
+        "allowJs": true,
         "lib": ["es2015", "DOM", "ESNext"]
     }
 }

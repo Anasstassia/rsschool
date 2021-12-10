@@ -1,9 +1,17 @@
 $color-bg: #192f2d;
+$border: 1px solid #278d9f;
 $button-bg: rgba(31, 112, 127, 0.3);
 
 @font-face {
     font-family: 'Neucha';
     src: url('./../../assets/fonts/Neucha-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Steppe';
+    src: url('./../../assets/fonts/Steppe.ttf');
     font-style: normal;
     font-weight: 400;
 }
@@ -20,9 +28,14 @@ body {
     color: white;
 }
 
+p {
+    font-family: 'Steppe', sans-serif;
+    font-size: 18px;
+}
+
 .wrapper-main-page {
     display: flex;
-    margin: 50px auto 0 auto;
+    margin: 23px auto 0 auto;
     flex-direction: column;
     min-height: calc(100vh - 138px);
 }
@@ -30,7 +43,7 @@ body {
 header {
     display: flex;
     height: 40px;
-    width: 555px;
+    width: 613px;
     margin-bottom: 50px;
     justify-content: space-between;
 }
@@ -62,8 +75,8 @@ header {
 .search {
     width: 254px;
     height: 36px;
-    border-radius: 20px;
-    border: 1px solid #278d9f;
+    border-radius: 30px;
+    border: $border;
     color: #fff;
     background-color: $button-bg;
     outline: none;
@@ -82,12 +95,25 @@ header {
 .mute {
     background-image: url('./../../assets/svg/mute.svg');
 }
+h3 {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.size,
+.fav {
+    display: flex;
+    font-family: 'Steppe';
+    margin: 10px 0 25px 0;
+    label {
+        margin-right: 20px;
+        padding-left: 8px;
+    }
+}
 
 .title {
     font-family: Neucha;
-    font-size: 42px;
-    // color: white;
-    text-transform: capitalize;
+    font-size: 39px;
 }
 
 .aside {
@@ -98,6 +124,125 @@ header {
 
 .title-sort {
     font-size: 20px;
+}
+
+.sort {
+    display: flex;
+    align-items: baseline;
+}
+
+.select {
+    appearance: none;
+    margin-left: 24px;
+    padding: 0 2px 0 11px;
+    cursor: pointer;
+    width: 183px;
+    height: 30px;
+    border-radius: 30px;
+    border: 1px solid #278d9f;
+    background-color: $button-bg;
+    color: white;
+    background-image: url(./../../assets/svg/arrow-down.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.shapes {
+    width: 440px;
+    height: 43px;
+    margin: 20px 0 42px 0;
+    button {
+        width: 42px;
+        height: 42px;
+        margin-right: 15px;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+}
+
+.shapes button:nth-child(1) {
+    background-image: url('./../../assets/svg/bell.svg');
+}
+.shapes button:nth-child(2) {
+    background-image: url('./../../assets/svg/ball.svg');
+}
+.shapes button:nth-child(3) {
+    background-image: url('./../../assets/svg/cone.svg');
+}
+.shapes button:nth-child(4) {
+    background-image: url('./../../assets/svg/snow.svg');
+}
+.shapes button:nth-child(5) {
+    background-image: url('./../../assets/svg/toy.svg');
+}
+
+.colors {
+    margin: 25px 0 25px 0;
+    button {
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        margin-right: 25px;
+        &:nth-child(1) {
+            background-color: white;
+        }
+        &:nth-child(2) {
+            background-color: #fdd700;
+        }
+        &:nth-child(3) {
+            background-color: #fd0000;
+        }
+        &:nth-child(4) {
+            background-color: #2299eb;
+        }
+        &:nth-child(5) {
+            background-color: #08aa05;
+        }
+    }
+}
+#count-slider,
+#year-slider {
+    width: 290px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.noUi-handle:before,
+.noUi-handle:after {
+    content: none;
+}
+.noUi-horizontal {
+    height: 9px;
+}
+.noUi-horizontal .noUi-handle {
+    border-radius: 46px;
+    width: 19px;
+    height: 19px;
+}
+
+.reset {
+    width: 254px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-family: 'Steppe';
+    line-height: 14px;
+    border: $border;
+    color: #fff;
+    background-color: $button-bg;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 50px;
 }
 
 .rs-school {
