@@ -21,5 +21,3 @@ const sliderYear = slider.create(document.querySelector('#year-slider'), {
     start: [1940, 2021],
     connect: true,
 });
-
-document.querySelector<HTMLImageElement>('#imgId').src = './assets/toys/1.png';
