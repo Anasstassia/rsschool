@@ -4,14 +4,14 @@ $button-bg: rgba(31, 112, 127, 0.3);
 
 @font-face {
     font-family: 'Neucha';
-    src: url('./../../assets/fonts/Neucha-Regular.ttf');
+    src: url('./../assets/fonts/Neucha-Regular.ttf');
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: 'Steppe';
-    src: url('./../../assets/fonts/Steppe.ttf');
+    src: url('./../assets/fonts/Steppe.ttf');
     font-style: normal;
     font-weight: 400;
 }
@@ -35,24 +35,29 @@ p {
 
 .wrapper-main-page {
     display: flex;
-    margin: 23px auto 0 auto;
+    margin: 50px 60px 0 60px;
+
     flex-direction: column;
     min-height: calc(100vh - 138px);
 }
-
+.main-block {
+    display: flex;
+}
 header {
     display: flex;
     height: 40px;
-    width: 613px;
+    // width: 613px;
     margin-bottom: 50px;
     justify-content: space-between;
 }
-
+.header-container {
+    display: flex;
+}
 .volume {
     display: block;
     width: 36px;
     height: 36px;
-    background-image: url('./../../assets/svg/audio.svg');
+    background-image: url('./../assets/svg/audio.svg');
     background-color: transparent;
     background-size: cover;
     border: none;
@@ -64,12 +69,14 @@ header {
     display: block;
     width: 36px;
     height: 36px;
-    background-image: url('./../../assets/svg/snowflake.svg');
+    background-image: url('./../assets/svg/snowflake.svg');
     background-color: transparent;
     background-size: cover;
     border: none;
     cursor: pointer;
     background-repeat: no-repeat;
+    margin-left: 42px;
+    margin-right: 42px;
 }
 
 .search {
@@ -83,7 +90,7 @@ header {
     font-size: 16px;
     padding-left: 10px;
 
-    background-image: url('./../../assets/svg/search.svg');
+    background-image: url('./../assets/svg/search.svg');
     background-size: 24px;
     background-repeat: no-repeat;
     background-position: 217px center;
@@ -91,9 +98,37 @@ header {
         color: white;
     }
 }
+.fav-container {
+    display: flex;
+    justify-content: end;
+}
+
+.fav-select {
+    width: 48px;
+    height: 60px;
+    background-size: 48px 60px;
+    background-position: left -8px;
+    background-image: url('./../assets/svg/ball-2.svg');
+    background-repeat: no-repeat;
+    transition: 0.3s;
+
+    span {
+        display: inline-block;
+        min-width: 40px;
+        height: 40px;
+        margin-top: 10px;
+        margin-left: 4px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 45px;
+        font-size: 22px;
+        background-color: #278d9f;
+        font-style: 'Steppe';
+    }
+}
 
 .mute {
-    background-image: url('./../../assets/svg/mute.svg');
+    background-image: url('./../assets/svg/mute.svg');
 }
 h3 {
     text-transform: uppercase;
@@ -114,12 +149,14 @@ h3 {
 .title {
     font-family: Neucha;
     font-size: 39px;
+    margin-left: 42px;
 }
 
 .aside {
-    width: 460px;
+    width: 320px;
     display: flex;
     flex-direction: column;
+    margin-right: 50px;
 }
 
 .title-sort {
@@ -142,12 +179,17 @@ h3 {
     border: 1px solid #278d9f;
     background-color: $button-bg;
     color: white;
-    background-image: url(./../../assets/svg/arrow-down.svg);
+    background-image: url(./../assets/svg/arrow-down.svg);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: right;
 }
 
+.noUi-touch-area {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
 .shapes {
     width: 440px;
     height: 43px;
@@ -166,19 +208,19 @@ h3 {
 }
 
 .shapes button:nth-child(1) {
-    background-image: url('./../../assets/svg/bell.svg');
+    background-image: url('./../assets/svg/bell.svg');
 }
 .shapes button:nth-child(2) {
-    background-image: url('./../../assets/svg/ball.svg');
+    background-image: url('./../assets/svg/ball.svg');
 }
 .shapes button:nth-child(3) {
-    background-image: url('./../../assets/svg/cone.svg');
+    background-image: url('./../assets/svg/cone.svg');
 }
 .shapes button:nth-child(4) {
-    background-image: url('./../../assets/svg/snow.svg');
+    background-image: url('./../assets/svg/snow.svg');
 }
 .shapes button:nth-child(5) {
-    background-image: url('./../../assets/svg/toy.svg');
+    background-image: url('./../assets/svg/toy.svg');
 }
 
 .colors {
@@ -211,11 +253,17 @@ h3 {
         }
     }
 }
+
+.title-slider,
+.size-title {
+    margin-top: 25px;
+}
+
 #count-slider,
 #year-slider {
     width: 290px;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .noUi-handle:before,
 .noUi-handle:after {
@@ -244,10 +292,39 @@ h3 {
     font-size: 16px;
     margin-bottom: 50px;
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Steppe';
+    font-size: 18px;
+    width: 300px;
+}
+.toys {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.template-toy {
+    display: flex;
+    width: 222px;
+    height: 340px;
+    border-radius: 10px;
+    background-color: $button-bg;
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    // margin-right: 25px;
+    // margin-bottom: 35px;
+    margin: 0 30px 30px 30px;
+
+    h2 {
+        font-size: 22px;
+        padding: 18px;
+    }
+}
 
 .rs-school {
     display: block;
-    background-image: url('./../../assets/svg/rss.svg');
+    background-image: url('./../assets/svg/rss.svg');
     width: 220px;
     height: 82px;
     background-repeat: no-repeat;

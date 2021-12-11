@@ -25,7 +25,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.svg$|.ttf/,
+                test: /\.svg$|.ttf|.png/,
                 loader: 'file-loader',
             },
         ],
