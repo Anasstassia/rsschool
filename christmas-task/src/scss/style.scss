@@ -306,6 +306,7 @@ h3 {
 }
 .template-toy {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     width: 222px;
@@ -347,4 +348,24 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: end;
+}
+
+.heart {
+    position: absolute;
+    top: 18px;
+    right: 6px;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    background-image: url('./../assets/svg/hearr.svg');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+    transition: background 0.5s linear;
+    filter: invert(82%) sepia(7%) saturate(452%) hue-rotate(260deg) brightness(86%) contrast(91%);
+
+    &:hover {
+        background-image: url('./../assets/svg/hearr2.svg');
+        filter: invert(82%) sepia(7%) saturate(452%) hue-rotate(260deg) brightness(86%) contrast(91%);
+    }
 }
