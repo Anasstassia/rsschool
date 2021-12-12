@@ -204,6 +204,9 @@ h3 {
         background-size: contain;
         background-repeat: no-repeat;
         cursor: pointer;
+        &:hover {
+            filter: invert(20%);
+        }
     }
 }
 
@@ -364,7 +367,8 @@ footer {
     transition: background 0.5s linear;
     filter: invert(82%) sepia(7%) saturate(452%) hue-rotate(260deg) brightness(86%) contrast(91%);
 
-    &:hover {
+    &:hover,
+    &.active {
         background-image: url('./../assets/svg/hearr2.svg');
         filter: invert(82%) sepia(7%) saturate(452%) hue-rotate(260deg) brightness(86%) contrast(91%);
     }
