@@ -1,4 +1,4 @@
-interface IToy {
+export interface IToy {
     num: string;
     name: string;
     count: string;
@@ -10,7 +10,7 @@ interface IToy {
     selected?: boolean;
 }
 
-const data: IToy[] = [
+export const data: IToy[] = [
     {
         num: '1',
         name: 'Большой шар с рисунком',
