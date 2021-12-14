@@ -22,6 +22,10 @@ export function createCards() {
         const newCard = template?.cloneNode(true) as HTMLElement;
         //заполняем контент карточки
         if (newCard) {
+            const name = newCard.querySelector<HTMLImageElement>('.template-toy h2');
+            if (name) {
+                name.textContent = `${data[i].name}`;
+            }
             const image = newCard.querySelector<HTMLImageElement>('.img-toy');
             if (image) {
                 image.src = `/toys/${i + 1}.png`;
