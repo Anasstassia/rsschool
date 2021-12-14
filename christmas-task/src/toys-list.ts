@@ -3,8 +3,8 @@ import { IToy, data } from '../data';
 type ICallback = (a: IToy, b: IToy) => number;
 
 const SORTS: ICallback[] = [
-    (a, b) => a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()),
-    (a, b) => b.name.toLocaleLowerCase().localeCompare(a.name.toLocaleLowerCase()),
+    (a, b) => a.name.localeCompare(b.name),
+    (a, b) => b.name.localeCompare(a.name),
     (a, b) => Number(a.year) - Number(b.year),
     (a, b) => Number(b.year) - Number(a.year),
 ];
@@ -33,6 +33,7 @@ export default class ToysList {
     }
 
     sort(order: number) {
+        console.log(order);
         this.order = order;
         this.data.sort(SORTS[this.order]);
         this.draw();
@@ -54,8 +55,10 @@ export default class ToysList {
 
     draw() {
         const template = document.querySelector('.template-toy');
-        const container = document.querySelector('.toys');
-
+        const container = document.querySelector<HTMLElement>('.toys');
+        if (container && template) {
+            container.innerHTML = '';
+        }
         this.data.forEach((el, i) => {
             const newCard = template?.cloneNode(true) as HTMLElement;
             if (newCard) {
@@ -65,7 +68,7 @@ export default class ToysList {
                 }
                 const image = newCard.querySelector<HTMLImageElement>('.img-toy');
                 if (image) {
-                    image.src = `/toys/${i + 1}.png`;
+                    image.src = `/toys/${this.data[i].num}.png`;
                 }
                 const count = newCard.querySelector<HTMLImageElement>('.count');
                 if (count) {

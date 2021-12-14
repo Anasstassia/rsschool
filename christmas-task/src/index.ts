@@ -1,7 +1,7 @@
 import 'nouislider/dist/nouislider.css';
 import './scss/style.scss';
 import { init } from './range-sliders';
-import ToysList from './toys-list';
+import { selected } from './helpers';
 
-const toys = new ToysList();
 init();
+selected();
