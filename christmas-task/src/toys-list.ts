@@ -1,4 +1,4 @@
-import { IToy, data } from '../data';
+import { IToy, data as DATA } from '../data';
 
 type ICallback = (a: IToy, b: IToy) => number;
 
@@ -8,6 +8,8 @@ const SORTS: ICallback[] = [
     (a, b) => Number(a.year) - Number(b.year),
     (a, b) => Number(b.year) - Number(a.year),
 ];
+
+const SHAPES = ['колокольчик', 'шар', 'шишка', 'снежинка', 'фигурка'];
 
 export default class ToysList {
     order?: number | null;
@@ -27,7 +29,7 @@ export default class ToysList {
         this.year = [1940, 2020];
         this.size = null;
         this.onlyFavorites = false;
-        this.data = data;
+        this.data = DATA;
 
         this.draw();
     }
@@ -42,7 +44,7 @@ export default class ToysList {
         const counterElement = document.querySelector<HTMLElement>('.fav-select span');
         if (counterElement) {
             counterElement.innerHTML = String(
-                data.filter((e) => {
+                DATA.filter((e) => {
                     if (e.selected) {
                         return true;
                     }
@@ -50,6 +52,16 @@ export default class ToysList {
                 }).length
             );
         }
+    }
+
+    filterByShape(array: number[]) {
+        if (array.length === 0) {
+            this.data = DATA;
+        } else {
+            const currentShapes = array.map((e) => SHAPES[e]);
+            this.data = DATA.filter((e) => currentShapes.includes(e.shape));
+        }
+        this.draw();
     }
 
     draw() {

@@ -3,27 +3,27 @@ const toys = new ToysList();
 
 export const sorted = () => {
     const select = document.querySelector<HTMLSelectElement>('.select');
-
     if (select) {
         select.addEventListener('change', () => {
-            switch (select.options.selectedIndex) {
-                case 0:
-                    break;
-                case 1:
-                    toys.sort(0);
-                    break;
-                case 2:
-                    toys.sort(1);
-                    break;
-                case 3:
-                    toys.sort(2);
-                    break;
-                case 4:
-                    toys.sort(3);
-                    break;
-                default:
-                    break;
+            if (select.options.selectedIndex > 0) {
+                toys.sort(select.options.selectedIndex - 1);
             }
         });
     }
+};
+
+export const selectShape = () => {
+    const shapesIndex: Array<number> = [];
+    const buttons = document.querySelectorAll('.shapes button');
+    buttons.forEach((buttonItem, i) =>
+        buttonItem.addEventListener('click', () => {
+            buttonItem.classList.toggle('active');
+            if (shapesIndex.indexOf(i) === -1) {
+                shapesIndex.push(i);
+            } else {
+                shapesIndex.splice(shapesIndex.indexOf(i), 1);
+            }
+            toys.filterByShape(shapesIndex);
+        })
+    );
 };

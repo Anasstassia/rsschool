@@ -207,6 +207,9 @@ h3 {
         &:hover {
             filter: invert(20%);
         }
+        &.active {
+            filter: invert(83%) sepia(22%) saturate(6332%) hue-rotate(326deg) brightness(96%) contrast(83%);
+        }
     }
 }
 
