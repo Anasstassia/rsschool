@@ -1,9 +1,10 @@
+import { ISources } from '../../types';
 class Loader {
     constructor(private baseLink: string, private options: { apiKey: string }) {}
 
     getResp(
         { endpoint, options }: { endpoint: string; options?: { apiKey?: string; sources?: string } },
-        callback: (data: { sources?: { name: string; id: string }[] }) => void = () => {
+        callback: (data: ISources) => void = () => {
             console.error('No callback for GET response');
         }
     ) {

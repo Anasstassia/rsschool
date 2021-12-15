@@ -10,8 +10,12 @@ export type TItem = {
     };
 };
 
-export interface IData {
+export interface INews {
     status: string;
     totalResults: number;
     articles: TItem[];
+}
+
+export interface ISources {
+    sources?: { name: string; id: string }[];
 }

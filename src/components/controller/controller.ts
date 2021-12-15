@@ -1,7 +1,7 @@
 import AppLoader from './appLoader';
-
+import { ISources } from '../../types';
 class AppController extends AppLoader {
-    getSources(callback: (data?: { sources?: { name: string; id: string }[] }) => void) {
+    getSources(callback: (data?: ISources) => void) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,7 +10,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: MouseEvent, callback: (data?: { sources?: { name: string; id: string }[] }) => void) {
+    getNews(e: MouseEvent, callback: (data?: ISources) => void) {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
         while (target !== newsContainer) {

@@ -1,7 +1,7 @@
-import { IData } from '../../types';
+import { INews } from '../../types';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-
+import { ISources } from '../../types';
 class App {
     controller: AppController;
     view: AppView;
@@ -12,14 +12,11 @@ class App {
 
     start() {
         document.querySelector('.sources').addEventListener('click', (e: MouseEvent) => {
-            this.controller.getNews(e, (data: { sources?: { name: string; id: string }[] }) =>
-                this.view.drawNews(data as IData)
-            );
+            this.controller.getNews(e, (data: ISources) => this.view.drawNews(data as INews));
             const element = document.getElementById('onNews');
             element.scrollIntoView(true);
-            // document.getElementById('onNews').scrollIntoView(true);
         });
-        this.controller.getSources((data: { sources?: { name: string; id: string }[] }) => this.view.drawSources(data));
+        this.controller.getSources((data: ISources) => this.view.drawSources(data));
     }
 }
 
