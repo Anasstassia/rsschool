@@ -102,7 +102,7 @@ export default class ToysList {
                 }
                 heart?.addEventListener('click', () => {
                     heart.classList.toggle('active');
-                    this.data[i].selected = !this.data[i].selected;
+                    el.selected = !el.selected;
                     this.calcSelected();
                 });
 
