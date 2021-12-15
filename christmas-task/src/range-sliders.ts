@@ -33,10 +33,10 @@ export const init = () => {
         const sliderYear = slider.create(sliderYearElement, {
             range: {
                 min: 1940,
-                max: 2021,
+                max: 2020,
             },
             step: 1,
-            start: [1940, 2021],
+            start: [1940, 2020],
             connect: true,
             format: {
                 to: (value) => value.toFixed(0),

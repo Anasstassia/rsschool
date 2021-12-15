@@ -24,7 +24,7 @@ export default class ToysList {
         this.shape = null;
         this.color = null;
         this.count = [1, 20];
-        this.year = [1940, 2021];
+        this.year = [1940, 2020];
         this.size = null;
         this.onlyFavorites = false;
         this.data = data;
