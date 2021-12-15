@@ -1,7 +1,7 @@
 import 'nouislider/dist/nouislider.css';
 import './scss/style.scss';
 import { init } from './range-sliders';
-import { selected } from './helpers';
+import { sorted } from './helpers';
 
 init();
-selected();
+sorted();

@@ -1,7 +1,7 @@
 import ToysList from './toys-list';
 const toys = new ToysList();
 
-export const selected = () => {
+export const sorted = () => {
     const select = document.querySelector<HTMLSelectElement>('.select');
 
     if (select) {
@@ -24,10 +24,6 @@ export const selected = () => {
                 default:
                     break;
             }
-
-            // if (select.options.selectedIndex === 1) {
-            //     sort(0);
-            // }
         });
     }
 };

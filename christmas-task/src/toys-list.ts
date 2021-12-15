@@ -33,7 +33,6 @@ export default class ToysList {
     }
 
     sort(order: number) {
-        console.log(order);
         this.order = order;
         this.data.sort(SORTS[this.order]);
         this.draw();
@@ -64,42 +63,46 @@ export default class ToysList {
             if (newCard) {
                 const name = newCard.querySelector<HTMLImageElement>('.template-toy h2');
                 if (name) {
-                    name.textContent = `${this.data[i].name}`;
+                    name.textContent = `${el.name}`;
                 }
                 const image = newCard.querySelector<HTMLImageElement>('.img-toy');
                 if (image) {
-                    image.src = `/toys/${this.data[i].num}.png`;
+                    image.src = `/toys/${el.num}.png`;
                 }
                 const count = newCard.querySelector<HTMLImageElement>('.count');
                 if (count) {
-                    count.textContent = `${this.data[i].count}`;
+                    count.textContent = `${el.count}`;
                 }
                 const year = newCard.querySelector<HTMLImageElement>('.year');
                 if (year) {
-                    year.textContent = `${this.data[i].year} г.`;
+                    year.textContent = `${el.year} г.`;
                 }
                 const shape = newCard.querySelector<HTMLImageElement>('.shape');
                 if (shape) {
-                    shape.textContent = `${this.data[i].shape}`;
+                    shape.textContent = `${el.shape}`;
                 }
                 const color = newCard.querySelector<HTMLImageElement>('.color');
                 if (color) {
-                    color.textContent = `${this.data[i].color}`;
+                    color.textContent = `${el.color}`;
                 }
                 const size = newCard.querySelector<HTMLImageElement>('.size');
                 if (size) {
-                    size.textContent = `${this.data[i].size}`;
+                    size.textContent = `${el.size}`;
                 }
                 const favorite = newCard.querySelector<HTMLImageElement>('.favorite');
                 if (favorite) {
-                    favorite.textContent = `${this.data[i].favorite}`;
+                    favorite.textContent = `${el.favorite}`;
                 }
 
                 const heart = newCard.querySelector<HTMLElement>('.heart');
-
+                if (el.selected) {
+                    heart?.classList.add('active');
+                } else {
+                    heart?.classList.remove('active');
+                }
                 heart?.addEventListener('click', () => {
                     heart.classList.toggle('active');
-                    data[i].selected = !data[i].selected;
+                    this.data[i].selected = !this.data[i].selected;
                     this.calcSelected();
                 });
 
