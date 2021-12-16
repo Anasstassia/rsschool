@@ -3,8 +3,11 @@ import './scss/style.scss';
 import { init } from './range-sliders';
 import { sorted } from './helpers';
 import { selectShape, selectColor } from './helpers';
-init();
-sorted();
+import ToysList from './toys-list';
+const toys = new ToysList();
 
-selectShape();
-selectColor();
+init(toys);
+sorted(toys);
+
+selectShape(toys);
+selectColor(toys);

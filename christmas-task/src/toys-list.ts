@@ -60,8 +60,9 @@ export default class ToysList {
             this.data = DATA;
         } else {
             const currentShapes = array.map((e) => SHAPES[e]);
-            this.data = DATA.filter((e) => currentShapes.includes(e.shape));
+            this.data = this.data.filter((e) => currentShapes.includes(e.shape));
         }
+        console.log(array, this.data);
         this.draw();
     }
 
@@ -70,19 +71,56 @@ export default class ToysList {
             this.data = DATA;
         } else {
             const currentColors = array.map((e) => COLORS[e]);
-            this.data = DATA.filter((e) => currentColors.includes(e.color));
+            this.data = this.data.filter((e) => currentColors.includes(e.color));
         }
+        console.log(array, this.data);
+        this.draw();
+    }
+
+    filterByCount(count1: number, count2: number) {
+        this.data = this.data.filter((e) => +e.count >= count1 && +e.count <= count2);
         this.draw();
     }
 
     draw() {
-        const template = document.querySelector('.template-toy');
+        const template = `<div class="template-toy">
+                        <h2>Большой шар с рисунком</h2>
+                        <div class="heart"></div>
+                        <img id="imgId" src="/toys/1.png" class="img-toy" alt="round" />
+                        <div class="description">
+                            <p>
+                                Количество:
+                                <span class="count">1</span>
+                            </p>
+                            <p>
+                                Год покупки:
+                                <span class="year">1960 год</span>
+                            </p>
+                            <p>
+                                Форма:
+                                <span class="shape">шар</span>
+                            </p>
+                            <p>
+                                Цвет:
+                                <span class="color">красный</span>
+                            </p>
+                            <p>
+                                Размер:
+                                <span class="color">большой</span>
+                            </p>
+                            <p>
+                                Любимая:
+                                <span class="favorite">да</span>
+                            </p>
+                        </div>
+                    </div>`;
         const container = document.querySelector<HTMLElement>('.toys');
         if (container && template) {
             container.innerHTML = '';
         }
         this.data.forEach((el, i) => {
-            const newCard = template?.cloneNode(true) as HTMLElement;
+            const newCard = document.createElement('div');
+            newCard.innerHTML = template;
             if (newCard) {
                 const name = newCard.querySelector<HTMLImageElement>('.template-toy h2');
                 if (name) {
@@ -132,6 +170,5 @@ export default class ToysList {
                 container?.appendChild(newCard);
             }
         });
-        template?.remove();
     }
 }

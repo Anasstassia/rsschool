@@ -1,7 +1,6 @@
 import ToysList from './toys-list';
-const toys = new ToysList();
 
-export const sorted = () => {
+export const sorted = (toys: ToysList) => {
     const select = document.querySelector<HTMLSelectElement>('.select');
     if (select) {
         select.addEventListener('change', () => {
@@ -12,7 +11,7 @@ export const sorted = () => {
     }
 };
 
-export const selectShape = () => {
+export const selectShape = (toys: ToysList) => {
     const shapesIndex: Array<number> = [];
     const buttons = document.querySelectorAll('.shapes button');
     buttons.forEach((buttonItem, i) =>
@@ -28,7 +27,7 @@ export const selectShape = () => {
     );
 };
 
-export const selectColor = () => {
+export const selectColor = (toys: ToysList) => {
     const colorsIndex: Array<number> = [];
     const buttons = document.querySelectorAll('.colors button');
     buttons.forEach((buttonItem, i) =>

@@ -1,5 +1,7 @@
 import slider from 'nouislider';
-export const init = () => {
+import ToysList from './toys-list';
+
+export const init = (toys: ToysList) => {
     const sliderCountElement = document.querySelector<HTMLElement>('#count-slider');
     const sliderYearElement = document.querySelector<HTMLElement>('#year-slider');
     if (sliderCountElement && sliderYearElement) {
@@ -26,6 +28,7 @@ export const init = () => {
                 if (leftCount && rightCount) {
                     leftCount.textContent = String(arr[0]);
                     rightCount.textContent = String(arr[1]);
+                    toys.filterByCount(+arr[0], +arr[1]);
                 }
             }
         });
@@ -53,6 +56,7 @@ export const init = () => {
                 if (leftYear && rightYear) {
                     leftYear.textContent = String(arr[0]);
                     rightYear.textContent = String(arr[1]);
+                    // toys.filterByYear([leftYear, rightYear]);
                 }
             }
         });
