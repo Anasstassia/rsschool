@@ -42,3 +42,19 @@ export const selectColor = (toys: ToysList) => {
         })
     );
 };
+
+export const selectSize = (toys: ToysList) => {
+    const sizeIndex: Array<number> = [];
+    const inputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
+    inputs.forEach((input, i) => {
+        input.addEventListener('change', (e) => {
+            if (input.checked && sizeIndex.indexOf(i) === -1) {
+                sizeIndex.push(i);
+            } else {
+                sizeIndex.splice(sizeIndex.indexOf(i), 1);
+            }
+            console.log(sizeIndex);
+            toys.filterBySize(sizeIndex);
+        });
+    });
+};

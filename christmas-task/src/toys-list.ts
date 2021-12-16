@@ -11,6 +11,7 @@ const SORTS: ICallback[] = [
 
 const SHAPES = ['колокольчик', 'шар', 'шишка', 'снежинка', 'фигурка'];
 const COLORS = ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
+const SIZES = ['большой', 'средний', 'малый'];
 
 export default class ToysList {
     order?: number | null;
@@ -87,6 +88,18 @@ export default class ToysList {
         this.draw();
     }
 
+    filterBySize(array: number[]) {
+        if (array.length === 0) {
+            this.data = DATA;
+        } else {
+            const currentSizes = array.map((e) => SIZES[e]);
+            console.log(currentSizes);
+            this.data = this.data.filter((e) => currentSizes.includes(e.size));
+        }
+
+        this.draw();
+    }
+
     draw() {
         const template = `<div class="template-toy">
                         <h2>Большой шар с рисунком</h2>
@@ -111,7 +124,7 @@ export default class ToysList {
                             </p>
                             <p>
                                 Размер:
-                                <span class="color">большой</span>
+                                <span class="size">большой</span>
                             </p>
                             <p>
                                 Любимая:
