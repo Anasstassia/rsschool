@@ -56,7 +56,7 @@ export const init = (toys: ToysList) => {
                 if (leftYear && rightYear) {
                     leftYear.textContent = String(arr[0]);
                     rightYear.textContent = String(arr[1]);
-                    // toys.filterByYear([leftYear, rightYear]);
+                    toys.filterByYear(+arr[0], +arr[1]);
                 }
             }
         });

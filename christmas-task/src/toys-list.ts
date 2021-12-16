@@ -60,9 +60,9 @@ export default class ToysList {
             this.data = DATA;
         } else {
             const currentShapes = array.map((e) => SHAPES[e]);
-            this.data = this.data.filter((e) => currentShapes.includes(e.shape));
+            this.data = DATA.filter((e) => currentShapes.includes(e.shape));
         }
-        console.log(array, this.data);
+
         this.draw();
     }
 
@@ -73,12 +73,17 @@ export default class ToysList {
             const currentColors = array.map((e) => COLORS[e]);
             this.data = this.data.filter((e) => currentColors.includes(e.color));
         }
-        console.log(array, this.data);
+
         this.draw();
     }
 
     filterByCount(count1: number, count2: number) {
         this.data = this.data.filter((e) => +e.count >= count1 && +e.count <= count2);
+        this.draw();
+    }
+
+    filterByYear(count1: number, count2: number) {
+        this.data = this.data.filter((e) => +e.year >= count1 && +e.year <= count2);
         this.draw();
     }
 
