@@ -231,7 +231,9 @@ h3 {
 
 .colors {
     margin: 25px 0 25px 0;
+    display: flex;
     button {
+        position: relative;
         width: 25px;
         height: 25px;
         border-radius: 5px;
@@ -256,6 +258,18 @@ h3 {
         }
         &:nth-child(5) {
             background-color: #08aa05;
+        }
+        &.active::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 9px;
+            width: 6px;
+            height: 10px;
+            border: solid #993076;
+            border-width: 0 4px 4px 0;
+            transform: rotate(45deg);
         }
     }
 }

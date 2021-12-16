@@ -10,6 +10,7 @@ const SORTS: ICallback[] = [
 ];
 
 const SHAPES = ['колокольчик', 'шар', 'шишка', 'снежинка', 'фигурка'];
+const COLORS = ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
 
 export default class ToysList {
     order?: number | null;
@@ -60,6 +61,16 @@ export default class ToysList {
         } else {
             const currentShapes = array.map((e) => SHAPES[e]);
             this.data = DATA.filter((e) => currentShapes.includes(e.shape));
+        }
+        this.draw();
+    }
+
+    filterByColor(array: number[]) {
+        if (array.length === 0) {
+            this.data = DATA;
+        } else {
+            const currentColors = array.map((e) => COLORS[e]);
+            this.data = DATA.filter((e) => currentColors.includes(e.color));
         }
         this.draw();
     }
