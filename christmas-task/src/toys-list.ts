@@ -44,16 +44,24 @@ export default class ToysList {
 
     calcSelected() {
         const counterElement = document.querySelector<HTMLElement>('.fav-select span');
+        const warning = document.querySelector('.warning');
         if (counterElement) {
-            counterElement.innerHTML = String(
-                DATA.filter((e) => {
-                    if (e.selected) {
-                        return true;
-                    }
-                    return false;
-                }).length
-            );
+            const countFav = DATA.filter((e) => {
+                if (e.selected) {
+                    return true;
+                }
+                return false;
+            }).length;
+
+            if (countFav < 21) {
+                counterElement.innerHTML = String(countFav);
+            } else {
+                warning?.classList.add('visible');
+            }
         }
+        document.querySelector('.cross')?.addEventListener('click', () => {
+            warning?.classList.remove('visible');
+        });
     }
 
     filterByShape(array: number[]) {
