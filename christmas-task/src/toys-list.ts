@@ -93,8 +93,17 @@ export default class ToysList {
             this.data = DATA;
         } else {
             const currentSizes = array.map((e) => SIZES[e]);
-            console.log(currentSizes);
             this.data = this.data.filter((e) => currentSizes.includes(e.size));
+        }
+
+        this.draw();
+    }
+
+    filterByFav(a: boolean) {
+        if (a === true) {
+            this.data = this.data.filter((e) => e.favorite === true);
+        } else {
+            this.data = DATA;
         }
 
         this.draw();

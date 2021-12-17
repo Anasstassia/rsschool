@@ -53,8 +53,18 @@ export const selectSize = (toys: ToysList) => {
             } else {
                 sizeIndex.splice(sizeIndex.indexOf(i), 1);
             }
-            console.log(sizeIndex);
             toys.filterBySize(sizeIndex);
         });
+    });
+};
+
+export const selectFavorite = (toys: ToysList) => {
+    const input = document.querySelector<HTMLInputElement>('.fav input');
+    input?.addEventListener('change', () => {
+        if (input.checked) {
+            toys.filterByFav(true);
+        } else {
+            toys.filterByFav(false);
+        }
     });
 };
