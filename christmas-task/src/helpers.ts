@@ -68,3 +68,10 @@ export const selectFavorite = (toys: ToysList) => {
         }
     });
 };
+
+export const reset = (toys: ToysList) => {
+    const button = document.querySelector('.reset');
+    button?.addEventListener('click', () => {
+        toys.resetAll();
+    });
+};

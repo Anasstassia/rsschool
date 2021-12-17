@@ -109,6 +109,11 @@ export default class ToysList {
         this.draw();
     }
 
+    resetAll() {
+        this.data = DATA;
+        this.draw();
+    }
+
     draw() {
         const template = `<div class="template-toy">
                         <h2>Большой шар с рисунком</h2>

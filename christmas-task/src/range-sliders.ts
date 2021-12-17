@@ -60,5 +60,29 @@ export const init = (toys: ToysList) => {
                 }
             }
         });
+
+        // сброс всех настроек
+        const buttonReset = document.querySelector('.reset');
+        const buttonsShape = document.querySelectorAll('.shapes button');
+        const buttonsColor = document.querySelectorAll('.colors button');
+        const inputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
+        const input = document.querySelector<HTMLInputElement>('.fav input');
+
+        buttonReset?.addEventListener('click', () => {
+            sliderYear.reset();
+            sliderCount.reset();
+            buttonsShape.forEach((el) => {
+                el.classList.remove('active');
+            });
+            buttonsColor.forEach((el) => {
+                el.classList.remove('active');
+            });
+            inputs.forEach((el) => {
+                el.checked = false;
+            });
+            if (input) {
+                input.checked = false;
+            }
+        });
     }
 };
