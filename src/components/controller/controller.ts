@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { ISources } from '../../types';
+import { ISources, INews } from '../../types';
 class AppController extends AppLoader {
     getSources(callback: (data?: ISources) => void) {
         super.getResp(
