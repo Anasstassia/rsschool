@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./assets/favicon.ico" rel="shortcut icon" />
+        <title>Christmas Task</title>
+    <script defer src="bundle.js"></script></head>
+    <body>
+        <div class="wrapper-main-page">
+            <header>
+                <div class="header-container">
+                    <button class="volume"></button>
+                    <button class="snowfall"></button>
+                    <form>
+                        <input type="search" class="search" placeholder="Поиск" autocomplete="off" />
+                    </form>
+                    <h3 class="title">Игрушки</h3>
+                </div>
+                <div class="warning">
+                    <button class="cross"></button>
+                    Извините, все слоты заполнены, <br />
+                    выберите не более 20 игрушек
+                </div>
+                <div class="fav-container">
+                    <div class="fav-select">
+                        <span>0</span>
+                    </div>
+                </div>
+            </header>
+            <div class="main-block">
+                <aside>
+                    <div class="aside">
+                        <div class="sort">
+                            <h3 class="title-sort">Сортировать</h3>
+                            <select class="select">
+                                <option>Выберите из списка</option>
+                                <option value="1">По названию от А до Я</option>
+                                <option value="2">По названию от Я до А</option>
+                                <option value="3">По году приобретения ↑</option>
+                                <option value="4">По году приобретения ↓</option>
+                            </select>
+                        </div>
+                        <h3 class="title-sort">Категории</h3>
+                        <p>Форма</p>
+                        <div class="shapes">
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                        </div>
+                        <p>Цвет</p>
+                        <div class="colors">
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                            <button></button>
+                        </div>
+                        <!-- <h3 class="title-sort">Фильтры</h3> -->
+                        <p>Количество экземпляров</p>
+                        <div id="count-slider"></div>
+                        <div class="container">
+                            <span class="left-count">1</span>
+                            <span class="right-count">12</span>
+                        </div>
+                        <p class="title-slider">Год приобретения</p>
+                        <div id="year-slider"></div>
+                        <div class="container">
+                            <span class="left-year">1940</span>
+                            <span class="right-year">2020</span>
+                        </div>
+                        <p class="size-title">Размер</p>
+                        <div class="sizes">
+                            <input type="checkbox" id="big" /> <label for="big">Большой</label>
+                            <input type="checkbox" id="medium" /> <label for="medium">Средний</label>
+                            <input type="checkbox" id="small" /> <label for="small">Маленький</label>
+                        </div>
+                        <div class="fav">
+                            <input type="checkbox" id="fav" /> <label for="fav">Только любимые</label>
+                        </div>
+                        <button class="reset">Сбросить фильтры</button>
+                    </div>
+                </aside>
+                <div class="toys"></div>
+            </div>
+        </div>
+        <footer>
+            <form action="https://rs.school/" target="_blank">
+                <button class="rs-school"></button>
+            </form>
+            <a href="https://github.com/Anasstassia" target="_blank">My github</a>
+        </footer>
+    </body>
+</html>
