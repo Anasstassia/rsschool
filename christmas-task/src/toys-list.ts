@@ -122,11 +122,22 @@ export default class ToysList {
         this.draw();
     }
 
+    searchAll(value: string) {
+        this.data = DATA.filter((el) => el.name.toLowerCase().includes(value.toLowerCase()));
+        this.draw();
+
+        if (this.data.length === 0) {
+            const message = `Извините, совпадений не обнаружено.`;
+            const container = document.querySelector<HTMLElement>('.toys');
+            container?.append(message);
+        }
+    }
+
     draw() {
         const template = `<div class="template-toy">
                         <h2>Большой шар с рисунком</h2>
                         <div class="heart"></div>
-                        <img id="imgId" src="/toys/1.png" class="img-toy" alt="round" />
+                        <img id="imgId" src="/assets/toys/1.png" class="img-toy" alt="round" />
                         <div class="description">
                             <p>
                                 Количество:
@@ -168,7 +179,7 @@ export default class ToysList {
                 }
                 const image = newCard.querySelector<HTMLImageElement>('.img-toy');
                 if (image) {
-                    image.src = `/toys/${el.num}.png`;
+                    image.src = `/assets/toys/${el.num}.png`;
                 }
                 const count = newCard.querySelector<HTMLImageElement>('.count');
                 if (count) {

@@ -1,7 +1,7 @@
 import 'nouislider/dist/nouislider.css';
 import './scss/style.scss';
 import { init } from './range-sliders';
-import { sorted } from './helpers';
+import { search, sorted } from './helpers';
 import { selectShape, selectColor, selectSize, selectFavorite, reset } from './helpers';
 import ToysList from './toys-list';
 const toys = new ToysList();
@@ -9,6 +9,7 @@ const toys = new ToysList();
 init(toys);
 sorted(toys);
 reset(toys);
+search(toys);
 selectShape(toys);
 selectColor(toys);
 selectSize(toys);

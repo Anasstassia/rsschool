@@ -75,3 +75,10 @@ export const reset = (toys: ToysList) => {
         toys.resetAll();
     });
 };
+
+export const search = (toys: ToysList) => {
+    const search = document.querySelector<HTMLInputElement>('.search');
+    search?.addEventListener('input', () => {
+        toys.searchAll(search.value);
+    });
+};
