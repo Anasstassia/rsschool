@@ -337,7 +337,8 @@ h3 {
     height: 19px;
 }
 
-.reset {
+.reset,
+.reset-ls {
     width: 254px;
     height: 36px;
     cursor: pointer;
@@ -349,7 +350,7 @@ h3 {
     background-color: $button-bg;
     outline: none;
     font-size: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     &:hover {
         background-color: lighten($color: $button-bg, $amount: 10);

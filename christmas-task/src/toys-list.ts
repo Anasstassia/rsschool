@@ -122,6 +122,15 @@ export default class ToysList {
         this.draw();
     }
 
+    resetSettings() {
+        DATA.forEach((el) => {
+            el.selected = false;
+        });
+        this.calcSelected();
+        this.data = DATA;
+        this.draw();
+    }
+
     searchAll(value: string) {
         this.data = DATA.filter((el) => el.name.toLowerCase().includes(value.toLowerCase()));
         this.draw();
