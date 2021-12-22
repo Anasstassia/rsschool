@@ -35,8 +35,10 @@ p {
 
 .wrapper-welcome-page {
     display: flex;
+    flex-direction: column;
     background-image: url('./../assets/bg.jpg');
     min-width: 100%;
+    min-height: calc(100vh - 80px);
 }
 
 .wrapper-main-page {
@@ -52,7 +54,6 @@ p {
 header {
     display: flex;
     height: 40px;
-    // width: 613px;
     margin-bottom: 50px;
     justify-content: space-between;
 }
@@ -407,12 +408,12 @@ h3 {
 .rs-school {
     display: block;
     background-image: url('./../assets/svg/rss.svg');
-    width: 220px;
-    height: 82px;
+    width: 213px;
+    height: 47px;
     margin: 15px;
     background-repeat: no-repeat;
     background-color: transparent;
-    background-size: cover;
+    background-size: contain;
     border: none;
     cursor: pointer;
     &:hover {
@@ -455,5 +456,75 @@ footer {
     &.active {
         background-image: url('./../assets/svg/hearr2.svg');
         filter: invert(82%) sepia(7%) saturate(452%) hue-rotate(260deg) brightness(86%) contrast(91%);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.header-welcome {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: $color-bg;
+}
+
+.name-game {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 600px;
+    height: 250px;
+    margin: 60px auto 80px auto;
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    border: 3px solid #278d9f;
+    border-radius: 25px;
+    background-color: $button-bg;
+    backdrop-filter: blur(6px);
+    font-size: 48px;
+}
+
+.start-play {
+    width: 320px;
+    height: 54px;
+    margin: 0 auto;
+    color: #fff;
+    font-family: 'Steppe';
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    border: 3px solid #278d9f;
+    border-radius: 25px;
+    background-color: $button-bg;
+    backdrop-filter: blur(6px);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+
+    cursor: pointer;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.5);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.switch-toys,
+.switch-tree {
+    width: 100px;
+    font-size: 30px;
+    margin-left: 40px;
+    padding-top: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    &:hover {
+        transition: 0.4s;
+        filter: invert(76%) sepia(86%) saturate(6362%) hue-rotate(98deg) brightness(102%) contrast(134%);
     }
 }

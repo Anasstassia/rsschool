@@ -8,8 +8,20 @@
         <title>Christmas Task</title>
     </head>
     <body>
-        <div class="wrapper-welcome-page"></div>
-        <div class="wrapper-main-page">
+        <div class="wrapper-welcome-page">
+            <header>
+                <div class="header-welcome">
+                    <div class="switch-toys">Игрушки</div>
+                    <div class="switch-tree">ёлка</div>
+                </div>
+            </header>
+            <div class="name-game">
+                Новогодняя игра <br />
+                «Наряди ёлку»
+            </div>
+            <button class="start-play">Начать</button>
+        </div>
+        <div class="wrapper-main-page hidden">
             <header>
                 <div class="header-container">
                     <button class="volume"></button>
@@ -60,7 +72,6 @@
                             <button></button>
                             <button></button>
                         </div>
-                        <!-- <h3 class="title-sort">Фильтры</h3> -->
                         <p>Количество экземпляров</p>
                         <div id="count-slider"></div>
                         <div class="container">

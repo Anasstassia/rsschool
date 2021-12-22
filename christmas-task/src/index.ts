@@ -8,6 +8,10 @@ import { router } from './router';
 
 const toys = new ToysList();
 
+const toToys = document.querySelector('.start-play');
+const toToysPage = document.querySelector('.switch-toys');
+const toTreePage = document.querySelector('.switch-tree');
+
 init(toys);
 sorted(toys);
 reset(toys);
@@ -17,3 +21,11 @@ selectColor(toys);
 selectSize(toys);
 selectFavorite(toys);
 resetLocalStorage(toys);
+
+toToys?.addEventListener('click', () => {
+    router.link('main');
+});
+
+toToysPage?.addEventListener('click', () => {
+    router.link('main');
+});
