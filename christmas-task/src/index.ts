@@ -4,6 +4,8 @@ import { init } from './range-sliders';
 import { search, sorted } from './helpers';
 import { selectShape, selectColor, selectSize, selectFavorite, reset, resetLocalStorage } from './helpers';
 import ToysList from './toys-list';
+import { router } from './router';
+
 const toys = new ToysList();
 
 init(toys);

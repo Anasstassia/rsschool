@@ -33,6 +33,12 @@ p {
     font-size: 18px;
 }
 
+.wrapper-welcome-page {
+    display: flex;
+    background-image: url('./../assets/bg.jpg');
+    min-width: 100%;
+}
+
 .wrapper-main-page {
     display: flex;
     margin: 50px 60px 0 60px;
