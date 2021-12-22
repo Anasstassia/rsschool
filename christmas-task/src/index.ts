@@ -11,6 +11,8 @@ const toys = new ToysList();
 const toToys = document.querySelector('.start-play');
 const toToysPage = document.querySelector('.switch-toys');
 const toTreePage = document.querySelector('.switch-tree');
+const toTree = document.querySelector('.switch-to-tree');
+const toWelcome = document.querySelector('.switch-home');
 
 init(toys);
 sorted(toys);
@@ -25,7 +27,15 @@ resetLocalStorage(toys);
 toToys?.addEventListener('click', () => {
     router.link('main');
 });
-
 toToysPage?.addEventListener('click', () => {
     router.link('main');
+});
+toWelcome?.addEventListener('click', () => {
+    router.link('welcome');
+});
+toTreePage?.addEventListener('click', () => {
+    router.link('tree');
+});
+toTree?.addEventListener('click', () => {
+    router.link('tree');
 });
