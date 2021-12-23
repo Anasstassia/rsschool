@@ -13,6 +13,8 @@ const toToysPage = document.querySelector('.switch-toys');
 const toTreePage = document.querySelector('.switch-tree');
 const toTree = document.querySelector('.switch-to-tree');
 const toWelcome = document.querySelector('.switch-home');
+const toWelcomePage = document.querySelector('.sound-snow-btn .switch-home');
+const toToysBtn = document.querySelector('.switch-to-toys');
 
 init(toys);
 sorted(toys);
@@ -30,7 +32,13 @@ toToys?.addEventListener('click', () => {
 toToysPage?.addEventListener('click', () => {
     router.link('main');
 });
+toToysBtn?.addEventListener('click', () => {
+    router.link('main');
+});
 toWelcome?.addEventListener('click', () => {
+    router.link('welcome');
+});
+toWelcomePage?.addEventListener('click', () => {
     router.link('welcome');
 });
 toTreePage?.addEventListener('click', () => {
