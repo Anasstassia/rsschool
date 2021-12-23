@@ -5,7 +5,7 @@ import { search, sorted } from './helpers';
 import { selectShape, selectColor, selectSize, selectFavorite, reset, resetLocalStorage } from './helpers';
 import ToysList from './toys-list';
 import { router } from './router';
-
+import { playAudio } from './music';
 const toys = new ToysList();
 
 const toToys = document.querySelector('.start-play');
@@ -47,3 +47,5 @@ toTreePage?.addEventListener('click', () => {
 toTree?.addEventListener('click', () => {
     router.link('tree');
 });
+
+playAudio();

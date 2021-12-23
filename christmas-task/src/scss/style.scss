@@ -681,27 +681,29 @@ footer {
     border-radius: 50%;
     cursor: pointer;
     &:nth-child(1) {
+        border: 1px solid rgb(238, 230, 230);
         background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
+        filter: drop-shadow(0px 1px 7px rgb(231, 230, 212));
     }
     &:nth-child(2) {
         background-color: #f00;
         border: 1px solid #f00;
-        filter: drop-shadow(0px 0px 2px #f00);
+        filter: drop-shadow(0px 1px 7px #f00);
     }
     &:nth-child(3) {
         background-color: #24e0ff;
         border: 1px solid #24e0ff;
-        filter: drop-shadow(0px 0px 2px #24e0ff);
+        filter: drop-shadow(0px 1px 7px #24e0ff);
     }
     &:nth-child(4) {
         background-color: #ff0;
         border: 1px solid #ff0;
-        filter: drop-shadow(0px 0px 2px #ff0);
+        filter: drop-shadow(0px 1px 7px #ff0);
     }
     &:nth-child(5) {
         background-color: #00ff2a;
         border: 1px solid #00ff2a;
-        filter: drop-shadow(0px 0px 2px #00ff2a);
+        filter: drop-shadow(0px 1px 7px #00ff2a);
     }
 }
 
@@ -749,4 +751,8 @@ footer {
     background-repeat: no-repeat;
     cursor: pointer;
     margin: 5px;
+}
+.active-btn {
+    filter: invert(45%) sepia(68%) saturate(6362%) hue-rotate(98deg) brightness(142%) contrast(140%);
+    filter: drop-shadow(0px 1px 7px #00ff2a);
 }
