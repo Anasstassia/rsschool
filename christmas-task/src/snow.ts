@@ -4,10 +4,8 @@ let clicks = 0;
 let repeater: NodeJS.Timer;
 
 snowBtn?.addEventListener('click', () => {
-    // const repeater = setInterval(createSnowFlake, 50);
     snowBtn?.classList.toggle('active-btn');
     clicks++;
-    console.log(clicks);
     if (clicks % 2 === 0) {
         clearInterval(repeater);
     } else {
@@ -16,17 +14,17 @@ snowBtn?.addEventListener('click', () => {
 });
 
 export function createSnowFlake() {
-    const snow_flake = document.createElement('i');
-    snow_flake.classList.add('fas');
-    snow_flake.classList.add('fa-snowflake');
-    snow_flake.style.left = Math.random() * window.innerWidth + 'px';
-    snow_flake.style.animationDuration = Math.random() * 3 + 2 + 's';
-    snow_flake.style.opacity = `${Math.random()}`;
-    snow_flake.style.fontSize = Math.random() * 10 + 10 + 'px';
+    const snowFlake = document.createElement('i');
+    snowFlake.classList.add('fas');
+    snowFlake.classList.add('fa-snowflake');
+    snowFlake.style.left = Math.random() * window.innerWidth + 'px';
+    snowFlake.style.animationDuration = Math.random() * 3 + 2 + 's';
+    snowFlake.style.opacity = `${Math.random()}`;
+    snowFlake.style.fontSize = Math.random() * 10 + 10 + 'px';
 
-    container?.appendChild(snow_flake);
+    container?.appendChild(snowFlake);
 
     setTimeout(() => {
-        snow_flake.remove();
+        snowFlake.remove();
     }, 6000);
 }
