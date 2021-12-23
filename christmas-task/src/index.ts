@@ -7,6 +7,8 @@ import ToysList from './toys-list';
 import { router } from './router';
 import { playAudio } from './music';
 import { createSnowFlake } from './snow';
+import { setTree } from './decoration';
+import { setBackground } from './decoration';
 const toys = new ToysList();
 
 const toToys = document.querySelector('.start-play');
@@ -19,6 +21,8 @@ const toToysBtn = document.querySelector('.switch-to-toys');
 
 playAudio();
 createSnowFlake();
+setTree();
+setBackground();
 
 init(toys);
 sorted(toys);

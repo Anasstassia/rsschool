@@ -593,7 +593,9 @@ footer {
     display: flex;
     justify-content: center;
     background-size: cover;
-    background-image: url('./../assets/bg/4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./../assets/bg/1.jpg');
 }
 
 .sound-snow-btn {
@@ -667,7 +669,7 @@ footer {
         background-image: url('./../assets/tree/2.png');
     }
     &:nth-child(3) {
-        background-image: url('./../assets/tree/6.png');
+        background-image: url('./../assets/tree/3.png');
     }
     &:nth-child(4) {
         background-image: url('./../assets/tree/4.png');
