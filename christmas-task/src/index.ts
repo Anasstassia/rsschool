@@ -6,6 +6,7 @@ import { selectShape, selectColor, selectSize, selectFavorite, reset, resetLocal
 import ToysList from './toys-list';
 import { router } from './router';
 import { playAudio } from './music';
+import { createSnowFlake } from './snow';
 const toys = new ToysList();
 
 const toToys = document.querySelector('.start-play');
@@ -15,6 +16,9 @@ const toTree = document.querySelector('.switch-to-tree');
 const toWelcome = document.querySelector('.switch-home');
 const toWelcomePage = document.querySelector('.sound-snow-btn .switch-home');
 const toToysBtn = document.querySelector('.switch-to-toys');
+
+playAudio();
+createSnowFlake();
 
 init(toys);
 sorted(toys);
@@ -47,5 +51,3 @@ toTreePage?.addEventListener('click', () => {
 toTree?.addEventListener('click', () => {
     router.link('tree');
 });
-
-playAudio();
