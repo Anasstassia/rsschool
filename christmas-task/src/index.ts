@@ -10,6 +10,7 @@ import { createSnowFlake } from './snow';
 import { setTree } from './decoration';
 import { setBackground } from './decoration';
 import { drawToys } from './favorites';
+import { lightOn } from './garlands';
 const toys = new ToysList();
 
 const toToys = document.querySelector('.start-play');
@@ -24,6 +25,7 @@ playAudio();
 createSnowFlake();
 setTree();
 setBackground();
+lightOn();
 
 init(toys);
 sorted(toys);
@@ -52,6 +54,7 @@ toWelcomePage?.addEventListener('click', () => {
 });
 toTreePage?.addEventListener('click', () => {
     router.link('tree');
+    drawToys(toys);
 });
 toTree?.addEventListener('click', () => {
     router.link('tree');

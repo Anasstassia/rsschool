@@ -5,7 +5,6 @@ const getItem = <T>(key: string): T => JSON.parse(localStorage.getItem(key) || '
 
 export const sorted = (toys: ToysList) => {
     const select = document.querySelector<HTMLSelectElement>('.select');
-    // const storageSort = getItem<number>('sort');
     if (select) {
         select.addEventListener('change', () => {
             if (select.options.selectedIndex > 0) {
@@ -52,15 +51,6 @@ export const selectColor = (toys: ToysList) => {
 
 export const selectSize = (toys: ToysList) => {
     const inputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
-    // const storageSize = getItem<number[]>('size');
-    // if (storageSize) {
-    // inputs.forEach((input, i) => {
-    //     if (storageSize.includes(i)) {
-    //         input.checked = true;
-    //     }
-    // });
-    // toys.filterBySize(storageSize);
-    // }
     const sizeIndex: Array<number> = [];
     inputs.forEach((input, i) => {
         input.addEventListener('change', () => {
@@ -104,7 +94,3 @@ export const resetLocalStorage = (toys: ToysList) => {
         toys.resetSettings();
     });
 };
-// reset();
-// setItem('size', []);
-// setItem('color', []);
-// setItem('shape', []);

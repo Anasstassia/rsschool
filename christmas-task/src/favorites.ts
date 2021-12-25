@@ -40,8 +40,7 @@ export const drawToys = (toys: ToysList) => {
             newToy.setAttribute('draggable', 'true');
             newToy.setAttribute('id', 'i');
             container?.append(newToy);
-
-            template?.remove();
         });
+        template?.remove();
     }
 };
