@@ -9,6 +9,7 @@ import { playAudio } from './music';
 import { createSnowFlake } from './snow';
 import { setTree } from './decoration';
 import { setBackground } from './decoration';
+import { drawToys } from './favorites';
 const toys = new ToysList();
 
 const toToys = document.querySelector('.start-play');
@@ -54,4 +55,6 @@ toTreePage?.addEventListener('click', () => {
 });
 toTree?.addEventListener('click', () => {
     router.link('tree');
+    drawToys(toys);
+    drawToys(toys);
 });
