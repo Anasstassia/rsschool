@@ -871,7 +871,11 @@ footer {
         &:nth-child(3n + 1) {
             animation-duration: 1.4s;
         }
-        &:after {
+        &::after {
+            display: none;
+        }
+        &.active::after {
+            display: inline;
             content: '';
             top: (0 - $globe-height/2);
             left: $globe-width - 3;

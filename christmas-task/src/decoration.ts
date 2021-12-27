@@ -17,8 +17,6 @@ export const setBackground = () => {
     backgrounds.forEach((el, i) =>
         el.addEventListener('click', () => {
             if (treeBg) {
-                console.log(i + 1);
-
                 treeBg.style.backgroundImage = `url(./../assets/bg/${i + 1}.jpg)`;
             }
         })

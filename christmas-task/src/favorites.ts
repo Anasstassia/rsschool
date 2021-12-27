@@ -3,7 +3,6 @@ import { IToy, data as DATA } from '../data';
 
 const container = document.querySelector<HTMLElement>('.select-toys-container');
 const template = document.querySelector<HTMLElement>('.template-toy-sel');
-const toyImg = template?.querySelector<HTMLImageElement>('.toy-img');
 
 export const drawToys = (toys: ToysList) => {
     if (container && template) {
@@ -13,6 +12,7 @@ export const drawToys = (toys: ToysList) => {
         DATA.forEach((el, i) => {
             if (el.selected) {
                 const newToy = template?.cloneNode(true) as HTMLElement;
+                const toyImg = newToy.querySelector('img');
                 if (toyImg) {
                     toyImg.src = `/assets/toys/${el.num}.png`;
                 }
@@ -22,12 +22,14 @@ export const drawToys = (toys: ToysList) => {
                 }
                 container?.append(newToy);
             }
-            template?.remove();
         });
+        template?.remove();
     } else {
         const firstTwentyToys = DATA.slice(0, 20);
         firstTwentyToys.forEach((el, i) => {
             const newToy = template?.cloneNode(true) as HTMLElement;
+            const toyImg = newToy.querySelector('img');
+
             if (toyImg) {
                 toyImg.src = `/assets/toys/${el.num}.png`;
             }
@@ -57,7 +59,6 @@ export const drawToys = (toys: ToysList) => {
     }
 };
 function handleDragStart(e: DragEvent) {
-    console.log(e.target);
     e.dataTransfer?.setData('text', (e.target as HTMLElement).id);
 }
 
@@ -77,7 +78,6 @@ function handleOverDrop(e: DragEvent) {
     }
     const draggedId = e.dataTransfer?.getData('text');
     const draggedEl = document.getElementById(draggedId || '');
-    console.log(draggedEl, draggedId);
     if (draggedEl?.parentNode == e.target) {
         (e.target as HTMLElement).className = '';
         return;

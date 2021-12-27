@@ -6,7 +6,16 @@ export const lightOn = () => {
     buttons.forEach((el, i) => {
         el.addEventListener('click', () => {
             lights.forEach((el) => {
-                el.classList.toggle(`${COLORS[i]}`);
+                const currentColor = COLORS.find((color) => el.classList.contains(color));
+                if (currentColor) {
+                    el.classList.remove(currentColor);
+                }
+                if (currentColor !== COLORS[i]) {
+                    el.classList.add(COLORS[i]);
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
             });
         });
     });

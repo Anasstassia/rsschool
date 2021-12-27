@@ -58,6 +58,6 @@ toTreePage?.addEventListener('click', () => {
 });
 toTree?.addEventListener('click', () => {
     router.link('tree');
-    drawToys(toys);
+    // drawToys(toys);
     drawToys(toys);
 });
