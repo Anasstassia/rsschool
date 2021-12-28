@@ -1,6 +1,6 @@
 {
     "plugins": ["@typescript-eslint", "prettier", "import"],
-    "extends": ["plugin:prettier/recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    "extends": ["plugin:prettier/recommended", "plugin:@typescript-eslint/recommended", "airbnb", "prettier"],
     "parser": "@typescript-eslint/parser",
 
     "parserOptions": {
@@ -12,12 +12,25 @@
         "browser": true,
         "node": true
     },
+    "globals": {
+        "NodeJS": true
+    },
     "rules": {
         "no-debugger": "off",
         "no-console": 0,
         "class-methods-use-this": "off",
         "prettier/prettier": 2,
-        "@typescript-eslint/no-explicit-any": "error"
+        "@typescript-eslint/no-explicit-any": "error",
+        "import/extensions": "off",
+        "import/prefer-default-export": "off",
+        "no-use-before-define": "off"
     },
-    "ignorePatterns": ["webpack.config.js"]
+    "ignorePatterns": ["webpack.config.js"],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
 }

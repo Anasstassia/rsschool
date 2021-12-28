@@ -2,7 +2,6 @@ const playBtn = document.querySelector('.volume');
 
 const audio = new Audio();
 let isPlay = true;
-playBtn?.addEventListener('click', playAudio);
 
 export function playAudio() {
     audio.src = './assets/audio/audio.mp3';
@@ -21,3 +20,5 @@ export function playAudio() {
         audio.play();
     };
 }
+
+playBtn?.addEventListener('click', playAudio);

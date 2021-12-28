@@ -1,16 +1,24 @@
-import 'nouislider/dist/nouislider.css';
-import './scss/style.scss';
 import { init } from './range-sliders';
-import { search, sorted } from './helpers';
-import { selectShape, selectColor, selectSize, selectFavorite, reset, resetLocalStorage } from './helpers';
+import {
+    search,
+    sorted,
+    selectShape,
+    selectColor,
+    selectSize,
+    selectFavorite,
+    reset,
+    resetLocalStorage,
+} from './helpers';
 import ToysList from './toys-list';
 import { router } from './router';
 import { playAudio } from './music';
 import { createSnowFlake } from './snow';
-import { setTree } from './decoration';
-import { setBackground } from './decoration';
+import { setTree, setBackground } from './decoration';
 import { drawToys } from './favorites';
 import { lightOn } from './garlands';
+import 'nouislider/dist/nouislider.css';
+import './scss/style.scss';
+
 const toys = new ToysList();
 
 const toToys = document.querySelector('.start-play');
@@ -54,10 +62,9 @@ toWelcomePage?.addEventListener('click', () => {
 });
 toTreePage?.addEventListener('click', () => {
     router.link('tree');
-    drawToys(toys);
+    drawToys();
 });
 toTree?.addEventListener('click', () => {
     router.link('tree');
-    // drawToys(toys);
-    drawToys(toys);
+    drawToys();
 });

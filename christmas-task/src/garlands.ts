@@ -3,8 +3,8 @@ export const lightOn = () => {
     const buttons = document.querySelectorAll('.garland');
     const lights = document.querySelectorAll<Element>('.lightrope li');
 
-    buttons.forEach((el, i) => {
-        el.addEventListener('click', () => {
+    buttons.forEach((elem, i) => {
+        elem.addEventListener('click', () => {
             lights.forEach((el) => {
                 const currentColor = COLORS.find((color) => el.classList.contains(color));
                 if (currentColor) {

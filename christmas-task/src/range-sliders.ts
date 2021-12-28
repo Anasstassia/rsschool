@@ -78,7 +78,8 @@ export const init = (toys: ToysList) => {
                 el.classList.remove('active');
             });
             inputs.forEach((el) => {
-                el.checked = false;
+                const elem = el;
+                elem.checked = false;
             });
             if (input) {
                 input.checked = false;

@@ -1,10 +1,48 @@
-import ToysList from './toys-list';
-import { IToy, data as DATA } from '../data';
+import { data as DATA } from '../data';
 
 const container = document.querySelector<HTMLElement>('.select-toys-container');
 const template = document.querySelector<HTMLElement>('.template-toy-sel');
 
-export const drawToys = (toys: ToysList) => {
+function handleDragStart(e: DragEvent) {
+    e.dataTransfer?.setData('text', (e.target as HTMLElement).id);
+}
+
+function handleDragEnterLeave(e: DragEvent) {
+    if (e.type === 'dragenter') {
+        (e.target as HTMLElement).className = 'drag-enter';
+    } else {
+        (e.target as HTMLElement).className = '';
+    }
+}
+
+function handleOverDrop(e: DragEvent) {
+    e.preventDefault();
+
+    if (e.type !== 'drop') {
+        return;
+    }
+    const draggedId = e.dataTransfer?.getData('text');
+    const draggedEl = document.getElementById(draggedId || '');
+    if (draggedEl?.parentNode === e.target) {
+        (e.target as HTMLElement).className = '';
+        return;
+    }
+    if (draggedEl) {
+        // draggedEl?.parentNode?.removeChild(draggedEl);
+        draggedEl.style.width = '55px';
+        draggedEl.style.height = '55px';
+        draggedEl.style.position = 'absolute';
+        draggedEl.style.left = `${e?.pageX}px`;
+        draggedEl.style.top = `${e?.pageY}px`;
+        draggedEl.style.zIndex = '1000';
+        if ((e.target as HTMLElement)?.parentElement) {
+            (e.target as HTMLElement)?.parentElement?.appendChild(draggedEl);
+            // (e.target as HTMLElement)?.parentElement?.className = '';
+        }
+    }
+}
+
+export const drawToys = () => {
     if (container && template) {
         container.innerHTML = '';
     }
@@ -30,11 +68,11 @@ export const drawToys = (toys: ToysList) => {
         const draggable = document.querySelectorAll<HTMLElement>('[draggable]');
         const targets = document.querySelectorAll<HTMLElement>('[data-drop-target]');
 
-        for (let i = 0; i < draggable.length; i++) {
+        for (let i = 0; i < draggable.length; i += 1) {
             draggable[i].addEventListener('dragstart', handleDragStart);
         }
 
-        for (let i = 0; i < targets.length; i++) {
+        for (let i = 0; i < targets.length; i += 1) {
             targets[i].addEventListener('dragover', handleOverDrop);
             targets[i].addEventListener('drop', handleOverDrop);
             targets[i].addEventListener('dragenter', handleDragEnterLeave);
@@ -63,11 +101,11 @@ export const drawToys = (toys: ToysList) => {
         const draggable = document.querySelectorAll<HTMLElement>('[draggable]');
         const targets = document.querySelectorAll<HTMLElement>('[data-drop-target]');
 
-        for (let i = 0; i < draggable.length; i++) {
+        for (let i = 0; i < draggable.length; i += 1) {
             draggable[i].addEventListener('dragstart', handleDragStart);
         }
 
-        for (let i = 0; i < targets.length; i++) {
+        for (let i = 0; i < targets.length; i += 1) {
             targets[i].addEventListener('dragover', handleOverDrop);
             targets[i].addEventListener('drop', handleOverDrop);
             targets[i].addEventListener('dragenter', handleDragEnterLeave);
@@ -75,42 +113,3 @@ export const drawToys = (toys: ToysList) => {
         }
     }
 };
-
-function handleDragStart(e: DragEvent) {
-    e.dataTransfer?.setData('text', (e.target as HTMLElement).id);
-}
-
-function handleDragEnterLeave(e: DragEvent) {
-    if (e.type == 'dragenter') {
-        (e.target as HTMLElement).className = 'drag-enter';
-    } else {
-        (e.target as HTMLElement).className = '';
-    }
-}
-
-function handleOverDrop(e: DragEvent) {
-    e.preventDefault();
-
-    if (e.type != 'drop') {
-        return;
-    }
-    const draggedId = e.dataTransfer?.getData('text');
-    const draggedEl = document.getElementById(draggedId || '');
-    if (draggedEl?.parentNode == e.target) {
-        (e.target as HTMLElement).className = '';
-        return;
-    }
-    if (draggedEl) {
-        // draggedEl?.parentNode?.removeChild(draggedEl);
-        draggedEl.style.width = '55px';
-        draggedEl.style.height = '55px';
-        draggedEl.style.position = 'absolute';
-        draggedEl.style.left = e?.pageX + 'px';
-        draggedEl.style.top = e.pageY + 'px';
-        draggedEl.style.zIndex = '1000';
-        if ((e.target as HTMLElement)?.parentElement) {
-            (e.target as HTMLElement)?.parentElement?.appendChild(draggedEl);
-            // (e.target as HTMLElement)?.parentElement?.className = '';
-        }
-    }
-}
