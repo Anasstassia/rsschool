@@ -20,10 +20,26 @@ export const drawToys = (toys: ToysList) => {
                 if (count) {
                     count.textContent = `${el.count}`;
                 }
+                newToy.querySelector('img')?.setAttribute('draggable', 'true');
+                newToy.querySelector('img')?.setAttribute('id', String(i));
                 container?.append(newToy);
             }
         });
         template?.remove();
+
+        const draggable = document.querySelectorAll<HTMLElement>('[draggable]');
+        const targets = document.querySelectorAll<HTMLElement>('[data-drop-target]');
+
+        for (let i = 0; i < draggable.length; i++) {
+            draggable[i].addEventListener('dragstart', handleDragStart);
+        }
+
+        for (let i = 0; i < targets.length; i++) {
+            targets[i].addEventListener('dragover', handleOverDrop);
+            targets[i].addEventListener('drop', handleOverDrop);
+            targets[i].addEventListener('dragenter', handleDragEnterLeave);
+            targets[i].addEventListener('dragleave', handleDragEnterLeave);
+        }
     } else {
         const firstTwentyToys = DATA.slice(0, 20);
         firstTwentyToys.forEach((el, i) => {
@@ -43,6 +59,7 @@ export const drawToys = (toys: ToysList) => {
             container?.append(newToy);
         });
         template?.remove();
+
         const draggable = document.querySelectorAll<HTMLElement>('[draggable]');
         const targets = document.querySelectorAll<HTMLElement>('[data-drop-target]');
 
@@ -58,6 +75,7 @@ export const drawToys = (toys: ToysList) => {
         }
     }
 };
+
 function handleDragStart(e: DragEvent) {
     e.dataTransfer?.setData('text', (e.target as HTMLElement).id);
 }
@@ -83,9 +101,13 @@ function handleOverDrop(e: DragEvent) {
         return;
     }
     if (draggedEl) {
-        draggedEl?.parentNode?.removeChild(draggedEl);
+        // draggedEl?.parentNode?.removeChild(draggedEl);
         draggedEl.style.width = '55px';
         draggedEl.style.height = '55px';
+        draggedEl.style.position = 'absolute';
+        draggedEl.style.left = e?.pageX + 'px';
+        draggedEl.style.top = e.pageY + 'px';
+        draggedEl.style.zIndex = '1000';
         if ((e.target as HTMLElement)?.parentElement) {
             (e.target as HTMLElement)?.parentElement?.appendChild(draggedEl);
             // (e.target as HTMLElement)?.parentElement?.className = '';
