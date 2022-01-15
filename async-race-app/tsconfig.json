@@ -1,0 +1,10 @@
+{
+    "include": ["./src/"],
+    "compilerOptions": {
+        "sourceMap": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "allowJs": true,
+        "lib": ["es2015", "DOM", "ESNext"]
+    }
+}
