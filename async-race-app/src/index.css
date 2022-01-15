@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(16, 46, 16);
+    /* font-family: 'Neucha', sans-serif; */
+    color: white;
+    font-size: 16px;
+}
+
+.settings-container {
+    width: 330px;
+    height: 160px;
+    border-radius: 10px;
+    background-color: rgb(190 213 190 / 72%);
+    margin: 10px;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-to-garage,
+.btn-to-winners {
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    font-weight: 500;
+    color: black;
+    background-color: #c6ede6b8;
+    border: 1px solid rgb(33, 126, 74);
+    text-transform: uppercase;
+}
+
+.btn-to-garage:hover,
+.btn-to-winners:hover {
+    background-color: rgb(75, 183, 141);
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color {
+    margin: 13px;
+    border: none;
+}
+
+.input {
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-create {
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #d1b1b1;
+    width: 70px;
+    height: 27px;
+    border-radius: 7px;
+    border: 1px solid rgb(181 133 118);
+}
+
+.race-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 330px;
+    margin: 10px;
+}
+
+.btn-race,
+.btn-reset,
+.btn-generate {
+    cursor: pointer;
+    font-size: 17px;
+    text-transform: uppercase;
+    background-color: #d68484;
+    width: 80px;
+    height: 33px;
+    border-radius: 7px;
+    border: 1px solid rgb(231, 148, 123);
+}
+
+.btn-generate {
+    width: 153px;
+}
