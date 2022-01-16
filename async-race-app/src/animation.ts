@@ -1,5 +1,6 @@
 export const startAnimation = () => {
     const startBtn = document.querySelectorAll<HTMLElement>('.green-btn');
+    const stopBtn = document.querySelectorAll<HTMLElement>('.red-btn');
     const car = document.querySelector<HTMLImageElement>('.car');
 
     startBtn.forEach((el) =>
@@ -10,6 +11,12 @@ export const startAnimation = () => {
             setTimeout(() => {
                 car.style.animation = ``;
             }, 3000);
+        })
+    );
+    stopBtn.forEach((el) =>
+        el.addEventListener('click', () => {
+            if (!car) return;
+            car.style.animation = '';
         })
     );
 };

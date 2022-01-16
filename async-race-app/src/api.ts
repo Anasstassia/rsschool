@@ -57,10 +57,10 @@ const client = new ApiClient(domain);
 
 export const getCars = () => client.get(GARAGE_URL);
 
-export const createCar = () =>
+export const createCar = (name: string, color: string) =>
     client.post(GARAGE_URL, {
-        name: 'Abobium',
-        color: '#ff0000',
+        name,
+        color,
     });
 
 export const deleteCar = () => client.delete(`${GARAGE_URL}/9`);

@@ -5,6 +5,6 @@ import { startAnimation } from './animation';
 
 renderMainHtml();
 getCars();
-createCar();
+createCar('Car2', '#ffffff');
 // updateCar();
 startAnimation();
