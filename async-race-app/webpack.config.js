@@ -14,7 +14,7 @@ module.exports = {
         rules: [
             { test: /\.tsx?$/, loader: 'ts-loader' },
             {
-                test: /\.[sc]?[ac]ss$/i,
+                test: /\.css$/i,
                 use: [
                     // Creates `style` nodes from JS strings
                     'style-loader',
@@ -22,10 +22,14 @@ module.exports = {
                     'css-loader',
                 ],
             },
-            {
-                test: /\.svg$|.ttf|.png/,
-                loader: 'file-loader',
-            },
+            // {
+            //     test: /\.ttf|.png/,
+            //     loader: 'file-loader',
+            // },
+            // {
+            //     test: /\.svg$/i,
+            //     loader: 'svg-inline-loader',
+            // },
         ],
     },
     resolve: {

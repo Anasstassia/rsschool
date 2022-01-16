@@ -1,4 +1,4 @@
-export const renderHtml = () => {
+export const renderMainHtml = () => {
     const html = `
     <div class="settings-container">
             <div class="buttons">
@@ -23,8 +23,35 @@ export const renderHtml = () => {
             <button class="btn-reset">Reset</button>
             <button class="btn-generate">Generate cars</button>
         </div>
+        <div class="garage-container">
+            ${renderGarage()}
+            ${renderCar()}
+        </div>
     `;
     const div = document.createElement('div');
     div.innerHTML = html;
     document.body.appendChild(div);
 };
+
+const renderGarage = () => `
+    <h2 class="garage-title">Garage: N cars</h2>
+    <h3> Page #N </h3>
+`;
+
+const renderCar = () => `
+    <div class="car-container">
+        <div class="controllers">
+            <button class="btn-select">Select</button>
+            <button class="btn-remove">Remove</button>
+            <span>Car_name</span>
+        </div>
+        <div class="road">
+            <div class="lights">
+               <button class="green-btn"></button>
+               <button class="red-btn"></button>
+            </div>
+            <div class="car"></div>
+            <div class="finish-line"></div>
+        </div>
+    </div>
+`;

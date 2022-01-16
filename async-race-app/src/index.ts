@@ -1,4 +1,4 @@
 import './index.css';
-import { renderHtml } from './html-render';
+import { renderMainHtml } from './html-render';
 
-renderHtml();
+renderMainHtml();
