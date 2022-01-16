@@ -142,6 +142,7 @@ body {
 
 .car {
     display: block;
+    position: relative;
     width: 100px;
     height: 100px;
     background: url('./assets/car2.svg');
@@ -149,7 +150,20 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: 10px;
+    z-index: 10;
+    /* 
+    animation-duration: 3s;
+    animation-name: car-move; */
 }
+@keyframes car-move {
+    0% {
+        left: 0%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
 .controllers {
     margin-bottom: 10px;
 }
