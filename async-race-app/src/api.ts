@@ -1,7 +1,7 @@
 const domain = 'http://127.0.0.1:3000';
 const GARAGE_URL = '/garage';
 // const ENGINE_URL = '/engine';
-// const WINNERS_URL = '/winners';
+const WINNERS_URL = '/winners';
 
 class ApiClient {
     apiUrl: string;
@@ -56,6 +56,7 @@ class ApiClient {
 const client = new ApiClient(domain);
 
 export const getCars = () => client.get(GARAGE_URL);
+export const getWinners = () => client.get(WINNERS_URL);
 
 export const carsNumber = async () => {
     const cars = await getCars();

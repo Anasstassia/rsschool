@@ -1,8 +1,6 @@
-import { carsNumber } from './api';
+import { state } from './state';
 
-export const renderMainHtml = async () => {
-    const count = await carsNumber();
-
+export const renderMainHtml = () => {
     const html = `
     <div class="settings-container">
             <div class="buttons">
@@ -28,8 +26,9 @@ export const renderMainHtml = async () => {
             <button class="btn-generate">Generate cars</button>
         </div>
         <div class="garage-container">
-            ${renderGarage(count)}
-            ${renderCar()}
+            ${renderGarage(state?.cars?.length)}
+            
+            ${state?.cars?.map((car) => renderCar(car))}
         </div>
     `;
     const div = document.createElement('div');
@@ -37,17 +36,19 @@ export const renderMainHtml = async () => {
     document.body.appendChild(div);
 };
 
-const renderGarage = (count: number) => `
+const renderGarage = (count = 0) => `
     <h2 class="garage-title">Garage: ${count} cars</h2>
     <h3> Page #N </h3>
 `;
 
-export const renderCar = () => `
-    <div class="car-container">
+export const renderCar = (car: any) => {
+    setCarImage(car);
+    return `
+    <div class="car-container" id="car${car.id}">
         <div class="controllers">
             <button class="btn-select">Select</button>
             <button class="btn-remove">Remove</button>
-            <span>Car_name</span>
+            <span>${car?.name}</span>
         </div>
         <div class="road">
             <div class="lights">
@@ -59,3 +60,20 @@ export const renderCar = () => `
         </div>
     </div>
 `;
+};
+
+const setCarImage = async (car: any) => {
+    const response = await fetch('./assets/car2.svg');
+    const svg = await response.text();
+
+    const currentCar = document.querySelector(`#car${car.id} .car`);
+    if (currentCar) {
+        currentCar.innerHTML = svg;
+        const el = currentCar.querySelector('svg');
+        if (el) {
+            el.style.fill = car.color;
+            el.style.width = '100px';
+            el.style.height = '100px';
+        }
+    }
+};

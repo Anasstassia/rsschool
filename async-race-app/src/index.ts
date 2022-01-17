@@ -2,9 +2,11 @@ import './index.css';
 import { renderMainHtml, renderCar } from './html-render';
 import { createCar } from './api';
 import { startAnimation } from './animation';
+import { initState } from './state';
 
 (async () => {
-    await renderMainHtml();
+    await initState();
+    renderMainHtml();
     startAnimation();
     document.getElementById('create')?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -15,7 +17,7 @@ import { startAnimation } from './animation';
         if (nameCar && colorCar) {
             createCar(`${nameCar}`, `${colorCar}`);
             const element = document.createElement('div');
-            element.innerHTML = renderCar();
+            // element.innerHTML = renderCar();
 
             containerCar?.appendChild(element);
         }
