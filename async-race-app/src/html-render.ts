@@ -1,4 +1,8 @@
-export const renderMainHtml = () => {
+import { carsNumber } from './api';
+
+export const renderMainHtml = async () => {
+    const count = await carsNumber();
+
     const html = `
     <div class="settings-container">
             <div class="buttons">
@@ -24,7 +28,7 @@ export const renderMainHtml = () => {
             <button class="btn-generate">Generate cars</button>
         </div>
         <div class="garage-container">
-            ${renderGarage()}
+            ${renderGarage(count)}
             ${renderCar()}
         </div>
     `;
@@ -33,12 +37,12 @@ export const renderMainHtml = () => {
     document.body.appendChild(div);
 };
 
-const renderGarage = () => `
-    <h2 class="garage-title">Garage: N cars</h2>
+const renderGarage = (count: number) => `
+    <h2 class="garage-title">Garage: ${count} cars</h2>
     <h3> Page #N </h3>
 `;
 
-const renderCar = () => `
+export const renderCar = () => `
     <div class="car-container">
         <div class="controllers">
             <button class="btn-select">Select</button>

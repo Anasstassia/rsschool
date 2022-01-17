@@ -57,6 +57,11 @@ const client = new ApiClient(domain);
 
 export const getCars = () => client.get(GARAGE_URL);
 
+export const carsNumber = async () => {
+    const cars = await getCars();
+    return cars.length;
+};
+
 export const createCar = (name: string, color: string) =>
     client.post(GARAGE_URL, {
         name,
@@ -64,5 +69,3 @@ export const createCar = (name: string, color: string) =>
     });
 
 export const deleteCar = () => client.delete(`${GARAGE_URL}/9`);
-
-export const updateCar = () => client.put(`${GARAGE_URL}/9`, { color: '#ff00ff' });
