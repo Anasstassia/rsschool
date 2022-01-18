@@ -1,5 +1,5 @@
 import './index.css';
-import { renderMainHtml, renderCar } from './html-render';
+import { renderMainHtml } from './html-render';
 import { createCar } from './api';
 import { startAnimation } from './animation';
 import { initState } from './state';
@@ -17,8 +17,6 @@ import { initState } from './state';
         if (nameCar && colorCar) {
             createCar(`${nameCar}`, `${colorCar}`);
             const element = document.createElement('div');
-            // element.innerHTML = renderCar();
-
             containerCar?.appendChild(element);
         }
     });
