@@ -3,6 +3,7 @@ import { renderMainHtml } from './html-render';
 import { createCar } from './api';
 import { startAnimation } from './animation';
 import { initState } from './state';
+import { changePages } from './listeners';
 
 (async () => {
     await initState();
@@ -20,4 +21,5 @@ import { initState } from './state';
             containerCar?.appendChild(element);
         }
     });
+    changePages();
 })();

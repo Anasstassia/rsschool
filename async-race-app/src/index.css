@@ -68,7 +68,10 @@ body {
     border-radius: 7px;
     border: 1px solid rgb(181 133 118);
 }
-
+.btn-create:hover,
+.btn-update:hover {
+    background-color: #cf9292;
+}
 .race-buttons {
     display: flex;
     justify-content: space-evenly;
@@ -87,6 +90,12 @@ body {
     height: 33px;
     border-radius: 7px;
     border: 1px solid rgb(231, 148, 123);
+}
+
+.btn-race:hover,
+.btn-reset:hover,
+.btn-generate:hover {
+    background-color: #db6a6a;
 }
 
 .btn-generate {
@@ -175,4 +184,44 @@ body {
     background-image: url('./assets/line.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.hidden {
+    display: none;
+}
+
+.previous,
+.next {
+    margin: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #4f8bbd;
+    width: 60px;
+    height: 25px;
+    border-radius: 7px;
+    border: 2px solid rgb(39, 79, 119);
+}
+
+.previous:hover,
+.next:hover {
+    background-color: #336c9b;
+}
+
+.winners-page {
+    margin: 10px;
+}
+.winners-page h3 {
+    padding-bottom: 20px;
+}
+.btn-to-garage {
+    margin-bottom: 20px;
+}
+.table {
+    text-align: center;
+}
+.table th {
+    padding-right: 15px;
+    padding-bottom: 10px;
 }
