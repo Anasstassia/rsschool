@@ -61,6 +61,7 @@ export const renderMainHtml = () => {
     `;
     const div = document.createElement('div');
     div.innerHTML = html;
+    div.classList.add('wrapper');
     document.body.appendChild(div);
 };
 

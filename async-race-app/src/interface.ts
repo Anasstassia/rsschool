@@ -1,6 +1,6 @@
 export interface ICar {
     color: string;
-    id: number;
+    id?: number;
     name: string;
 }
 

@@ -1,5 +1,5 @@
 import './index.css';
-import { renderMainHtml } from './html-render';
+import { renderMainHtml, renderCar } from './html-render';
 import { createCar } from './api';
 import { startAnimation } from './animation';
 import { initState } from './state';
@@ -16,8 +16,13 @@ import { changePages } from './listeners';
         const containerCar = document.querySelector('.garage-container');
 
         if (nameCar && colorCar) {
+            const obj = {
+                color: `${colorCar}`,
+                name: `${nameCar}`,
+            };
             createCar(`${nameCar}`, `${colorCar}`);
             const element = document.createElement('div');
+            element.innerHTML = renderCar(obj);
             containerCar?.appendChild(element);
         }
     });

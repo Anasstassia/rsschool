@@ -1,22 +1,27 @@
 export const startAnimation = () => {
     const startBtn = document.querySelectorAll<HTMLElement>('.green-btn');
     const stopBtn = document.querySelectorAll<HTMLElement>('.red-btn');
-    const car = document.querySelector<HTMLImageElement>('.car');
 
-    startBtn.forEach((el) =>
+    startBtn.forEach((el, i) =>
         el.addEventListener('click', () => {
-            if (!car || car.style.animation) return;
-            car.style.animation = `car-move 3s`;
+            const carImg = document
+                .querySelector<HTMLImageElement>(`#car${i + 1}`)
+                ?.querySelector<HTMLImageElement>('.car');
 
+            if (!carImg || carImg.style.animation) return;
+            carImg.style.animation = `car-move 3s`;
             setTimeout(() => {
-                car.style.animation = ``;
+                carImg.style.animation = ``;
             }, 3000);
         })
     );
-    stopBtn.forEach((el) =>
+    stopBtn.forEach((el, i) =>
         el.addEventListener('click', () => {
-            if (!car) return;
-            car.style.animation = '';
+            const carImg = document
+                .querySelector<HTMLImageElement>(`#car${i + 1}`)
+                ?.querySelector<HTMLImageElement>('.car');
+            if (!carImg) return;
+            carImg.style.animation = ``;
         })
     );
 };
