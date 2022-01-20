@@ -1,7 +1,7 @@
 import { getCars, getWinners } from './api';
-import { ICar } from './interface';
+import { IState } from './interface';
 
-export const state: { cars?: ICar[]; winners?: { [key: string]: string }[] } = {};
+export const state: IState = {};
 
 export const initState = async () => {
     const [cars, winners] = await Promise.all([getCars(), getWinners()]);

@@ -105,10 +105,3 @@ const setCarImage = async (car: ICar) => {
         }
     }
 };
-
-// export const renderWinners = () => `
-//     <button class="btn-to-garage">To garage</button>
-//     <h2 class="garage-title">Winners: 1 cars</h2>
-//     <h3> Page #N </h3>
-//     <table>
-//     </table>`;
