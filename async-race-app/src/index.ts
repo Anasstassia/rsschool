@@ -3,7 +3,7 @@ import { renderMainHtml, renderCar } from './html-render';
 import { createCar } from './api';
 import { startAnimation } from './animation';
 import { initState } from './state';
-import { changePages } from './listeners';
+import { changePages, deleteCarElement } from './listeners';
 
 (async () => {
     await initState();
@@ -27,4 +27,5 @@ import { changePages } from './listeners';
         }
     });
     changePages();
+    deleteCarElement();
 })();

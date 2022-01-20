@@ -69,4 +69,4 @@ export const createCar = (name: string, color: string) =>
         color,
     });
 
-export const deleteCar = () => client.delete(`${GARAGE_URL}/9`);
+export const deleteCar = (id: number) => client.delete(`${GARAGE_URL}/${id}`);

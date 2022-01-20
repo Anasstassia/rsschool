@@ -28,7 +28,7 @@ export const renderMainHtml = () => {
             </div>
             <div class="garage-container">
                 ${renderGarage(state?.cars?.length)}
-                ${state?.cars?.map((car) => renderCar(car))}
+                ${state?.cars?.map((car) => renderCar(car)).join('')}
             </div>
             <button class="previous">Prev</button>
             <button class="next">Next</button>
