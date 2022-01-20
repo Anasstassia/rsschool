@@ -11,8 +11,8 @@ body {
     font-size: 16px;
 }
 
-.settings-container {
-    width: 330px;
+.control-panel {
+    width: 350px;
     height: 160px;
     border-radius: 10px;
     background-color: rgb(190 213 190 / 72%);
@@ -20,7 +20,8 @@ body {
 }
 .buttons {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    margin: 10px;
 }
 
 .btn-to-garage,
