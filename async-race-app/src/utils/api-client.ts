@@ -1,14 +1,5 @@
-const domain = 'http://127.0.0.1:3000';
-const GARAGE_URL = '/garage';
-// const ENGINE_URL = '/engine';
-const WINNERS_URL = '/winners';
-
 class ApiClient {
-    apiUrl: string;
-
-    constructor(apiUrl: string) {
-        this.apiUrl = apiUrl;
-    }
+    apiUrl = 'http://127.0.0.1:3000';
 
     makeRequest(url: string, method: string, body?: Record<string, unknown>) {
         return new Request(`${this.apiUrl}${url}`, {
@@ -53,20 +44,5 @@ class ApiClient {
     }
 }
 
-const client = new ApiClient(domain);
-
-export const getCars = () => client.get(GARAGE_URL);
-export const getWinners = () => client.get(WINNERS_URL);
-
-export const carsNumber = async () => {
-    const cars = await getCars();
-    return cars.length;
-};
-
-export const createCar = (name: string, color: string) =>
-    client.post(GARAGE_URL, {
-        name,
-        color,
-    });
-
-export const deleteCar = (id: number) => client.delete(`${GARAGE_URL}/${id}`);
+const client = new ApiClient();
+export default client;

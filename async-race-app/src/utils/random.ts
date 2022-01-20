@@ -1,5 +1,5 @@
-import { brandsCars } from './brands-cars';
-import { modelsCars } from './models-cars';
+import { brandsCars } from './constants/brands-cars';
+import { modelsCars } from './constants/models-cars';
 
 const getRandomName = () => {
     const brand = brandsCars[Math.floor(Math.random() * modelsCars.length)];

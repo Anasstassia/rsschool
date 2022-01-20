@@ -1,4 +1,4 @@
-export const startAnimation = () => {
+export const addAnimationListeners = () => {
     const startBtn = document.querySelectorAll<HTMLElement>('.green-btn');
     const stopBtn = document.querySelectorAll<HTMLElement>('.red-btn');
 

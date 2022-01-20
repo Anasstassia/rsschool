@@ -1,4 +1,4 @@
-import { getCars, getWinners } from './api';
+import { getCars, getWinners } from './car-api';
 import { IState } from './interface';
 
 export const state: IState = {};

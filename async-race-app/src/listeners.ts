@@ -1,5 +1,5 @@
 import {} from './html-render';
-import { deleteCar } from './api';
+import { deleteCar } from './car-api';
 
 export const changePages = () => {
     const toWinners = document.querySelector('.btn-to-winners');
@@ -20,10 +20,11 @@ export const deleteCarElement = () => {
     const deleteBtn = document.querySelectorAll<HTMLElement>('.btn-remove');
 
     deleteBtn.forEach((el) => {
-        el.addEventListener('click', () => {
+        el.addEventListener('click', async () => {
             const id = Number(el.parentElement?.parentElement?.id.slice(3));
-            deleteCar(id);
-            document.getElementById(`car${id}`)?.remove();
+            const carBlock = document.getElementById(`car${id}`);
+            await deleteCar(id);
+            carBlock?.remove();
         });
     });
 };

@@ -77,7 +77,7 @@ export const renderCar = (car: ICar) => {
         <div class="controllers">
             <button class="btn-select">Select</button>
             <button class="btn-remove">Remove</button>
-            <span>${car?.name}</span>
+            <span>${car.name}</span>
         </div>
         <div class="road">
             <div class="lights">
