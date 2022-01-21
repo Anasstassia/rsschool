@@ -1,4 +1,4 @@
-import {} from './html-render';
+import { renderMainHtml } from './html-render';
 import { deleteCar } from './car-api';
 import { renderGeneratedCars } from './utils/random';
 
@@ -19,13 +19,11 @@ export const changePages = () => {
 
 export const deleteCarElement = () => {
     const deleteBtn = document.querySelectorAll<HTMLElement>('.btn-remove');
-
     deleteBtn.forEach((el) => {
         el.addEventListener('click', async () => {
             const id = Number(el.parentElement?.parentElement?.id.slice(3));
-            const carBlock = document.getElementById(`car${id}`);
             await deleteCar(id);
-            carBlock?.remove();
+            renderMainHtml();
         });
     });
 };

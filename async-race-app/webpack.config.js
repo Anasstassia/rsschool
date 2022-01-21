@@ -13,6 +13,8 @@ module.exports = {
     module: {
         rules: [
             { test: /\.tsx?$/, loader: 'ts-loader' },
+            { test: /\.svg$/, loader: 'svg-inline-loader' },
+
             {
                 test: /\.css$/i,
                 use: [
@@ -22,14 +24,6 @@ module.exports = {
                     'css-loader',
                 ],
             },
-            // {
-            //     test: /\.ttf|.png/,
-            //     loader: 'file-loader',
-            // },
-            // {
-            //     test: /\.svg$/i,
-            //     loader: 'svg-inline-loader',
-            // },
         ],
     },
     resolve: {

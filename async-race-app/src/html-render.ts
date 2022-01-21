@@ -1,6 +1,9 @@
 import { state } from './state';
 import { ICar } from './interface';
 import { renderPanel } from './control-panel';
+import { addAnimationListeners } from './animation';
+import { deleteCarElement } from './listeners';
+import * as svg from './assets/car2.svg';
 
 export const renderMainHtml = () => {
     const html = `
@@ -45,7 +48,9 @@ export const renderMainHtml = () => {
     const div = document.createElement('div');
     div.innerHTML = html;
     div.classList.add('wrapper');
-    document.body.appendChild(div);
+    document.body.innerHTML = div.innerHTML;
+    addAnimationListeners();
+    deleteCarElement();
 };
 
 const renderGarage = (count = 0) => `
@@ -54,7 +59,10 @@ const renderGarage = (count = 0) => `
 `;
 
 export const renderCar = (car: ICar) => {
-    setCarImage(car);
+    const parser = new DOMParser();
+    const el = parser.parseFromString(String(svg), 'image/svg+xml').querySelector('svg');
+    el?.setAttribute('fill', car.color);
+
     return `
     <div class="car-container" id="car${car.id}">
         <div class="controllers">
@@ -67,25 +75,9 @@ export const renderCar = (car: ICar) => {
                <button class="green-btn"></button>
                <button class="red-btn"></button>
             </div>
-            <div class="car"></div>
+            <div class="car">${el?.outerHTML}</div>
             <div class="finish-line"></div>
         </div>
     </div>
 `;
-};
-
-const setCarImage = async (car: ICar) => {
-    const response = await fetch('./assets/car2.svg');
-    const svg = await response.text();
-
-    const currentCar = document.querySelector(`#car${car.id} .car`);
-    if (currentCar) {
-        currentCar.innerHTML = svg;
-        const el = currentCar.querySelector('svg');
-        if (el) {
-            el.style.fill = car.color;
-            el.style.width = '100px';
-            el.style.height = '100px';
-        }
-    }
 };

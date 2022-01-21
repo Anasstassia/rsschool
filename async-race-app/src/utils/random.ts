@@ -1,5 +1,5 @@
 import { createCar } from '../car-api';
-import { renderCar } from '../html-render';
+import { renderMainHtml } from '../html-render';
 import { brandsCars } from './constants/brands-cars';
 import { modelsCars } from './constants/models-cars';
 
@@ -23,11 +23,8 @@ export const generateRandomCar = (count = 100) =>
 
 export const renderGeneratedCars = () => {
     const generatedCars = generateRandomCar();
-    const containerCar = document.querySelector('.garage-container');
     generatedCars.map(async (car) => {
-        const createdCar = await createCar(car);
-        const element = document.createElement('div');
-        element.innerHTML = renderCar(createdCar);
-        containerCar?.appendChild(element);
+        await createCar(car);
     });
+    renderMainHtml();
 };

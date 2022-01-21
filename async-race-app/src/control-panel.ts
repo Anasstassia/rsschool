@@ -1,5 +1,5 @@
 import { createCar } from './car-api';
-import { renderCar } from './html-render';
+import { renderMainHtml } from './html-render';
 
 export const renderPanel = () => `
     <div class="control-panel">
@@ -29,17 +29,14 @@ const createControlPanel = () => {
         e.preventDefault();
         const nameCar = document.querySelector<HTMLInputElement>('.input')?.value;
         const colorCar = document.querySelector<HTMLInputElement>('.color')?.value;
-        const containerCar = document.querySelector('.garage-container');
 
         if (nameCar && colorCar) {
             const newCar = {
                 color: `${colorCar}`,
                 name: `${nameCar}`,
             };
-            const createdCar = await createCar(newCar);
-            const element = document.createElement('div');
-            element.innerHTML = renderCar(createdCar);
-            containerCar?.appendChild(element);
+            await createCar(newCar);
+            renderMainHtml();
         }
     });
 };

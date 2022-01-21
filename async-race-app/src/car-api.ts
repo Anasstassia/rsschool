@@ -1,3 +1,4 @@
+import { state } from './state';
 import client from './utils/api-client';
 
 const GARAGE_URL = '/garage';
@@ -12,10 +13,15 @@ export const carsNumber = async () => {
     return cars.length;
 };
 
-export const createCar = ({ name, color }: { name: string; color: string }) =>
-    client.post(GARAGE_URL, {
+export const createCar = async ({ name, color }: { name: string; color: string }) => {
+    const car = await client.post(GARAGE_URL, {
         name,
         color,
     });
+    state.cars?.push(car);
+};
 
-export const deleteCar = (id: number) => client.delete(`${GARAGE_URL}/${id}`);
+export const deleteCar = (id: number) => {
+    state.cars = state.cars?.filter((car) => car.id !== id);
+    return client.delete(`${GARAGE_URL}/${id}`);
+};
