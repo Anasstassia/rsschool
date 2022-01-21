@@ -1,3 +1,5 @@
+import { createCar } from '../car-api';
+import { renderCar } from '../html-render';
 import { brandsCars } from './constants/brands-cars';
 import { modelsCars } from './constants/models-cars';
 
@@ -16,4 +18,16 @@ const getRandomColor = () => {
     return color;
 };
 
-export const generateRandomCar = () => ({ name: getRandomName(), color: getRandomColor() });
+export const generateRandomCar = (count = 100) =>
+    new Array(count).fill(1).map(() => ({ name: getRandomName(), color: getRandomColor() }));
+
+export const renderGeneratedCars = () => {
+    const generatedCars = generateRandomCar();
+    const containerCar = document.querySelector('.garage-container');
+    generatedCars.map(async (car) => {
+        const createdCar = await createCar(car);
+        const element = document.createElement('div');
+        element.innerHTML = renderCar(createdCar);
+        containerCar?.appendChild(element);
+    });
+};

@@ -1,5 +1,6 @@
 import {} from './html-render';
 import { deleteCar } from './car-api';
+import { renderGeneratedCars } from './utils/random';
 
 export const changePages = () => {
     const toWinners = document.querySelector('.btn-to-winners');
@@ -26,5 +27,12 @@ export const deleteCarElement = () => {
             await deleteCar(id);
             carBlock?.remove();
         });
+    });
+};
+
+export const generateRandomCars = () => {
+    const generateBtn = document.querySelector('.btn-generate');
+    generateBtn?.addEventListener('click', () => {
+        renderGeneratedCars();
     });
 };
