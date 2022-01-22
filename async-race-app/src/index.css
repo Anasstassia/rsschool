@@ -155,9 +155,6 @@ body {
     position: relative;
     width: 100px;
     height: 100px;
-    filter: invert(26%) sepia(24%) saturate(5080%) hue-rotate(308deg) brightness(86%) contrast(85%);
-    background-size: contain;
-    background-repeat: no-repeat;
     margin-left: 10px;
     z-index: 10;
 }

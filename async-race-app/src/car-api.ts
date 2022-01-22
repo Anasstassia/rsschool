@@ -25,3 +25,12 @@ export const deleteCar = (id: number) => {
     state.cars = state.cars?.filter((car) => car.id !== id);
     return client.delete(`${GARAGE_URL}/${id}`);
 };
+
+export const updateCar = async ({ id, name, color }: { id: number; name: string; color: string }) => {
+    const car = await client.put(`${GARAGE_URL}/${id}`, {
+        name,
+        color,
+    });
+
+    state.cars = state.cars?.map((currentCar) => (car.id === currentCar.id ? car : currentCar));
+};

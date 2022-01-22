@@ -1,6 +1,7 @@
 import { renderMainHtml } from './html-render';
 import { deleteCar } from './car-api';
 import { renderGeneratedCars } from './utils/random';
+import { setCurrentId } from './state';
 
 export const changePages = () => {
     const toWinners = document.querySelector('.btn-to-winners');
@@ -32,5 +33,15 @@ export const generateRandomCars = () => {
     const generateBtn = document.querySelector('.btn-generate');
     generateBtn?.addEventListener('click', () => {
         renderGeneratedCars();
+    });
+};
+
+export const handleClickSelect = () => {
+    const selectBtn = document.querySelectorAll<HTMLElement>('.btn-select');
+    selectBtn.forEach((el) => {
+        el.addEventListener('click', () => {
+            const id = Number(el.parentElement?.parentElement?.id.slice(3));
+            setCurrentId(id);
+        });
     });
 };

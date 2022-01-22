@@ -2,7 +2,7 @@ import { state } from './state';
 import { ICar } from './interface';
 import { renderPanel } from './control-panel';
 import { addAnimationListeners } from './animation';
-import { deleteCarElement } from './listeners';
+import { deleteCarElement, handleClickSelect } from './listeners';
 import * as svg from './assets/car2.svg';
 
 export const renderMainHtml = () => {
@@ -51,6 +51,7 @@ export const renderMainHtml = () => {
     document.body.innerHTML = div.innerHTML;
     addAnimationListeners();
     deleteCarElement();
+    handleClickSelect();
 };
 
 const renderGarage = (count = 0) => `

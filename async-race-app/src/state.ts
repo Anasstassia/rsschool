@@ -8,3 +8,7 @@ export const initState = async () => {
 
     Object.assign(state, { cars, winners });
 };
+
+export const setCurrentId = (id: number) => {
+    state.currentCarId = id;
+};

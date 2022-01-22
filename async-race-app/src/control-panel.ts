@@ -1,5 +1,6 @@
-import { createCar } from './car-api';
+import { createCar, updateCar } from './car-api';
 import { renderMainHtml } from './html-render';
+import { state } from './state';
 
 export const renderPanel = () => `
     <div class="control-panel">
@@ -10,7 +11,7 @@ export const renderPanel = () => `
                         <button class="btn-create" type="submit">Create</button>
                     </form>
                     <form class="form" id="update">
-                        <input class="input" id="create-name" name="name" type="text" />
+                        <input class="input" id="update-name" name="name" type="text" />
                         <input class="color" id="update-color" name="color" type="color" value="#BC8F8F" />
                         <button class="btn-create btn-update" type="submit">Update</button>
                     </form>
@@ -36,6 +37,25 @@ const createControlPanel = () => {
                 name: `${nameCar}`,
             };
             await createCar(newCar);
+            renderMainHtml();
+        }
+    });
+
+    const updateCarForm = document.getElementById('update');
+    updateCarForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nameCar = document.querySelector<HTMLInputElement>('#update-name')?.value;
+        const colorCar = document.querySelector<HTMLInputElement>('#update-color')?.value;
+        const { currentCarId } = state;
+        console.log(currentCarId, nameCar, colorCar);
+        if (nameCar && colorCar && currentCarId) {
+            const updatedCar = {
+                color: `${colorCar}`,
+                name: `${nameCar}`,
+                id: currentCarId,
+            };
+
+            await updateCar(updatedCar);
             renderMainHtml();
         }
     });
