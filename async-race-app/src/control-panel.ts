@@ -1,6 +1,6 @@
 import { createCar, updateCar } from './car-api';
 import { renderMainHtml } from './html-render';
-import { state } from './state';
+import { setCurrentId, state } from './state';
 
 export const renderPanel = () => `
     <div class="control-panel">
@@ -47,7 +47,6 @@ const createControlPanel = () => {
         const nameCar = document.querySelector<HTMLInputElement>('#update-name')?.value;
         const colorCar = document.querySelector<HTMLInputElement>('#update-color')?.value;
         const { currentCarId } = state;
-        console.log(currentCarId, nameCar, colorCar);
         if (nameCar && colorCar && currentCarId) {
             const updatedCar = {
                 color: `${colorCar}`,
@@ -56,6 +55,7 @@ const createControlPanel = () => {
             };
 
             await updateCar(updatedCar);
+            setCurrentId();
             renderMainHtml();
         }
     });

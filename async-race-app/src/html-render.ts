@@ -82,3 +82,12 @@ export const renderCar = (car: ICar) => {
     </div>
 `;
 };
+
+export const fillUpdateForm = () => {
+    const nameInput = document.querySelector<HTMLInputElement>('#update-name');
+    const colorInput = document.querySelector<HTMLInputElement>('#update-color');
+    if (nameInput && colorInput) {
+        nameInput.value = state.cars?.find((e) => e.id === state.currentCarId)?.name || '';
+        colorInput.value = state.cars?.find((e) => e.id === state.currentCarId)?.color || '';
+    }
+};

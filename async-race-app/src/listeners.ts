@@ -1,4 +1,4 @@
-import { renderMainHtml } from './html-render';
+import { fillUpdateForm, renderMainHtml } from './html-render';
 import { deleteCar } from './car-api';
 import { renderGeneratedCars } from './utils/random';
 import { setCurrentId } from './state';
@@ -42,6 +42,7 @@ export const handleClickSelect = () => {
         el.addEventListener('click', () => {
             const id = Number(el.parentElement?.parentElement?.id.slice(3));
             setCurrentId(id);
+            fillUpdateForm();
         });
     });
 };
