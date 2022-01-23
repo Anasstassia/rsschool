@@ -8,4 +8,5 @@ export interface IState {
     cars?: ICar[];
     winners?: { [key: string]: string }[];
     currentCarId?: number;
+    currentPage: number;
 }

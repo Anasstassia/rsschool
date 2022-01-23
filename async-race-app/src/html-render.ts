@@ -1,9 +1,11 @@
 import { state } from './state';
 import { ICar } from './interface';
-import { renderPanel } from './control-panel';
+import createControlPanel, { renderPanel } from './control-panel';
 import { addAnimationListeners } from './animation';
-import { deleteCarElement, handleClickSelect } from './listeners';
+import { changeGaragePage, changePages, deleteCarElement, generateRandomCars, handleClickSelect } from './listeners';
 import * as svg from './assets/car2.svg';
+
+const CARS_PER_PAGE = 7;
 
 export const renderMainHtml = () => {
     const html = `
@@ -14,8 +16,8 @@ export const renderMainHtml = () => {
         <div class="container">
             ${renderPanel()}
             <div class="garage-container">
-                ${renderGarage(state?.cars?.length)}
-                ${state?.cars?.map((car) => renderCar(car)).join('')}
+                ${renderGarage()}
+                ${renderCars()}
             </div>
             <button class="previous">Prev</button>
             <button class="next">Next</button>
@@ -52,12 +54,33 @@ export const renderMainHtml = () => {
     addAnimationListeners();
     deleteCarElement();
     handleClickSelect();
+    createControlPanel();
+
+    changePages();
+    generateRandomCars();
+    changeGaragePage();
 };
 
-const renderGarage = (count = 0) => `
-    <h2 class="garage-title">Garage: ${count} cars</h2>
-    <h3> Page #N </h3>
+const renderGarage = () => `
+    <h2 class="garage-title">Garage: ${state.cars?.length} cars</h2>
+    <h3> Page #${state.currentPage} </h3>
 `;
+
+const renderCars = () => {
+    const { currentPage } = state;
+    const carsChunks = state.cars?.reduce<ICar[][]>(
+        (acc, el) => {
+            if (acc[acc.length - 1].length === CARS_PER_PAGE) {
+                acc.push([el]);
+                return acc;
+            }
+            acc[acc.length - 1].push(el);
+            return acc;
+        },
+        [[]]
+    );
+    return carsChunks?.[currentPage - 1]?.map((car) => renderCar(car)).join('');
+};
 
 export const renderCar = (car: ICar) => {
     const parser = new DOMParser();

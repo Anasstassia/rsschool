@@ -2,7 +2,7 @@ import { state } from './state';
 import client from './utils/api-client';
 
 const GARAGE_URL = '/garage';
-// const ENGINE_URL = '/engine';
+const ENGINE_URL = '/engine';
 const WINNERS_URL = '/winners';
 
 export const getCars = () => client.get(GARAGE_URL);
@@ -33,4 +33,24 @@ export const updateCar = async ({ id, name, color }: { id: number; name: string;
     });
 
     state.cars = state.cars?.map((currentCar) => (car.id === currentCar.id ? car : currentCar));
+};
+
+export const startEngine = async (id: number) => {
+    const answer = await client.patch(`${ENGINE_URL}?id=${id}&status=started`);
+    return answer;
+};
+
+export const stopEngine = async (id: number) => {
+    const answer = await client.patch(`${ENGINE_URL}?id=${id}&status=stopped`);
+    return answer;
+};
+
+export const drive = async (id: number) => {
+    try {
+        const result = await client.patch(`${ENGINE_URL}?id=${id}&status=drive`);
+        return result;
+    } catch (e) {
+        console.log(e);
+        throw new Error();
+    }
 };

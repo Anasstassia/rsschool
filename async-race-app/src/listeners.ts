@@ -1,7 +1,7 @@
 import { fillUpdateForm, renderMainHtml } from './html-render';
 import { deleteCar } from './car-api';
 import { renderGeneratedCars } from './utils/random';
-import { setCurrentId } from './state';
+import { setCurrentId, state } from './state';
 
 export const changePages = () => {
     const toWinners = document.querySelector('.btn-to-winners');
@@ -44,5 +44,31 @@ export const handleClickSelect = () => {
             setCurrentId(id);
             fillUpdateForm();
         });
+    });
+};
+
+export const changeGaragePage = async () => {
+    const prevBtn = document.querySelector('.previous');
+    const nextBtn = document.querySelector('.next');
+    const count = state.cars?.length;
+    const CARS_PER_PAGE = 7;
+    const maxPage = Math.ceil((count && count / CARS_PER_PAGE) || 1);
+
+    nextBtn?.addEventListener('click', () => {
+        if (state.currentPage < maxPage) {
+            state.currentPage += 1;
+        } else {
+            state.currentPage = maxPage;
+        }
+        renderMainHtml();
+    });
+
+    prevBtn?.addEventListener('click', () => {
+        if (state.currentPage > 1) {
+            state.currentPage -= 1;
+        } else {
+            state.currentPage = 1;
+        }
+        renderMainHtml();
     });
 };
