@@ -23,8 +23,8 @@ export const renderMainHtml = () => {
             <button class="next">Next</button>
         </div>
         <div class="winners-page hidden">
-            <h2 class="garage-title">Winners: 1 cars</h2>
-            <h3> Page #N </h3>
+            <h2 class="garage-title">Winners: ${state.winners?.length} cars</h2>
+            <h3> Page #1 </h3>
             <table class="table" cellspacing="0" border="0" cellpadding="0">
                 <thead>
                     <th>Number</th>
@@ -34,13 +34,19 @@ export const renderMainHtml = () => {
                     <th>Best time</th>
                 </thead>
                 <tbody>
+                    ${state.winners
+                        ?.map(
+                            (winner, i) => `
                     <tr>
+                        <td>${i + 1}</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>${winner.time}</td>
                     </tr>
+                `
+                        )
+                        .join('')}    
                 </tbody>
             </table>
             <button class="previous">Prev</button>

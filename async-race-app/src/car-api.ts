@@ -51,6 +51,6 @@ export const drive = async (id: number) => {
         return result;
     } catch (e) {
         console.log(e);
-        throw new Error();
+        return { success: false };
     }
 };
