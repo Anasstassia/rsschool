@@ -3,7 +3,7 @@ const tree = document.querySelector<HTMLImageElement>('.main-tree');
 const treeBg = document.querySelector<HTMLImageElement>('.tree');
 const backgrounds = document.querySelectorAll<HTMLElement>('.background');
 
-export const setTree = () => {
+export const addTreeListeners = () => {
     trees.forEach((el, i) =>
         el.addEventListener('click', () => {
             if (tree) {
@@ -13,7 +13,7 @@ export const setTree = () => {
     );
 };
 
-export const setBackground = () => {
+export const setBackgroundListeners = () => {
     backgrounds.forEach((el, i) =>
         el.addEventListener('click', () => {
             if (treeBg) {

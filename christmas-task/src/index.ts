@@ -13,7 +13,7 @@ import ToysList from './toys-list';
 import { router } from './router';
 import { playAudio } from './music';
 import { createSnowFlake } from './snow';
-import { setTree, setBackground } from './decoration';
+import { addTreeListeners, setBackgroundListeners } from './decoration';
 import { drawToys } from './favorites';
 import { lightOn } from './garlands';
 import 'nouislider/dist/nouislider.css';
@@ -31,8 +31,8 @@ const toToysBtn = document.querySelector('.switch-to-toys');
 
 playAudio();
 createSnowFlake();
-setTree();
-setBackground();
+addTreeListeners();
+setBackgroundListeners();
 lightOn();
 
 init(toys);

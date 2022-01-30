@@ -21,6 +21,8 @@
         "class-methods-use-this": "off",
         "prettier/prettier": 2,
         "@typescript-eslint/no-explicit-any": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error",
         "import/extensions": "off",
         "import/prefer-default-export": "off",
         "no-use-before-define": "off"

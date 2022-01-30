@@ -28,7 +28,6 @@ function handleOverDrop(e: DragEvent) {
         return;
     }
     if (draggedEl) {
-        // draggedEl?.parentNode?.removeChild(draggedEl);
         draggedEl.style.width = '55px';
         draggedEl.style.height = '55px';
         draggedEl.style.position = 'absolute';
@@ -37,7 +36,6 @@ function handleOverDrop(e: DragEvent) {
         draggedEl.style.zIndex = '1000';
         if ((e.target as HTMLElement)?.parentElement) {
             (e.target as HTMLElement)?.parentElement?.appendChild(draggedEl);
-            // (e.target as HTMLElement)?.parentElement?.className = '';
         }
     }
 }
@@ -46,7 +44,7 @@ export const drawToys = () => {
     if (container && template) {
         container.innerHTML = '';
     }
-    if (DATA.some((el) => el.selected === true)) {
+    if (DATA.some((el) => el.selected)) {
         DATA.forEach((el, i) => {
             if (el.selected) {
                 const newToy = template?.cloneNode(true) as HTMLElement;
@@ -68,16 +66,16 @@ export const drawToys = () => {
         const draggable = document.querySelectorAll<HTMLElement>('[draggable]');
         const targets = document.querySelectorAll<HTMLElement>('[data-drop-target]');
 
-        for (let i = 0; i < draggable.length; i += 1) {
-            draggable[i].addEventListener('dragstart', handleDragStart);
-        }
+        draggable.forEach((el) => {
+            el.addEventListener('dragstart', handleDragStart);
+        });
 
-        for (let i = 0; i < targets.length; i += 1) {
-            targets[i].addEventListener('dragover', handleOverDrop);
-            targets[i].addEventListener('drop', handleOverDrop);
-            targets[i].addEventListener('dragenter', handleDragEnterLeave);
-            targets[i].addEventListener('dragleave', handleDragEnterLeave);
-        }
+        targets.forEach((target) => {
+            target.addEventListener('dragover', handleOverDrop);
+            target.addEventListener('drop', handleOverDrop);
+            target.addEventListener('dragenter', handleDragEnterLeave);
+            target.addEventListener('dragleave', handleDragEnterLeave);
+        });
     } else {
         const firstTwentyToys = DATA.slice(0, 20);
         firstTwentyToys.forEach((el, i) => {
@@ -101,15 +99,15 @@ export const drawToys = () => {
         const draggable = document.querySelectorAll<HTMLElement>('[draggable]');
         const targets = document.querySelectorAll<HTMLElement>('[data-drop-target]');
 
-        for (let i = 0; i < draggable.length; i += 1) {
-            draggable[i].addEventListener('dragstart', handleDragStart);
-        }
+        draggable.forEach((el) => {
+            el.addEventListener('dragstart', handleDragStart);
+        });
 
-        for (let i = 0; i < targets.length; i += 1) {
-            targets[i].addEventListener('dragover', handleOverDrop);
-            targets[i].addEventListener('drop', handleOverDrop);
-            targets[i].addEventListener('dragenter', handleDragEnterLeave);
-            targets[i].addEventListener('dragleave', handleDragEnterLeave);
-        }
+        targets.forEach((target) => {
+            target.addEventListener('dragover', handleOverDrop);
+            target.addEventListener('drop', handleOverDrop);
+            target.addEventListener('dragenter', handleDragEnterLeave);
+            target.addEventListener('dragleave', handleDragEnterLeave);
+        });
     }
 };

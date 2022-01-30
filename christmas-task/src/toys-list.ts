@@ -15,12 +15,19 @@ const SIZES = ['большой', 'средний', 'малый'];
 
 export default class ToysList {
     order?: number | null;
+
     shape?: number[] | null;
+
     color?: number[] | null;
+
     count?: [number, number];
+
     year?: [number, number];
+
     size?: number[] | null;
+
     onlyFavorites?: boolean;
+
     data: IToy[];
 
     constructor() {
@@ -64,22 +71,22 @@ export default class ToysList {
         });
     }
 
-    filterByShape(array: number[]) {
-        if (array.length === 0) {
+    filterByShape(shapeIndexes: number[]) {
+        if (shapeIndexes.length === 0) {
             this.data = DATA;
         } else {
-            const currentShapes = array.map((e) => SHAPES[e]);
+            const currentShapes = shapeIndexes.map((shapeIndex) => SHAPES[shapeIndex]);
             this.data = DATA.filter((e) => currentShapes.includes(e.shape));
         }
 
         this.draw();
     }
 
-    filterByColor(array: number[]) {
-        if (array.length === 0) {
+    filterByColor(colorIndexes: number[]) {
+        if (colorIndexes.length === 0) {
             this.data = DATA;
         } else {
-            const currentColors = array.map((e) => COLORS[e]);
+            const currentColors = colorIndexes.map((colorIndex) => COLORS[colorIndex]);
             this.data = this.data.filter((e) => currentColors.includes(e.color));
         }
 
@@ -96,11 +103,11 @@ export default class ToysList {
         this.draw();
     }
 
-    filterBySize(array: number[]) {
-        if (array.length === 0) {
+    filterBySize(sizeIndexes: number[]) {
+        if (sizeIndexes.length === 0) {
             this.data = DATA;
         } else {
-            const currentSizes = array.map((e) => SIZES[e]);
+            const currentSizes = sizeIndexes.map((sizeIndex) => SIZES[sizeIndex]);
             this.data = this.data.filter((e) => currentSizes.includes(e.size));
         }
 
@@ -123,8 +130,8 @@ export default class ToysList {
     }
 
     resetSettings() {
-        DATA.forEach((el) => {
-            el.selected = false;
+        DATA.forEach((e) => {
+            e.selected = false;
         });
         this.calcSelected();
         this.data = DATA;
@@ -178,7 +185,7 @@ export default class ToysList {
         if (container && template) {
             container.innerHTML = '';
         }
-        this.data.forEach((el, i) => {
+        this.data.forEach((el) => {
             const newCard = document.createElement('div');
             newCard.innerHTML = template;
             if (newCard) {
@@ -223,7 +230,7 @@ export default class ToysList {
                 }
                 heart?.addEventListener('click', () => {
                     heart.classList.toggle('active');
-                    el.selected = !el.selected;
+                    Object.assign(el, { selected: !el.selected });
                     this.calcSelected();
                 });
 

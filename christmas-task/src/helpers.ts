@@ -1,7 +1,6 @@
 import ToysList from './toys-list';
 
 const setItem = (key: string, value: unknown) => localStorage.setItem(key, JSON.stringify(value));
-const getItem = <T>(key: string): T => JSON.parse(localStorage.getItem(key) || '{}');
 
 export const sorted = (toys: ToysList) => {
     const select = document.querySelector<HTMLSelectElement>('.select');
@@ -16,51 +15,51 @@ export const sorted = (toys: ToysList) => {
 };
 
 export const selectShape = (toys: ToysList) => {
-    const shapesIndex: Array<number> = [];
+    const shapeIndexes: Array<number> = [];
     const buttons = document.querySelectorAll('.shapes button');
     buttons.forEach((buttonItem, i) =>
         buttonItem.addEventListener('click', () => {
             buttonItem.classList.toggle('active');
-            if (shapesIndex.indexOf(i) === -1) {
-                shapesIndex.push(i);
+            if (!shapeIndexes.includes(i)) {
+                shapeIndexes.push(i);
             } else {
-                shapesIndex.splice(shapesIndex.indexOf(i), 1);
+                shapeIndexes.splice(shapeIndexes.indexOf(i), 1);
             }
-            toys.filterByShape(shapesIndex);
-            setItem('shape', shapesIndex);
+            toys.filterByShape(shapeIndexes);
+            setItem('shape', shapeIndexes);
         })
     );
 };
 
 export const selectColor = (toys: ToysList) => {
-    const colorsIndex: Array<number> = [];
+    const colorIndexes: Array<number> = [];
     const buttons = document.querySelectorAll('.colors button');
     buttons.forEach((buttonItem, i) =>
         buttonItem.addEventListener('click', () => {
             buttonItem.classList.toggle('active');
-            if (colorsIndex.indexOf(i) === -1) {
-                colorsIndex.push(i);
+            if (!colorIndexes.includes(i)) {
+                colorIndexes.push(i);
             } else {
-                colorsIndex.splice(colorsIndex.indexOf(i), 1);
+                colorIndexes.splice(colorIndexes.indexOf(i), 1);
             }
-            toys.filterByColor(colorsIndex);
-            setItem('color', colorsIndex);
+            toys.filterByColor(colorIndexes);
+            setItem('color', colorIndexes);
         })
     );
 };
 
 export const selectSize = (toys: ToysList) => {
     const inputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
-    const sizeIndex: Array<number> = [];
+    const sizeIndexes: Array<number> = [];
     inputs.forEach((input, i) => {
         input.addEventListener('change', () => {
-            if (input.checked && sizeIndex.indexOf(i) === -1) {
-                sizeIndex.push(i);
+            if (input.checked && !sizeIndexes.includes(i)) {
+                sizeIndexes.push(i);
             } else {
-                sizeIndex.splice(sizeIndex.indexOf(i), 1);
+                sizeIndexes.splice(sizeIndexes.indexOf(i), 1);
             }
-            toys.filterBySize(sizeIndex);
-            setItem('size', sizeIndex);
+            toys.filterBySize(sizeIndexes);
+            setItem('size', sizeIndexes);
         });
     });
 };
@@ -81,9 +80,9 @@ export const reset = (toys: ToysList) => {
 };
 
 export const search = (toys: ToysList) => {
-    const search = document.querySelector<HTMLInputElement>('.search');
-    search?.addEventListener('input', () => {
-        toys.searchAll(search.value);
+    const searchInput = document.querySelector<HTMLInputElement>('.search');
+    searchInput?.addEventListener('input', () => {
+        toys.searchAll(searchInput.value);
     });
 };
 

@@ -49,14 +49,14 @@ export const init = (toys: ToysList) => {
 
         const leftYear = document.querySelector('.left-year');
         const rightYear = document.querySelector('.right-year');
-
         sliderYear.on('change', () => {
-            const arr = sliderYear.get();
-            if (Array.isArray(arr)) {
+            const yearValues = sliderYear.get();
+            if (Array.isArray(yearValues)) {
                 if (leftYear && rightYear) {
-                    leftYear.textContent = String(arr[0]);
-                    rightYear.textContent = String(arr[1]);
-                    toys.filterByYear(+arr[0], +arr[1]);
+                    const [startYear, endYear] = yearValues;
+                    leftYear.textContent = String(startYear);
+                    rightYear.textContent = String(endYear);
+                    toys.filterByYear(+startYear, +endYear);
                 }
             }
         });
@@ -77,9 +77,8 @@ export const init = (toys: ToysList) => {
             buttonsColor.forEach((el) => {
                 el.classList.remove('active');
             });
-            inputs.forEach((el) => {
-                const elem = el;
-                elem.checked = false;
+            inputs.forEach((e) => {
+                e.checked = false;
             });
             if (input) {
                 input.checked = false;
