@@ -10,7 +10,7 @@ export interface IToy {
     selected?: boolean;
 }
 
-export const data: IToy[] = [
+export const TOYS: IToy[] = [
     {
         num: '1',
         name: 'Большой шар с рисунком',
@@ -613,4 +613,4 @@ export const data: IToy[] = [
     },
 ];
 
-export default data;
+export default TOYS;

@@ -23,13 +23,12 @@ export const init = (toys: ToysList) => {
         const rightCount = document.querySelector('.right-count');
 
         sliderCount.on('change', () => {
-            const arr = sliderCount.get();
-            if (Array.isArray(arr)) {
-                if (leftCount && rightCount) {
-                    leftCount.textContent = String(arr[0]);
-                    rightCount.textContent = String(arr[1]);
-                    toys.filterByCount(+arr[0], +arr[1]);
-                }
+            const countValues = sliderCount.get();
+            if (Array.isArray(countValues) && leftCount && rightCount) {
+                const [startCount, endCount] = countValues;
+                leftCount.textContent = String(startCount);
+                rightCount.textContent = String(endCount);
+                toys.filterByCount(+startCount, +endCount);
             }
         });
 
@@ -65,23 +64,23 @@ export const init = (toys: ToysList) => {
         const buttonReset = document.querySelector('.reset');
         const buttonsShape = document.querySelectorAll('.shapes button');
         const buttonsColor = document.querySelectorAll('.colors button');
-        const inputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
-        const input = document.querySelector<HTMLInputElement>('.fav input');
+        const sizeInputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
+        const isFavInput = document.querySelector<HTMLInputElement>('.fav input');
 
         buttonReset?.addEventListener('click', () => {
             sliderYear.reset();
             sliderCount.reset();
-            buttonsShape.forEach((el) => {
-                el.classList.remove('active');
+            buttonsShape.forEach((button) => {
+                button.classList.remove('active');
             });
-            buttonsColor.forEach((el) => {
-                el.classList.remove('active');
+            buttonsColor.forEach((button) => {
+                button.classList.remove('active');
             });
-            inputs.forEach((e) => {
-                e.checked = false;
-            });
-            if (input) {
+            sizeInputs.forEach((input) => {
                 input.checked = false;
+            });
+            if (isFavInput) {
+                isFavInput.checked = false;
             }
         });
     }

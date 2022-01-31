@@ -14,8 +14,8 @@ export const addTreeListeners = () => {
 };
 
 export const setBackgroundListeners = () => {
-    backgrounds.forEach((el, i) =>
-        el.addEventListener('click', () => {
+    backgrounds.forEach((bg, i) =>
+        bg.addEventListener('click', () => {
             if (treeBg) {
                 treeBg.style.backgroundImage = `url(./../assets/bg/${i + 1}.jpg)`;
             }

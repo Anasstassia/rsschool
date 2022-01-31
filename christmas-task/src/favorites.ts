@@ -1,4 +1,4 @@
-import { data as DATA } from '../data';
+import { TOYS as DATA } from '../data';
 
 const container = document.querySelector<HTMLElement>('.select-toys-container');
 const template = document.querySelector<HTMLElement>('.template-toy-sel');

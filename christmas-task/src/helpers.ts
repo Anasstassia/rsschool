@@ -16,8 +16,8 @@ export const sorted = (toys: ToysList) => {
 
 export const selectShape = (toys: ToysList) => {
     const shapeIndexes: Array<number> = [];
-    const buttons = document.querySelectorAll('.shapes button');
-    buttons.forEach((buttonItem, i) =>
+    const shapeButtons = document.querySelectorAll('.shapes button');
+    shapeButtons.forEach((buttonItem, i) =>
         buttonItem.addEventListener('click', () => {
             buttonItem.classList.toggle('active');
             if (!shapeIndexes.includes(i)) {
@@ -33,8 +33,8 @@ export const selectShape = (toys: ToysList) => {
 
 export const selectColor = (toys: ToysList) => {
     const colorIndexes: Array<number> = [];
-    const buttons = document.querySelectorAll('.colors button');
-    buttons.forEach((buttonItem, i) =>
+    const colorButtons = document.querySelectorAll('.colors button');
+    colorButtons.forEach((buttonItem, i) =>
         buttonItem.addEventListener('click', () => {
             buttonItem.classList.toggle('active');
             if (!colorIndexes.includes(i)) {
@@ -49,9 +49,9 @@ export const selectColor = (toys: ToysList) => {
 };
 
 export const selectSize = (toys: ToysList) => {
-    const inputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
+    const sizeInputs = document.querySelectorAll<HTMLInputElement>('.sizes input');
     const sizeIndexes: Array<number> = [];
-    inputs.forEach((input, i) => {
+    sizeInputs.forEach((input, i) => {
         input.addEventListener('change', () => {
             if (input.checked && !sizeIndexes.includes(i)) {
                 sizeIndexes.push(i);
@@ -65,16 +65,16 @@ export const selectSize = (toys: ToysList) => {
 };
 
 export const selectFavorite = (toys: ToysList) => {
-    const input = document.querySelector<HTMLInputElement>('.fav input');
-    input?.addEventListener('change', () => {
-        toys.filterByFav(input.checked);
-        setItem('favorite', input.checked);
+    const isFavInput = document.querySelector<HTMLInputElement>('.fav input');
+    isFavInput?.addEventListener('change', () => {
+        toys.filterByFav(isFavInput.checked);
+        setItem('favorite', isFavInput.checked);
     });
 };
 
 export const reset = (toys: ToysList) => {
-    const button = document.querySelector('.reset');
-    button?.addEventListener('click', () => {
+    const resetButton = document.querySelector('.reset');
+    resetButton?.addEventListener('click', () => {
         toys.resetAll();
     });
 };

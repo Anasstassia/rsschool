@@ -1,4 +1,4 @@
-import { IToy, data as DATA } from '../data';
+import { IToy, TOYS as DATA } from '../data';
 
 type ICallback = (a: IToy, b: IToy) => number;
 
@@ -20,9 +20,9 @@ export default class ToysList {
 
     color?: number[] | null;
 
-    count?: [number, number];
+    countRange?: [number, number];
 
-    year?: [number, number];
+    yearRange?: [number, number];
 
     size?: number[] | null;
 
@@ -34,8 +34,8 @@ export default class ToysList {
         this.order = 0;
         this.shape = null;
         this.color = null;
-        this.count = [1, 20];
-        this.year = [1940, 2020];
+        this.countRange = [1, 20];
+        this.yearRange = [1940, 2020];
         this.size = null;
         this.onlyFavorites = false;
         this.data = DATA;
