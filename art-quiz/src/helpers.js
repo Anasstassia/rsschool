@@ -22,8 +22,8 @@ export function getQuestions() {
 
 export function chunkArray(array, chunkSize) {
   const result = [];
-  while (array.length) {
-    result.push(array.splice(0, chunkSize));
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
   }
   return result;
 }
@@ -84,3 +84,16 @@ export function checkerAnswer(trueAnswer, currentAnswer) {
     popUp.classList.add('falsy');
   }
 }
+
+export const getRandomInt = (min, max) =>
+  Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) +
+  Math.ceil(min);
+
+export const shuffle = (array) => {
+  const arr = array;
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
