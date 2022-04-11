@@ -448,9 +448,3 @@ function getInitialPrice() {
 function saveToLocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
-
-setTimeout(() => {
-  alert(
-    "Привет:) Из доп. функционала - прелоадер  загрузки\nСлайдер welcome требует немного времени, чтобы полностью загрузиться, иначе он немного тормозит"
-  );
-}, 3500);
