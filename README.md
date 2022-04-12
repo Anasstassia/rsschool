@@ -1,2 +1,11 @@
-# anasstassia-JSFE2021Q3
-Private repository for @anasstassia
+## Ключевые навыки:
+
+- JavaScript Classes
+- Modules in JavaScript
+- Webpack
+- TypeScript
+
+## Источник
+
+[Исходное приложение](https://github.com/Pulya10c/news-JS)
+
